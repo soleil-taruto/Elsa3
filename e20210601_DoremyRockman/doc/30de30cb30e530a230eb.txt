@@ -1,0 +1,56 @@
+﻿===============================================================================
+
+　DoremyRockman / version $version$
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x soleil.taruto
+
+===============================================================================
+
+
+■起動方法
+
+　Game.exe を実行して下さい。
+
+
+■操作方法
+
+　カーソル
+
+　Ｚ　　ジャンプ / 決定
+　Ｘ　　攻撃 / キャンセル
+　Ｄ　　画面スライド
+
+　スペース　　ポーズ / ポーズ解除
+
+　エスケープキーを押すと、いつでも終了できます。
+
+
+　★ゲームパッドの使用をおすすめします。
+
+
+■制作協力（敬称略）
+
+　フランツ カフカ
+
+
+■素材（敬称略）
+
+　ユーフルカ
+　https://wingless-seraph.net/
+
+　小森平
+　http://taira-komori.jpn.org/
+
+　ケイ
+　https://k-gothic-font.hatenablog.com/
+
+
+■このゲームの製作者
+
+　soleil.taruto
+
+　URL:
+　　http://ornithopter.ccsp.mydns.jp/recollections/DoremyRockman
+
+　MAIL:
+　　soleil.taruto@gmail.com
+

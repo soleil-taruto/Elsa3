@@ -1,0 +1,72 @@
+﻿===============================================================================
+
+　TSS / version $version$
+　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x cerulean.charlotte
+
+===============================================================================
+
+
+■動作環境
+
+　Windows 10 Pro または Windows 10 Home
+
+
+■起動方法
+
+　Game.exe を実行して下さい。
+
+
+■操作方法
+
+　カーソル
+
+　ENTER  または Z   ...   決定
+　DELETE または X   ...   キャンセル
+　CONTROL           ...   メッセージ・スキップ
+
+　エスケープキーを押すと、いつでも終了できます。
+
+
+　★キー配置・ボタン配置は設定から変更できます。
+
+　★ゲームパッドの使用をおすすめします。
+
+
+■素材（敬称略）
+
+　●キャラクタ画像
+
+　　dairi
+　　https://www.pixiv.net/users/4920496
+
+　●背景画像
+
+　　かんなにらせ
+　　https://commons.nicovideo.jp/user/upload/499432
+
+　●システム系画像
+
+　　空想曲線
+　　https://kopacurve.blog.fc2.com/
+
+　●音楽
+
+　　ajapa
+　　http://ajapabgm.html.xdomain.jp/
+
+　●効果音
+
+　　小森平
+　　http://taira-komori.jpn.org/
+
+
+■このゲームの製作者
+
+　cerulean.charlotte
+
+　URL:
+　　http://ornithopter.ccsp.mydns.jp/recollections/TSS
+　　http://ornithopter.ccsp.mydns.jp/anemoscope
+
+　MAIL: cerulean.charlottes@gmail.com
+

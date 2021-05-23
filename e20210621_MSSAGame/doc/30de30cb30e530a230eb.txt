@@ -1,0 +1,85 @@
+﻿===============================================================================
+
+　横スクロール アクション ゲーム(仮) / version $version$
+　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x cerulean.charlotte
+
+===============================================================================
+
+
+■起動方法
+
+　Game.exe を実行して下さい。
+
+
+■操作方法
+
+　カーソル
+
+　Z　　ジャンプ / 決定
+　X　　攻撃 / キャンセル
+　D　　画面スライド / 会話スキップ
+　F　　低速移動
+
+　SPACE　　ポーズ / ポーズ解除
+
+　エスケープキーを押すと、いつでも終了できます。
+
+
+　★キー配置・ボタン配置は設定から変更できます。
+
+　★ゲームパッドの使用をおすすめします。
+
+
+■素材（敬称略）
+
+　●プレイヤーキャラクタ
+
+　　井上ずっきー
+　　http://www.maroon.dti.ne.jp/pata2-magic/
+
+　●ゆっくり
+
+　　きつね（仮）
+　　https://seiga.nicovideo.jp/user/illust/13201234
+
+　●ノベルパート素材
+
+　　からい
+　　https://seiga.nicovideo.jp/user/illust/12960693
+
+　　空想曲線
+　　https://kopacurve.blog.fc2.com/
+
+　　(K ゴシック)
+　　ケイ
+	https://k-gothic-font.hatenablog.com/
+
+　●画像
+
+　　ぴぽや倉庫
+　　https://pipoya.net/sozai/
+
+　　素材Good
+　　https://sozai-good.com/
+
+　●音楽
+
+　　ユーフルカ
+　　https://wingless-seraph.net/
+
+　●効果音
+
+　　小森平
+　　https://taira-komori.jpn.org/
+
+
+■このゲームの製作者
+
+　cerulean.charlotte
+
+　URL:
+　　http://ornithopter.ccsp.mydns.jp/recollections/MSSAGame
+　　http://ornithopter.ccsp.mydns.jp/anemoscope
+
+　MAIL: cerulean.charlottes@gmail.com
+
