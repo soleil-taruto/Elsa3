@@ -339,15 +339,28 @@ namespace Charlotte.GameCommons
 
 		public static void UpdateInput(ref int counter, bool status)
 		{
-			if (status)
+			if (1 <= counter) // ? 前回_押していた。
 			{
-				if (counter < 0)
-					counter = 1;
-				else
-					counter++;
+				if (status) // ? 今回_押している。
+				{
+					counter++; // 押している。
+				}
+				else // ? 今回_離している。
+				{
+					counter = -1; // 離し始めた。
+				}
 			}
-			else
-				counter = 0 < counter ? -1 : 0;
+			else // ? 前回_離していた。
+			{
+				if (status) // ? 今回_押している。
+				{
+					counter = 1; // 押し始めた。
+				}
+				else // ? 今回_離している。
+				{
+					counter = 0; // 離している。
+				}
+			}
 		}
 
 		private const int POUND_FIRST_DELAY = 17;
