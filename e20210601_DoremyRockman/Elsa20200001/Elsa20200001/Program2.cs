@@ -60,6 +60,9 @@ namespace Charlotte
 						Game.I == null ? "-" : "" + Game.I.Player.ShotChargePCT.ToString("D3"),
 						Game.I == null ? "-" : "" + Game.I.Status.Equipment,
 
+						Game.I == null ? "-" : "" + Game.I.Player.X.ToString("F3"),
+						Game.I == null ? "-" : "" + Game.I.Player.Y.ToString("F3"),
+
 						// デバッグ表示する情報をここへ追加..
 
 						DDEngine.FrameProcessingMillis,

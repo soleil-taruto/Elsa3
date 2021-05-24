@@ -358,7 +358,10 @@ namespace Charlotte.Games
 					{
 						if (攻撃ボタンを押した瞬間撃つ && attack == 1)
 						{
-							this.Player.Shoot(1);
+							if (!deadOrDamage) // 死亡中_攻撃_抑止
+							{
+								this.Player.Shoot(1);
+							}
 						}
 						this.Player.ShootingFrame = GameConsts.PLAYER_SHOOTING_FRAME_MAX;
 						this.Player.ShotChargePCT++;
@@ -373,7 +376,10 @@ namespace Charlotte.Games
 
 						if (攻撃ボタンを押した瞬間撃つ ? 2 <= level : 1 <= chargePct)
 						{
-							this.Player.Shoot(level);
+							if (!deadOrDamage) // 死亡中_攻撃_抑止
+							{
+								this.Player.Shoot(level);
+							}
 						}
 					}
 				}

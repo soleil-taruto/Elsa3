@@ -12,7 +12,7 @@ namespace Charlotte.Games.Shots
 		private int Level;
 
 		public Shot_Normal(double x, double y, bool facingLeft, int level)
-			: base(x, y, facingLeft, LevelToAttackPoint(level), true, false)
+			: base(x, y, facingLeft, LevelToAttackPoint(level), true, LevelTo敵を貫通する(level))
 		{
 			this.Level = level;
 		}
@@ -22,9 +22,23 @@ namespace Charlotte.Games.Shots
 			switch (level)
 			{
 				case 1: return 1;
-				case 2: return 2;
-				case 3: return 3;
-				case 4: return 4;
+				case 2: return 5;
+				case 3: return 1;
+				case 4: return 5;
+
+				default:
+					throw null; // never
+			}
+		}
+
+		private static bool LevelTo敵を貫通する(int level)
+		{
+			switch (level)
+			{
+				case 1: return false;
+				case 2: return false;
+				case 3: return true;
+				case 4: return true;
 
 				default:
 					throw null; // never
