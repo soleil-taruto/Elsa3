@@ -9,7 +9,7 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 	{
 		private int GetSize(int size)
 		{
-			return size < 1000 ? size / 2 : size / 3;
+			return Math.Min(300, size / 2);
 		}
 
 		private uint X;
@@ -45,9 +45,9 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 
 		private void Mask(byte[] data)
 		{
-			int size = Math.Min(data.Length / 2, 7);
+			int size = this.GetSize(data.Length);
 
-			for (int index = 0; index < size; index++)
+			for (int index = 0; index < size; index += 13)
 			{
 				data[index] ^= (byte)0xf5;
 			}
@@ -83,7 +83,7 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 
 		public void Transpose(byte[] data)
 		{
-			this.Transpose(data, "2020122821"); // 難読化貢献のため seed を文字列化しておく
+			this.Transpose(data, "2021020523"); // 難読化貢献のため seed を文字列化しておく
 		}
 	}
 }

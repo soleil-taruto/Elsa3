@@ -3,7 +3,8 @@
 
 static uint MGZE_GetSize(uint size)
 {
-	return size < 1000 ? size / 2 : size / 3;
+	size /= 2;
+	return m_min(300, size);
 }
 
 static uint MGZE_X;
@@ -33,12 +34,10 @@ static void MGZE_Shuffle(autoList_t *values)
 }
 static void MGZE_Mask(autoBlock_t *data)
 {
-	uint size = getSize(data) / 2;
+	uint size = MGZE_GetSize(getSize(data));
 	uint index;
 
-	m_minim(size, 7);
-
-	for(index = 0; index < size; index++)
+	for(index = 0; index < size; index += 13)
 	{
 		b_(data)[index] ^= 0xf5;
 	}
@@ -71,5 +70,5 @@ static void MGZE_Transpose_seed(autoBlock_t *data, uint seed)
 }
 void MaskGZData(autoBlock_t *fileData)
 {
-	MGZE_Transpose_seed(fileData, 2020122821);
+	MGZE_Transpose_seed(fileData, 2021020523);
 }
