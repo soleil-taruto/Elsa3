@@ -70,5 +70,5 @@ static void MGZE_Transpose_seed(autoBlock_t *data, uint seed)
 }
 void MaskGZData(autoBlock_t *fileData)
 {
-	MGZE_Transpose_seed(fileData, 2021020523);
+	MGZE_Transpose_seed(fileData, 2021052423);
 }
