@@ -289,7 +289,7 @@ namespace Charlotte.Games
 						break;
 
 					case 2:
-						a_gameStart("Stage_0003_v001\\t1001");
+						a_gameStart("Stage_0002_v001\\t1001");
 						break;
 
 					case 3:

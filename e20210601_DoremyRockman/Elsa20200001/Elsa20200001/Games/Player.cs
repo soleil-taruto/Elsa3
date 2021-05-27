@@ -206,6 +206,9 @@ namespace Charlotte.Games
 					break;
 
 				case GameStatus.Equipment_e.ハンマー陰陽玉:
+					if (level == 1 && Game.I.Shots.Iterate().Any(shot => shot is Shot_ハンマー陰陽玉)) // 既に打っている場合のみ level == 1 のみ抑止
+						break;
+
 					foreach (Shot shot in Game.I.Shots.Iterate().Where(shot => shot is Shot_ハンマー陰陽玉))
 						shot.Kill();
 
