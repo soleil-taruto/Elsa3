@@ -227,7 +227,6 @@
     <Compile Include="ResourcePicture.cs" />
     <Compile Include="ResourcePicture2.cs" />
     <Compile Include="ResourceSE.cs" />
-    <Compile Include="Tests\GameCommons\DDRandomTest.cs" />
     <Compile Include="Tests\Games\GameTest.cs" />
     <Compile Include="Tests\Games\TitleMenuTest.cs" />
     <Compile Include="Tests\Novels\NovelTest.cs" />

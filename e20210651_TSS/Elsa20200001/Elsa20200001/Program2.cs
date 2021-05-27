@@ -100,10 +100,10 @@ namespace Charlotte
 		{
 			// ---- choose one ----
 
-			Main4_Release();
+			//Main4_Release();
 			//new Test0001().Test01();
 			//new Test0001().Test02();
-			//new TitleMenuTest().Test01();
+			new TitleMenuTest().Test01(); // タイトル画面
 			//new SettingMenuTest().Test01();
 			//new SaveOrLoadMenuTest().Test01();
 			//new GameTest().Test01();
