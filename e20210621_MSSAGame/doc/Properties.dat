@@ -1,1 +1,1 @@
-Version=$version$
+Version=(v$version$)
