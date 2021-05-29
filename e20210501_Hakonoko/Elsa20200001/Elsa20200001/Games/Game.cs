@@ -1116,6 +1116,7 @@ namespace Charlotte.Games
 			this.SnapshotCount = Ground.I.StartSnapshotCount; // スナップショット_残り回数_復活
 
 			this.ReloadEnemies();
+			this.FreezeEnemy = false; // リスポーン地点からのリスポーン中にステージやり直しが選択されることを想定
 
 			波紋効果.Add(this.Player.X, this.Player.Y);
 			Ground.I.SE.Reborn.Play();
