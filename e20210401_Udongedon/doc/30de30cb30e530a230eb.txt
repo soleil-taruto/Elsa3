@@ -59,7 +59,7 @@
 　敵弾に付いている番号が武器の種類です。
 　最後に吸収した武器によって攻撃手段が追加されますが、被弾するとなくなります。
 
-　ボスにボムは効きません。(回復します)
+　ボスにボムは効きません。(ボスが回復します)
 
 
 ■既知の問題点
@@ -142,9 +142,9 @@
 
 　cerulean.charlotte
 
-　URL:
+　最新バージョンURL:
 　　http://ornithopter.ccsp.mydns.jp/recollections/Udongedon
-　　http://ornithopter.ccsp.mydns.jp/anemoscope
 
-　MAIL: cerulean.charlottes@gmail.com
+　MAIL:
+　　cerulean.charlottes@gmail.com
 

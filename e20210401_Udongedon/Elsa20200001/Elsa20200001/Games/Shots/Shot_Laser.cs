@@ -21,7 +21,7 @@ namespace Charlotte.Games.Shots
 		{
 			for (int frame = 0; ; frame++)
 			{
-				this.Y -= 18.0;
+				this.Y -= 18.0; // 速い
 
 				if (this.Y < 0.0)
 					break;
