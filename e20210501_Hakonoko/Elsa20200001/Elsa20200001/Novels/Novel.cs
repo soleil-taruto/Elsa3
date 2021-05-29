@@ -249,7 +249,9 @@ namespace Charlotte.Novels
 			DDCurtain.DrawCurtain(); // 画面クリア
 
 			// Z-オーダー順
-			Novel.I.Status.Surfaces.Sort((a, b) =>
+			Novel.I.Status.Surfaces
+				.Sort // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				((a, b) =>
 			{
 				int ret = a.Z - b.Z;
 				if (ret != 0)

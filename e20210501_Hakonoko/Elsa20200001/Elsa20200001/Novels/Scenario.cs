@@ -157,7 +157,9 @@ namespace Charlotte.Novels
 				{
 					if (ScenarioPage.LINE_LEN_MAX < page.Lines[index].Length)
 					{
-						page.Lines.Insert(index + 1, page.Lines[index].Substring(ScenarioPage.LINE_LEN_MAX));
+						page.Lines
+							.Insert( // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+								index + 1, page.Lines[index].Substring(ScenarioPage.LINE_LEN_MAX));
 						page.Lines[index] = page.Lines[index].Substring(0, ScenarioPage.LINE_LEN_MAX);
 					}
 				}
