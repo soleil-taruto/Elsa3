@@ -1,19 +1,18 @@
 #include "C:\Factory\SubTools\libs\MaskGZData.h"
 #include "C:\Factory\Common\Options\Sequence.h"
 
-static void MGZE_MaskSignature(autoBlock_t *data)
+static uint MGZE_GetSize(uint size)
 {
-	uint size = m_min(16, getSize(data));
-	uint index;
-
-	for(index = 0; index < size; index++)
-	{
-		setByte(data, index, getByte(data, index) ^ (index + 240));
-	}
+	size /= 2;
+	return m_min(300, size);
 }
 
 static uint MGZE_X;
 
+static void MGZE_AvoidXIsZero(void)
+{
+	MGZE_X = MGZE_X % UINTMAX + 1;
+}
 static uint MGZE_Rand(void)
 {
 	// Xorshift-32
@@ -33,26 +32,43 @@ static void MGZE_Shuffle(autoList_t *values)
 		swapElement(values, index - 1, MGZE_Rand() % index);
 	}
 }
-static void MGZE_Transpose_seed(autoBlock_t *data, uint seed)
+static void MGZE_Mask(autoBlock_t *data)
 {
-	autoList_t *swapIdxLst = createSq(getSize(data) / 2, 1, 1);
-	uint swapIdx;
+	uint size = MGZE_GetSize(getSize(data));
 	uint index;
 
-	MGZE_MaskSignature(data);
-
-	MGZE_X = seed;
-	MGZE_Shuffle(swapIdxLst);
+	for(index = 0; index < size; index += 13)
+	{
+		b_(data)[index] ^= 0xf5;
+	}
+}
+static void MGZE_Swap(autoBlock_t *data, autoList_t *swapIdxLst)
+{
+	uint swapIdx;
+	uint index;
 
 	foreach(swapIdxLst, swapIdx, index)
 	{
 		swapByte(data, index, getSize(data) - swapIdx);
 	}
-	releaseAutoList(swapIdxLst);
+}
+static void MGZE_Transpose_seed(autoBlock_t *data, uint seed)
+{
+	autoList_t *swapIdxLst = createSq(MGZE_GetSize(getSize(data)), 1, 1);
 
-	MGZE_MaskSignature(data);
+	MGZE_X = getSize(data);
+	MGZE_Rand();
+	MGZE_X ^= seed;
+	MGZE_AvoidXIsZero();
+	MGZE_Shuffle(swapIdxLst);
+
+	MGZE_Mask(data);
+	MGZE_Swap(data, swapIdxLst);
+	MGZE_Mask(data);
+
+	releaseAutoList(swapIdxLst);
 }
 void MaskGZData(autoBlock_t *fileData)
 {
-	MGZE_Transpose_seed(fileData, 2020092807);
+	MGZE_Transpose_seed(fileData, 2021052421);
 }

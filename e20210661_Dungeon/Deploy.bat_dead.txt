@@ -1,8 +1,0 @@
-CALL qq
-cx **
-
-rem	CALL DebugRelease.bat /B
-	CALL Release.bat /B
-
-C:\Factory\Petra\UpdatingCopy.exe out C:\be\Web\DocRoot\Elsa\d20201118_Dungeon
-C:\Factory\Petra\RunOnBatch.exe C:\be\Web Deploy.bat

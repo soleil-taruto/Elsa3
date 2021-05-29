@@ -1,6 +1,6 @@
 ﻿===============================================================================
 
-　Dungeon / version $version$
+　横スクロール アクション ゲーム(仮) / version $version$
 　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x cerulean.charlotte
 
 ===============================================================================
@@ -8,33 +8,73 @@
 
 ■起動方法
 
-　Elsa20200001.exe を実行して下さい。
+　Game.exe を実行して下さい。
 
 
 ■操作方法
 
 　カーソル
 
-　Z　　決定
-　X　　キャンセル
+　Z　　ジャンプ / 決定
+　X　　攻撃 / キャンセル
+　C　　特殊攻撃
+　D　　画面スライド
+　F　　低速移動
 
-　SPACE　　ポーズ / ポーズ解除　(迷路_終了)
+　SPACE　　ポーズ / ポーズ解除
 
 　エスケープキーを押すと、いつでも終了できます。
 
 
-　★ゲームパッドの使用を想定しています。
+　★キー配置・ボタン配置は設定から変更できます。
+
+　★ゲームパッドの使用をおすすめします。
+
+
+■補足
+
+　ゲームウィンドウが非アクティブになると、ゲームは進行しますが操作を受け付けなくなります。
+　（全画面モードにするとタイトルバーが見えなくなるため、非アクティブになったことが分かりにくいかもしれません）
+　因みに、マウスを使用しない場面ではマウスカーソルを非表示にしていますが、
+　見えないだけでマウスカーソル自体は存在しています。ゲーム画面をクリックしてアクティブにすることは可能です。
 
 
 ■素材（敬称略）
 
+　●プレイヤーキャラクタ
+
+　　オオバコ
+　　http://zassoh.starfree.jp/
+
+　●画像
+
+　　きつね（仮）
+　　https://seiga.nicovideo.jp/user/illust/13201234
+
+　　空想曲線
+　　https://kopacurve.blog.fc2.com/
+
+　●背景
+
+　　run
+　　https://www.pixiv.net/users/1597341
+
 　●音楽
+
+　　みるふぃ
+　　http://commons.nicovideo.jp/material/nc200903
 
 　　ユーフルカ
 　　https://wingless-seraph.net/
 
-　●効果音
 
-　　小森平
-　　http://taira-komori.jpn.org/
+■このゲームの製作者
+
+　cerulean.charlotte
+
+　URL:
+　　http://ornithopter.ccsp.mydns.jp/recollections/SSAGame
+
+　MAIL:
+　　cerulean.charlottes@gmail.com
 
