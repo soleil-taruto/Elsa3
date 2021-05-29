@@ -8,8 +8,10 @@ namespace Charlotte.Commons
 {
 	public class CsvFileReader : IDisposable
 	{
-		private const char DELIMITER = ',';
-		//private const char DELIMITER = '\t';
+		public const char DELIMITER_COMMA = ',';
+		public const char DELIMITER_TAB = '\t';
+
+		private char Delimiter = DELIMITER_COMMA;
 
 		private StreamReader Reader;
 
@@ -17,9 +19,15 @@ namespace Charlotte.Commons
 			: this(file, SCommon.ENCODING_SJIS)
 		{ }
 
-		public CsvFileReader(string file, Encoding encoding)
-			: this(new StreamReader(file, encoding))
+		public CsvFileReader(string file, Encoding encoding) // 難読化のため、デフォルト引数にしない。
+			: this(file, encoding, DELIMITER_COMMA)
 		{ }
+
+		public CsvFileReader(string file, Encoding encoding, char delimiter)
+			: this(new StreamReader(file, encoding))
+		{
+			this.Delimiter = delimiter;
+		}
 
 		public CsvFileReader(StreamReader reader_binding)
 		{
@@ -55,7 +63,7 @@ namespace Charlotte.Commons
 			}
 			else
 			{
-				while (this.LastChar != -1 && this.LastChar != '\n' && this.LastChar != DELIMITER)
+				while (this.LastChar != -1 && this.LastChar != '\n' && this.LastChar != this.Delimiter)
 				{
 					buff.Append((char)this.LastChar);
 					this.ReadChar();

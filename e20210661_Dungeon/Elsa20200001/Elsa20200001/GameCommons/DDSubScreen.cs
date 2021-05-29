@@ -52,6 +52,13 @@ namespace Charlotte.GameCommons
 			}
 		}
 
+		public bool IsLoaded()
+		{
+			return this.Handle != -1;
+		}
+
+		public bool WasLoaded = false;
+
 		public int GetHandle()
 		{
 			if (this.Handle == -1)
@@ -86,14 +93,9 @@ namespace Charlotte.GameCommons
 
 		public IDisposable Section()
 		{
-#if true // ネスト対応
 			DDSubScreen parentSubScreen = DDSubScreenUtils.CurrDrawScreen;
 			this.ChangeDrawScreen();
 			return SCommon.GetAnonyDisposable(() => DDSubScreenUtils.ChangeDrawScreen(parentSubScreen));
-#else // old -- ネスト未対応
-			this.ChangeDrawScreen();
-			return SCommon.GetAnonyDisposable(() => DDSubScreenUtils.RestoreDrawScreen());
-#endif
 		}
 	}
 }

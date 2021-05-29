@@ -21,7 +21,7 @@ namespace Charlotte.Games.Scripts
 
 				DDDraw.DrawSimple(DDGround.KeptMainScreen.ToPicture(), 0, 0);
 
-				DDPrint.SetPrint(30, 400);
+				DDPrint.SetPrint(30, 400, 30);
 				DDPrint.PrintLine("B0001 -- event test");
 				DDPrint.PrintLine("イベントから抜けるには A ボタンを押して下さい。");
 

@@ -5,7 +5,6 @@ using System.Text;
 using System.IO;
 using DxLibDLL;
 using Charlotte.Commons;
-using Charlotte.GameCommons.Options;
 
 namespace Charlotte.GameCommons
 {
@@ -415,7 +414,9 @@ namespace Charlotte.GameCommons
 			DrawEnd();
 		}
 
-		// DrawBegin ～ DrawEnd >
+		// ====
+		// DrawBegin ～ DrawEnd ここから
+		// ====
 
 		private struct DBInfo
 		{
@@ -551,6 +552,49 @@ namespace Charlotte.GameCommons
 			DrawSetSize_H(h);
 		}
 
+		public static DDCrash DrawGetCrash()
+		{
+			if (DB.Picture == null)
+				throw new DDError();
+
+			FreeInfo layout = (FreeInfo)DB.Layout;
+
+			{
+				double l = layout.LTX;
+				double t = layout.LTY;
+				double r = layout.LTX;
+				double b = layout.LTY;
+
+				l = Math.Min(l, layout.RTX);
+				l = Math.Min(l, layout.RBX);
+				l = Math.Min(l, layout.LBX);
+
+				t = Math.Min(t, layout.RTY);
+				t = Math.Min(t, layout.RBY);
+				t = Math.Min(t, layout.LBY);
+
+				r = Math.Max(r, layout.RTX);
+				r = Math.Max(r, layout.RBX);
+				r = Math.Max(r, layout.LBX);
+
+				b = Math.Max(b, layout.RTY);
+				b = Math.Max(b, layout.RBY);
+				b = Math.Max(b, layout.LBY);
+
+				l += DB.X;
+				t += DB.Y;
+				r += DB.X;
+				b += DB.Y;
+
+				return DDCrashUtils.Rect(new D4Rect(
+					l,
+					t,
+					r - l,
+					b - t
+					));
+			}
+		}
+
 		public static void DrawEnd()
 		{
 			if (DB.Picture == null)
@@ -570,6 +614,8 @@ namespace Charlotte.GameCommons
 			DB.Picture = null;
 		}
 
-		// < DrawBegin ～ DrawEnd
+		// ====
+		// DrawBegin ～ DrawEnd ここまで
+		// ====
 	}
 }

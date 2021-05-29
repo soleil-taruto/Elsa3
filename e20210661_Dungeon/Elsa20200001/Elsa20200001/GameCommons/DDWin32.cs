@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using DxLibDLL;
+using Charlotte.Commons;
 
 namespace Charlotte.GameCommons
 {
@@ -84,5 +86,34 @@ namespace Charlotte.GameCommons
 
 		[DllImport("gdi32.dll")]
 		public static extern int RemoveFontResourceEx(string file, uint fl, IntPtr res);
+
+		public static I2Point GetMousePosition()
+		{
+			return new I2Point(
+				Cursor.Position.X, Cursor.Position.Y // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				);
+		}
+
+		private static I4Rect[] Monitors = null;
+
+		public static I4Rect[] GetAllMonitor()
+		{
+			if (Monitors == null)
+				Monitors =
+					Screen.AllScreens.Select( // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+						screen => new I4Rect(
+							screen
+								.Bounds.Left, // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+							screen
+								.Bounds.Top, // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+							screen
+								.Bounds.Width, // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+							screen
+								.Bounds.Height // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+							))
+							.ToArray();
+
+			return Monitors;
+		}
 	}
 }

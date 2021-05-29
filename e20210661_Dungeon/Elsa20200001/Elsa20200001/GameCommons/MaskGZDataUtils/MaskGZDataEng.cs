@@ -7,17 +7,17 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 {
 	public class MaskGZDataEng
 	{
-		private void MaskSignature(byte[] data)
+		private int GetSize(int size)
 		{
-			int size = Math.Min(16, data.Length);
-
-			for (int index = 0; index < size; index++)
-			{
-				data[index] ^= (byte)(index + 240);
-			}
+			return Math.Min(300, size / 2);
 		}
 
 		private uint X;
+
+		private void AvoidXIsZero()
+		{
+			this.X = this.X % 0xffffffffu + 1u;
+		}
 
 		private uint Rand()
 		{
@@ -43,15 +43,18 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 			}
 		}
 
-		private void Transpose(byte[] data, string seed)
+		private void Mask(byte[] data)
 		{
-			this.MaskSignature(data);
+			int size = this.GetSize(data.Length);
 
-			int[] swapIdxLst = Enumerable.Range(1, data.Length / 2).ToArray();
+			for (int index = 0; index < size; index += 13)
+			{
+				data[index] ^= (byte)0xf5;
+			}
+		}
 
-			this.X = uint.Parse(seed);
-			this.Shuffle(swapIdxLst);
-
+		private void Swap(byte[] data, int[] swapIdxLst)
+		{
 			for (int index = 0; index < swapIdxLst.Length; index++)
 			{
 				int a = index;
@@ -61,12 +64,26 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 				data[a] = data[b];
 				data[b] = tmp;
 			}
-			this.MaskSignature(data);
+		}
+
+		private void Transpose(byte[] data, string seed)
+		{
+			int[] swapIdxLst = Enumerable.Range(1, this.GetSize(data.Length)).ToArray();
+
+			this.X = (uint)data.Length;
+			this.Rand();
+			this.X ^= uint.Parse(seed);
+			this.AvoidXIsZero();
+			this.Shuffle(swapIdxLst);
+
+			this.Mask(data);
+			this.Swap(data, swapIdxLst);
+			this.Mask(data);
 		}
 
 		public void Transpose(byte[] data)
 		{
-			this.Transpose(data, "2020092807"); // 難読化貢献のため seed を文字列化しておく
+			this.Transpose(data, "2021052421"); // 難読化貢献のため seed を文字列化しておく
 		}
 	}
 }

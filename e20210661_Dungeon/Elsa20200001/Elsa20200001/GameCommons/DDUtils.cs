@@ -328,15 +328,28 @@ namespace Charlotte.GameCommons
 
 		public static void UpdateInput(ref int counter, bool status)
 		{
-			if (status)
+			if (1 <= counter) // ? 前回_押していた。
 			{
-				if (counter < 0)
-					counter = 1;
-				else
-					counter++;
+				if (status) // ? 今回_押している。
+				{
+					counter++; // 押している。
+				}
+				else // ? 今回_離している。
+				{
+					counter = -1; // 離し始めた。
+				}
 			}
-			else
-				counter = 0 < counter ? -1 : 0;
+			else // ? 前回_離していた。
+			{
+				if (status) // ? 今回_押している。
+				{
+					counter = 1; // 押し始めた。
+				}
+				else // ? 今回_離している。
+				{
+					counter = 0; // 離している。
+				}
+			}
 		}
 
 		private const int POUND_FIRST_DELAY = 17;
@@ -483,6 +496,18 @@ namespace Charlotte.GameCommons
 		public static D2Point AToBRate(D2Point a, D2Point b, double rate)
 		{
 			return a + (b - a) * rate;
+		}
+
+		/// <summary>
+		/// 始点から終点までの間の位置をレートに変換する。
+		/// </summary>
+		/// <param name="a">始点</param>
+		/// <param name="b">終点</param>
+		/// <param name="value">位置</param>
+		/// <returns>レート</returns>
+		public static double RateAToB(double a, double b, double value)
+		{
+			return (value - a) / (b - a);
 		}
 
 		public static int Sign(double value)

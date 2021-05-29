@@ -11,6 +11,7 @@ namespace Charlotte.GameCommons
 	public static class DDGround
 	{
 		public static DDTaskList EL = new DDTaskList();
+		public static DDTaskList SystemTasks = new DDTaskList();
 		public static int PrimaryPadId = -1; // -1 == 未設定
 		public static DDSubScreen MainScreen;
 		public static DDSubScreen LastMainScreen;
@@ -20,6 +21,7 @@ namespace Charlotte.GameCommons
 		// DDConsts.Screen_WH ... システム上の画面サイズ
 		// RealScreen_WH ... 実際の画面サイズ
 		// RealScreenDraw_LTWH ... ゲーム画面を描画する位置とサイズ, _W == -1 の場合は { 0, 0, RealScreen_W, RealScreen_H } に描画する。
+		// UnfullScreen_WH ... フルスクリーン解除時の画面サイズ
 
 		public static int RealScreen_W = DDConsts.Screen_W;
 		public static int RealScreen_H = DDConsts.Screen_H;
@@ -28,6 +30,9 @@ namespace Charlotte.GameCommons
 		public static int RealScreenDraw_T;
 		public static int RealScreenDraw_W = -1; // -1 == RealScreenDraw_LTWH 不使用
 		public static int RealScreenDraw_H;
+
+		public static int UnfullScreen_W = DDConsts.Screen_W;
+		public static int UnfullScreen_H = DDConsts.Screen_H;
 
 		// MusicVolume:
 		// 変更を反映するには -> DDMusicUtils.UpdateVolume();
@@ -58,8 +63,6 @@ namespace Charlotte.GameCommons
 
 		public static D2Point Camera = new D2Point();
 		public static I2Point ICamera = new I2Point();
-
-		public static DDGeneralResource GeneralResource;
 
 		public static void INIT()
 		{

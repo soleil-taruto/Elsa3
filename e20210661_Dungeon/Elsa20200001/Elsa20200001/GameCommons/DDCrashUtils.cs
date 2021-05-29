@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 
-namespace Charlotte.GameCommons.Options
+namespace Charlotte.GameCommons
 {
 	public static class DDCrashUtils
 	{

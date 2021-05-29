@@ -6,7 +6,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.GameCommons.Options;
 using Charlotte.Games.Scripts;
 
 namespace Charlotte.Games
@@ -15,7 +14,7 @@ namespace Charlotte.Games
 	{
 		public static Map Load(string mapName)
 		{
-			string mapFile = Common.MapNameToMapFile(mapName);
+			string mapFile = GameCommon.MapNameToMapFile(mapName);
 
 			string[] lines = SCommon.TextToLines(SCommon.ENCODING_SJIS.GetString(DDResource.Load(mapFile)))
 				.Select(v => v.Trim())
@@ -73,7 +72,7 @@ namespace Charlotte.Games
 			int loopStart = int.Parse(lines[c++]);
 			int loopLength = int.Parse(lines[c++]);
 
-			map.Music.SetLoop(loopStart, loopLength);
+			map.Music.SetLoopByStLength(loopStart, loopLength);
 
 			// < プロパティ
 

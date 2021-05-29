@@ -45,11 +45,15 @@ namespace Charlotte.GameCommons
 			FrameStartTime = currTime;
 		}
 
+		public static Action DispDebug = () => { };
+
 		public static void EachFrame()
 		{
 			//Ground.EL.ExecuteAllTask();
 
 			DDGround.EL.ExecuteAllTask();
+			DDGround.SystemTasks.ExecuteAllTask();
+			DispDebug();
 			DDMouse.PosChanged_Delay();
 			DDCurtain.EachFrame();
 
@@ -62,13 +66,32 @@ namespace Charlotte.GameCommons
 
 			if (DDGround.RealScreenDraw_W == -1)
 			{
+				bool mosaicFlag =
+					DDConfig.DrawScreen_MosaicFlag &&
+					DDGround.RealScreen_W % DDConsts.Screen_W == 0 &&
+					DDGround.RealScreen_H % DDConsts.Screen_H == 0;
+
+				if (mosaicFlag)
+					DX.SetDrawMode(DX.DX_DRAWMODE_NEAREST);
+
 				if (DX.DrawExtendGraph(0, 0, DDGround.RealScreen_W, DDGround.RealScreen_H, DDGround.MainScreen.GetHandle(), 0) != 0) // ? 失敗
 					throw new DDError();
+
+				if (mosaicFlag)
+					DX.SetDrawMode(DDConsts.DEFAULT_DX_DRAWMODE); // restore
 			}
 			else
 			{
 				if (DX.DrawBox(0, 0, DDGround.RealScreen_W, DDGround.RealScreen_H, DX.GetColor(0, 0, 0), 1) != 0) // ? 失敗
 					throw new DDError();
+
+				bool mosaicFlag =
+					DDConfig.DrawScreen_MosaicFlag &&
+					DDGround.RealScreenDraw_W % DDConsts.Screen_W == 0 &&
+					DDGround.RealScreenDraw_H % DDConsts.Screen_H == 0;
+
+				if (mosaicFlag)
+					DX.SetDrawMode(DX.DX_DRAWMODE_NEAREST);
 
 				if (DX.DrawExtendGraph(
 					DDGround.RealScreenDraw_L,
@@ -76,6 +99,9 @@ namespace Charlotte.GameCommons
 					DDGround.RealScreenDraw_L + DDGround.RealScreenDraw_W,
 					DDGround.RealScreenDraw_T + DDGround.RealScreenDraw_H, DDGround.MainScreen.GetHandle(), 0) != 0) // ? 失敗
 					throw new DDError();
+
+				if (mosaicFlag)
+					DX.SetDrawMode(DDConsts.DEFAULT_DX_DRAWMODE); // restore
 			}
 
 			GC.Collect(0);
@@ -124,6 +150,29 @@ namespace Charlotte.GameCommons
 			}
 
 			DDGround.MainScreen.ChangeDrawScreen();
+
+			// ? ALT + ENTER -> フルスクリーン切り替え
+			if ((1 <= DDKey.GetInput(DX.KEY_INPUT_LALT) || 1 <= DDKey.GetInput(DX.KEY_INPUT_RALT)) && DDKey.GetInput(DX.KEY_INPUT_RETURN) == 1)
+			{
+				// ? 現在フルスクリーン -> フルスクリーン解除
+				if (
+					DDGround.RealScreen_W == DDGround.MonitorRect.W &&
+					DDGround.RealScreen_H == DDGround.MonitorRect.H
+					)
+				{
+					DDMain.SetScreenSize(DDGround.UnfullScreen_W, DDGround.UnfullScreen_H);
+				}
+				else // ? 現在フルスクリーンではない -> フルスクリーンにする
+				{
+					DDGround.UnfullScreen_W = DDGround.RealScreen_W;
+					DDGround.UnfullScreen_H = DDGround.RealScreen_H;
+
+					DDMain.SetFullScreen();
+				}
+				DDEngine.FreezeInput(30); // エンターキー押下がゲームに影響しないように
+			}
+
+			DX.ClearDrawScreen();
 		}
 
 		public static void FreezeInput(int frame = 1) // frame: 1 == このフレームのみ, 2 == このフレームと次のフレーム ...

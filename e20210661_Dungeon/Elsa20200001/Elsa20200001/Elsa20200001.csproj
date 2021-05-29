@@ -72,7 +72,6 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="Commons\ArgsReader.cs" />
-    <Compile Include="Commons\AttachString.cs" />
     <Compile Include="Commons\CsvFileReader.cs" />
     <Compile Include="Commons\D2Point.cs" />
     <Compile Include="Commons\D2Size.cs" />
@@ -90,9 +89,13 @@
     <Compile Include="Commons\SCommon.cs" />
     <Compile Include="Commons\WorkingDir.cs" />
     <Compile Include="Consts.cs" />
+    <Compile Include="GameCommons\DDCCResource.cs" />
     <Compile Include="GameCommons\DDCoffeeBreak.cs" />
     <Compile Include="GameCommons\DDConfig.cs" />
     <Compile Include="GameCommons\DDConsts.cs" />
+    <Compile Include="GameCommons\DDCrash.cs" />
+    <Compile Include="GameCommons\DDCrashUtils.cs" />
+    <Compile Include="GameCommons\DDCrashView.cs" />
     <Compile Include="GameCommons\DDCurtain.cs" />
     <Compile Include="GameCommons\DDDatStrings.cs" />
     <Compile Include="GameCommons\DDDerivations.cs" />
@@ -103,8 +106,10 @@
     <Compile Include="GameCommons\DDFont.cs" />
     <Compile Include="GameCommons\DDFontRegister.cs" />
     <Compile Include="GameCommons\DDFontUtils.cs" />
-    <Compile Include="GameCommons\DDGeneralResource.cs" />
     <Compile Include="GameCommons\DDGround.cs" />
+    <Compile Include="GameCommons\DDHash.cs" />
+    <Compile Include="GameCommons\DDHashedData.cs" />
+    <Compile Include="GameCommons\DDHashedResource.cs" />
     <Compile Include="GameCommons\DDInput.cs" />
     <Compile Include="GameCommons\DDJammer.cs" />
     <Compile Include="GameCommons\DDKey.cs" />
@@ -134,22 +139,19 @@
     <Compile Include="GameCommons\DDSubScreen.cs" />
     <Compile Include="GameCommons\DDSubScreenUtils.cs" />
     <Compile Include="GameCommons\DDSystem.cs" />
-    <Compile Include="GameCommons\DDTable.cs" />
+    <Compile Include="GameCommons\DDTableMenu.cs" />
     <Compile Include="GameCommons\DDTask.cs" />
     <Compile Include="GameCommons\DDTaskList.cs" />
+    <Compile Include="GameCommons\DDTouch.cs" />
     <Compile Include="GameCommons\DDUserDatStrings.cs" />
     <Compile Include="GameCommons\DDUtils.cs" />
     <Compile Include="GameCommons\DDWin32.cs" />
     <Compile Include="GameCommons\MaskGZDataUtils\MaskGZDataEng.cs" />
-    <Compile Include="GameCommons\Options\DDCCResource.cs" />
-    <Compile Include="GameCommons\Options\DDCrash.cs" />
-    <Compile Include="GameCommons\Options\DDCrashUtils.cs" />
-    <Compile Include="GameCommons\Options\DDCrashView.cs" />
-    <Compile Include="GameCommons\Options\DDSceneKeeper.cs" />
-    <Compile Include="GameCommons\Options\DDSlideUtils.cs" />
+    <Compile Include="Games\Confirm.cs" />
     <Compile Include="Games\Dungeon.cs" />
     <Compile Include="Games\Effects.cs" />
     <Compile Include="Games\Game.cs" />
+    <Compile Include="Games\GameCommon.cs" />
     <Compile Include="Games\GameStatus.cs" />
     <Compile Include="Games\Logo.cs" />
     <Compile Include="Games\Map.cs" />
@@ -163,14 +165,41 @@
     <Compile Include="Games\Scripts\Script_B0001.cs" />
     <Compile Include="Games\Scripts\Script_入口.cs" />
     <Compile Include="Games\Scripts\Script_出口.cs" />
+    <Compile Include="Games\SettingMenu.cs" />
     <Compile Include="Games\TitleMenu.cs" />
     <Compile Include="Ground.cs" />
+    <Compile Include="LiteStatusDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiteStatusDlg.designer.cs">
+      <DependentUpon>LiteStatusDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainWin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainWin.Designer.cs">
       <DependentUpon>MainWin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Games\GameConsts.cs" />
+    <Compile Include="Novels\Novel.cs" />
+    <Compile Include="Novels\NovelAct.cs" />
+    <Compile Include="Novels\NovelCommon.cs" />
+    <Compile Include="Novels\NovelConsts.cs" />
+    <Compile Include="Novels\NovelStatus.cs" />
+    <Compile Include="Novels\Scenario.cs" />
+    <Compile Include="Novels\ScenarioCommand.cs" />
+    <Compile Include="Novels\ScenarioPage.cs" />
+    <Compile Include="Novels\Surfaces\Surface.cs" />
+    <Compile Include="Novels\Surfaces\SurfaceCreator.cs" />
+    <Compile Include="Novels\Surfaces\Surface_MessageWindow.cs" />
+    <Compile Include="Novels\Surfaces\Surface_Select.cs" />
+    <Compile Include="Novels\Surfaces\Surface_System.cs" />
+    <Compile Include="Novels\Surfaces\Surface_SystemButtons.cs" />
+    <Compile Include="Novels\Surfaces\Surface_エフェクト.cs" />
+    <Compile Include="Novels\Surfaces\Surface_キャラクタ.cs" />
+    <Compile Include="Novels\Surfaces\Surface_スクリーン.cs" />
+    <Compile Include="Novels\Surfaces\Surface_効果音.cs" />
+    <Compile Include="Novels\Surfaces\Surface_音楽.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Program2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -181,6 +210,9 @@
     <Compile Include="Tests\Games\GameTest.cs" />
     <Compile Include="Tests\Games\TitleMenuTest.cs" />
     <Compile Include="Tests\Test0001.cs" />
+    <EmbeddedResource Include="LiteStatusDlg.resx">
+      <DependentUpon>LiteStatusDlg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
     </EmbeddedResource>

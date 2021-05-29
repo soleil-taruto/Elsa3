@@ -17,12 +17,18 @@ namespace Charlotte.GameCommons
 		public void ExecuteAllTask()
 		{
 			for (int index = 0; index < this.Tasks.Count; index++)
-			{
-				if (!this.Tasks[index]()) // ? 終了
-				{
+				if (!this.Tasks[index]())
 					this.Tasks[index] = null;
-				}
-			}
+
+			this.Tasks.RemoveAll(task => task == null);
+		}
+
+		public void ExecuteAllTask_Reverse()
+		{
+			for (int index = this.Tasks.Count - 1; 0 <= index; index--)
+				if (!this.Tasks[index]())
+					this.Tasks[index] = null;
+
 			this.Tasks.RemoveAll(task => task == null);
 		}
 
@@ -37,6 +43,35 @@ namespace Charlotte.GameCommons
 			{
 				return this.Tasks.Count;
 			}
+		}
+
+		// ====
+		// ここから便利機能
+		// ====
+
+		public void Delay(int delayFrame, Action routine)
+		{
+			int endFrame = DDEngine.ProcFrame + delayFrame;
+
+			this.Add(() =>
+			{
+				if (DDEngine.ProcFrame < endFrame)
+					return true;
+
+				routine();
+				return false;
+			});
+		}
+
+		public void Keep(int keepFrame, Action routine)
+		{
+			int endFrame = DDEngine.ProcFrame + keepFrame;
+
+			this.Add(() =>
+			{
+				routine();
+				return DDEngine.ProcFrame < endFrame;
+			});
 		}
 	}
 }

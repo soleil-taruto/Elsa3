@@ -16,10 +16,26 @@ namespace Charlotte.GameCommons
 
 		public static void UnloadAll()
 		{
-			DDDerivationUtils.UnloadAll(); // 先に！
+			DDDerivationUtils.UnloadAll(); // 先に
 
 			foreach (DDPicture picture in Pictures)
 				picture.Unload();
+		}
+
+		public static void UnloadLocally()
+		{
+			DDDerivationUtils.UnloadAll(); // 先に // HACK: 解放しなくても良い画像も解放してしまう。
+
+			foreach (DDPicture picture in Pictures)
+				if (picture.Locally)
+					picture.Unload();
+		}
+
+		public static void TouchGlobally()
+		{
+			foreach (DDPicture picture in Pictures)
+				if (picture.Globally)
+					picture.GetHandle();
 		}
 	}
 }

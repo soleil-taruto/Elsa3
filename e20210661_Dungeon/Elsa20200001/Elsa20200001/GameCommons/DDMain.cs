@@ -51,15 +51,33 @@ namespace Charlotte.GameCommons
 				DDUserDatStrings.INIT();
 				DDFontRegister.INIT();
 				DDKey.INIT();
-
-				// アプリ固有 >
-
-				Common.INIT();
-
-				// < アプリ固有
 			}
 
 			DDSaveData.Load();
+
+			Action showStartupMessage = () => LiteStatusDlg.StartDisplay("ゲームを起動しています...");
+
+			if (DDConfig.DisplayIndex == -2) // *** DDGround.MonitorRect 初期化 (DisplayIndex == -2 の場合)
+			{
+				I2Point mousePt = DDWin32.GetMousePosition();
+				I4Rect[] monitors = DDWin32.GetAllMonitor();
+				I4Rect activeMonitor = monitors[0]; // マウス位置のモニタを特定出来ない場合のモニタ
+
+				foreach (I4Rect monitor in monitors)
+				{
+					if (
+						monitor.L <= mousePt.X && mousePt.X < monitor.R &&
+						monitor.T <= mousePt.Y && mousePt.Y < monitor.B
+						)
+					{
+						activeMonitor = monitor;
+						break;
+					}
+				}
+				DDGround.MonitorRect = activeMonitor;
+
+				showStartupMessage();
+			}
 
 			// DxLib >
 
@@ -80,7 +98,7 @@ namespace Charlotte.GameCommons
 
 			DX.SetWindowIconHandle(GetAppIcon()); // ウィンドウ左上のアイコン
 
-			if (DDConfig.DisplayIndex != -1)
+			if (0 <= DDConfig.DisplayIndex)
 				DX.SetUseDirectDrawDeviceIndex(DDConfig.DisplayIndex);
 
 			if (DX.DxLib_Init() != 0) // ? 失敗
@@ -105,6 +123,7 @@ namespace Charlotte.GameCommons
 			DDGround.LastMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
 			DDGround.KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
 
+			if (DDConfig.DisplayIndex != -2) // *** DDGround.MonitorRect 初期化 (DisplayIndex != -2 の場合)
 			{
 				int l;
 				int t;
@@ -114,8 +133,11 @@ namespace Charlotte.GameCommons
 				int p2;
 				int p3;
 				int p4;
+				//int p5; // for DxLibDotNet3_22c
+				//int p6; // for DxLibDotNet3_22c
 
 				DX.GetDefaultState(out w, out h, out p1, out p2, out l, out t, out p3, out p4);
+				//DX.GetDefaultState(out w, out h, out p1, out p2, out l, out t, out p3, out p4, out p5, out p6); // for DxLibDotNet3_22c
 
 				if (
 					w < 1 || SCommon.IMAX < w ||
@@ -126,17 +148,18 @@ namespace Charlotte.GameCommons
 					throw new DDError();
 
 				DDGround.MonitorRect = new I4Rect(l, t, w, h);
+
+				showStartupMessage();
 			}
 
 			PostSetScreenSize(DDGround.RealScreen_W, DDGround.RealScreen_H);
-
-			DDGround.GeneralResource = new DDGeneralResource();
 
 			// Font
 			{
 				//DDFontRegister.Add(@"e20200928_NovelAdv\Font\Genkai-Mincho-font\genkai-mincho.ttf");
 				//DDFontRegister.Add(@"e20200928_NovelAdv\Font\riitf\RiiT_F.otf");
-				//DDFontRegister.Add(@"e20200928_NovelAdv\Font\K Gothic\K Gothic.ttf");
+				DDFontRegister.Add(@"dat\Font\K Gothic\K Gothic.ttf");
+				DDFontRegister.Add(@"dat\Font\木漏れ日ゴシック\komorebi-gothic.ttf");
 			}
 
 			Ground.I = new Ground();
@@ -150,6 +173,8 @@ namespace Charlotte.GameCommons
 			{
 				DDSaveData.Save();
 			});
+
+			LiteStatusDlg.EndDisplayDelay();
 		}
 
 		public static void GameEnd(List<Exception> errors)
@@ -169,18 +194,92 @@ namespace Charlotte.GameCommons
 
 		public static void SetMainWindowTitle()
 		{
-			DX.SetMainWindowText(DDDatStrings.Title + " " + DDUserDatStrings.Version);
+			DX.SetMainWindowText(DDDatStrings.Title + " / " + DDUserDatStrings.Version);
 		}
 
 		private static IntPtr GetAppIcon()
 		{
-			using (MemoryStream mem = new MemoryStream(DDResource.Load(@"e20200002_General\General\game_app.ico")))
+			using (MemoryStream mem = new MemoryStream(DDResource.Load(@"dat\General\game_app.ico")))
 			{
 				return new Icon(mem).Handle;
 			}
 		}
 
+		public static void SetFullScreen()
+		{
+			BeforeSetScreenSize();
+			P_SetFullScreen();
+		}
+
 		public static void SetScreenSize(int w, int h)
+		{
+			BeforeSetScreenSize();
+			P_SetScreenSize(w, h);
+		}
+
+		private static void BeforeSetScreenSize()
+		{
+			if (DDConfig.DisplayIndex == -2)
+			{
+				UpdateActiveScreen();
+			}
+		}
+
+		private static void UpdateActiveScreen()
+		{
+			I2Point screenCenter;
+
+			{
+				DDWin32.POINT p;
+
+				p.X = 0;
+				p.Y = 0;
+
+				DDWin32.ClientToScreen(DDWin32.GetMainWindowHandle(), out p);
+
+				int l = p.X;
+				int t = p.Y;
+				int w = DDGround.RealScreen_W;
+				int h = DDGround.RealScreen_H;
+
+				screenCenter = new I2Point(l + w / 2, t + h / 2);
+			}
+
+			foreach (I4Rect monitor in DDWin32.GetAllMonitor())
+			{
+				if (
+					monitor.L <= screenCenter.X && screenCenter.X < monitor.R &&
+					monitor.T <= screenCenter.Y && screenCenter.Y < monitor.B
+					)
+				{
+					DDGround.MonitorRect = monitor;
+					break;
+				}
+			}
+		}
+
+		private static void P_SetFullScreen()
+		{
+			int w = DDGround.MonitorRect.W;
+			int h = (DDConsts.Screen_H * DDGround.MonitorRect.W) / DDConsts.Screen_W;
+
+			if (DDGround.MonitorRect.H < h)
+			{
+				h = DDGround.MonitorRect.H;
+				w = (DDConsts.Screen_W * DDGround.MonitorRect.H) / DDConsts.Screen_H;
+
+				if (DDGround.MonitorRect.W < w)
+					throw new DDError();
+			}
+			P_SetScreenSize(DDGround.MonitorRect.W, DDGround.MonitorRect.H);
+
+			DDGround.RealScreenDraw_L = (DDGround.MonitorRect.W - w) / 2;
+			DDGround.RealScreenDraw_T = (DDGround.MonitorRect.H - h) / 2;
+			DDGround.RealScreenDraw_W = w;
+			DDGround.RealScreenDraw_H = h;
+		}
+
+		private static void P_SetScreenSize(int w, int h)
 		{
 			if (
 				w < DDConsts.Screen_W_Min || DDConsts.Screen_W_Max < w ||
@@ -195,25 +294,25 @@ namespace Charlotte.GameCommons
 				DDGround.RealScreen_W = w;
 				DDGround.RealScreen_H = h;
 
-				ApplyScreenSize();
-
+				P2_SetScreenSize(w, h);
 				PostSetScreenSize(w, h);
 			}
 		}
 
-		public static void ApplyScreenSize()
+		private static void P2_SetScreenSize(int w, int h)
 		{
-			ApplyScreenSize(DDGround.RealScreen_W, DDGround.RealScreen_H);
-		}
+			LiteStatusDlg.StartDisplay("ゲーム画面の位置とサイズを調整しています...");
 
-		public static void ApplyScreenSize(int w, int h)
-		{
+			foreach (DDSubScreen subScreen in DDSubScreenUtils.SubScreens)
+				subScreen.WasLoaded = subScreen.IsLoaded();
+
 			bool mdm = DDUtils.GetMouseDispMode();
 
 			//DDDerivationUtils.UnloadAll(); // moved -> DDPictureUtils.UnloadAll
 			DDPictureUtils.UnloadAll();
 			DDSubScreenUtils.UnloadAll();
 			DDFontUtils.UnloadAll();
+			//DDSoundUtils.UnloadAll(); // 不要
 
 			if (DX.SetGraphMode(w, h, 32) != DX.DX_CHANGESCREEN_OK)
 				throw new DDError();
@@ -222,17 +321,39 @@ namespace Charlotte.GameCommons
 			DX.SetDrawMode(DDConsts.DEFAULT_DX_DRAWMODE);
 
 			DDUtils.SetMouseDispMode(mdm);
+
+			DDGround.SystemTasks.Delay(1, DDPictureUtils.TouchGlobally); // ウィンドウ位置調整・初回描画を優先するため、遅延する。
+			//DDPictureUtils.TouchGlobally(); // old
+			//DDTouch.Touch(); // old
+			DDSubScreenUtils.DrawDummyScreenAll();
+
+			LiteStatusDlg.EndDisplayDelay();
 		}
 
-		public static void PostSetScreenSize(int w, int h)
+		private static void PostSetScreenSize(int w, int h)
 		{
-			if (DDGround.MonitorRect.W == w && DDGround.MonitorRect.H == h)
+			if (DDConfig.DisplayIndex == -2)
 			{
-				SetScreenPosition(DDGround.MonitorRect.L, DDGround.MonitorRect.T);
+				// 注意：DDGround.MonitorRect.L_T は -1 以下の場合もある。
+
+				int l = (DDGround.MonitorRect.W - w) / 2;
+				int t = (DDGround.MonitorRect.H - h) / 2;
+
+				l = Math.Max(0, l);
+				t = Math.Max(0, t);
+
+				SetScreenPosition(DDGround.MonitorRect.L + l, DDGround.MonitorRect.T + t);
+			}
+			else
+			{
+				if (DDGround.MonitorRect.W == w && DDGround.MonitorRect.H == h)
+				{
+					SetScreenPosition(DDGround.MonitorRect.L, DDGround.MonitorRect.T);
+				}
 			}
 		}
 
-		public static void SetScreenPosition(int l, int t)
+		private static void SetScreenPosition(int l, int t)
 		{
 			DX.SetWindowPosition(l, t);
 

@@ -49,14 +49,42 @@ namespace Charlotte.GameCommons
 		private static int P_YStep;
 		private static int P_X;
 		private static int P_Y;
+		private static int P_FontSize = -1; // -1 == デフォルトのフォントを使用する。
 
-		public static void SetPrint(int x = 0, int y = 0, int yStep = 16)
+		/// <summary>
+		/// 開発デバッグ用文字列描画準備
+		/// </summary>
+		/// <param name="x">X-位置</param>
+		/// <param name="y">Y-位置</param>
+		/// <param name="yStep">Y-ステップ</param>
+		public static void SetDebug(int x = 0, int y = 0, int yStep = 16)
 		{
 			P_BaseX = x;
 			P_BaseY = y;
 			P_YStep = yStep;
 			P_X = 0;
 			P_Y = 0;
+			P_FontSize = -1;
+		}
+
+		/// <summary>
+		/// ゲーム画面用文字列描画準備
+		/// </summary>
+		/// <param name="x">X-位置</param>
+		/// <param name="y">Y-位置</param>
+		/// <param name="yStep">Y-ステップ</param>
+		/// <param name="fontSize">フォントサイズ</param>
+		public static void SetPrint(int x, int y, int yStep, int fontSize = 24)
+		{
+			if (fontSize == -1)
+				throw new DDError("デフォルトのフォントを使用するには SetDebug() を呼び出して下さい。");
+
+			P_BaseX = x;
+			P_BaseY = y;
+			P_YStep = yStep;
+			P_X = 0;
+			P_Y = 0;
+			P_FontSize = fontSize;
 		}
 
 		public static void PrintRet()
@@ -65,14 +93,38 @@ namespace Charlotte.GameCommons
 			P_Y += P_YStep;
 		}
 
+		private static DDFont Font
+		{
+			get
+			{
+				return DDFontUtils.GetFont("木漏れ日ゴシック", P_FontSize);
+			}
+		}
+
+		private static void Print_Main2(string line, int x, int y, I3Color color)
+		{
+			if (P_FontSize == -1)
+			{
+				DX.DrawString(x, y, line, DDUtils.GetColor(color));
+			}
+			else
+			{
+				DDFontUtils.DrawString(x, y, line, Font, false, color);
+			}
+		}
+
 		private static void Print_Main(string line, int x, int y)
 		{
 			if (Extra.BorderWidth != 0)
-				for (int xc = -Extra.BorderWidth; xc <= Extra.BorderWidth; xc++)
-					for (int yc = -Extra.BorderWidth; yc <= Extra.BorderWidth; yc++)
-						DX.DrawString(x + xc, y + yc, line, DDUtils.GetColor(Extra.BorderColor));
+			{
+				int BORDER_WIDTH = Extra.BorderWidth;
+				int BORDER_STEP = Extra.BorderWidth;
 
-			DX.DrawString(x, y, line, DDUtils.GetColor(Extra.Color));
+				for (int xc = -BORDER_WIDTH; xc <= BORDER_WIDTH; xc += BORDER_STEP)
+					for (int yc = -BORDER_WIDTH; yc <= BORDER_WIDTH; yc += BORDER_STEP)
+						Print_Main2(line, x + xc, y + yc, Extra.BorderColor);
+			}
+			Print_Main2(line, x, y, Extra.Color);
 		}
 
 		public static void Print(string line)
@@ -103,7 +155,12 @@ namespace Charlotte.GameCommons
 				});
 			}
 
-			int w = DX.GetDrawStringWidth(line, SCommon.ENCODING_SJIS.GetByteCount(line));
+			int w;
+
+			if (P_FontSize == -1)
+				w = DX.GetDrawStringWidth(line, SCommon.ENCODING_SJIS.GetByteCount(line));
+			else
+				w = DX.GetDrawStringWidthToHandle(line, SCommon.ENCODING_SJIS.GetByteCount(line), Font.GetHandle(), 0);
 
 			if (w < 0 || SCommon.IMAX < w)
 				throw new DDError();

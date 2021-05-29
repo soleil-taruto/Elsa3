@@ -7,8 +7,8 @@ using Charlotte.Commons;
 namespace Charlotte.GameCommons
 {
 	/// <summary>
-	/// <para>ここで取得した DDPicture は Unload する必要なし</para>
-	/// <para>必要あり -> DDPictureLoader</para>
+	/// ここで取得した DDPicture は Unload する必要なし
+	/// 必要あり -> DDPictureLoader
 	/// </summary>
 	public static class DDPictureLoaders2
 	{
@@ -30,7 +30,7 @@ namespace Charlotte.GameCommons
 			}
 		}
 
-		public static DDPicture Wrapper(Func<int> getHandle, int w, int h)
+		private static DDPicture Wrapper(Func<int> getHandle, int w, int h)
 		{
 			DDPicture.PictureInfo info = new DDPicture.PictureInfo()
 			{
@@ -46,7 +46,7 @@ namespace Charlotte.GameCommons
 			};
 		}
 
-		public static DDPicture Wrapper(Func<int> getHandle, I2Size size)
+		private static DDPicture Wrapper(Func<int> getHandle, I2Size size)
 		{
 			return Wrapper(getHandle, size.W, size.H);
 		}

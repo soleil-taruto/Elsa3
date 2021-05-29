@@ -14,9 +14,7 @@ namespace Charlotte.Commons
 {
 	public static class ProcMain
 	{
-		// APP_IDENT の衝突の解消 -> t20210105_SolveUUIDCollision
-
-		public const string APP_IDENT = "{50236cfd-ac09-40bb-96d6-035647052481}"; // アプリ毎に変更する。
+		public const string APP_IDENT = "{a86a86c7-dbbb-4337-beda-3b7a7c503d3f}"; // アプリ毎に変更する。
 		public const string APP_TITLE = "Elsa20200001-Game";
 
 		public static string SelfFile;
@@ -45,6 +43,9 @@ namespace Charlotte.Commons
 			catch (Exception e)
 			{
 				WriteLog(e);
+
+				Console.WriteLine("Press ENTER key.");
+				Console.ReadLine();
 			}
 		}
 
@@ -275,6 +276,18 @@ namespace Charlotte.Commons
 				catch { }
 
 				ProcMtx = null;
+			}
+		}
+
+		public static bool DEBUG
+		{
+			get
+			{
+#if DEBUG
+				return true;
+#else
+				return false;
+#endif
 			}
 		}
 	}

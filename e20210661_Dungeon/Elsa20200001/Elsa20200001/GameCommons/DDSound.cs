@@ -2,26 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using DxLibDLL;
+using Charlotte.Commons;
 
 namespace Charlotte.GameCommons
 {
 	public class DDSound
 	{
 		private Func<byte[]> Func_GetFileData;
-		private int HandleCount;
 		private int[] Handles = null; // null == Unloaded
 
-		public Action PostLoaded = () => { };
+		public int HandleCount
+		{
+			get
+			{
+				return this.Handles == null ? 1 : this.Handles.Length;
+			}
+		}
 
-		public DDSound(string file, int handleCount)
-			: this(() => DDResource.Load(file), handleCount)
+		public List<Action<int>> PostLoadeds = new List<Action<int>>();
+
+		public DDSound(string file)
+			: this(() => DDResource.Load(file))
 		{ }
 
-		public DDSound(Func<byte[]> getFileData, int handleCount)
+		public DDSound(Func<byte[]> getFileData)
 		{
 			this.Func_GetFileData = getFileData;
-			this.HandleCount = handleCount;
 
 			DDSoundUtils.Add(this);
 		}
@@ -30,7 +38,7 @@ namespace Charlotte.GameCommons
 		{
 			if (this.Handles != null)
 			{
-				foreach (int handle in this.Handles)
+				foreach (int handle in this.Handles.Reverse()) // DuplicateSoundMem したハンドルから削除する。
 					if (DX.DeleteSoundMem(handle) != 0) // ? 失敗
 						throw new DDError();
 
@@ -47,33 +55,61 @@ namespace Charlotte.GameCommons
 		{
 			if (this.Handles == null)
 			{
-				this.Handles = new int[this.HandleCount];
+				this.Handles = new int[1];
 
 				{
 					byte[] fileData = this.Func_GetFileData();
 					int handle = -1;
 
-					DDSystem.PinOn(fileData, p => handle = DX.LoadSoundMemByMemImage(p, fileData.Length));
+#if false // SetLoop*SamplePosSoundMem が正常に動作しない。@ 2021.4.30
+					using (WorkingDir wd = new WorkingDir())
+					{
+						string file = wd.MakePath();
+						File.WriteAllBytes(file, fileData);
+						handle = DX.LoadSoundMem(file);
+					}
+#else
+					DDSystem.PinOn(fileData, p => handle = DX.LoadSoundMemByMemImage(p, fileData.Length)); // DxLibDotNet3_22c で正常に動作しない。@ 2021.4.18
+#endif
 
 					if (handle == -1) // ? 失敗
-						throw new DDError();
+						throw new DDError("Sound File SHA-512: " + SCommon.Hex.ToString(SCommon.GetSHA512(fileData)));
 
 					this.Handles[0] = handle;
 				}
 
-				for (int index = 1; index < this.HandleCount; index++)
-				{
-					int handle = DX.DuplicateSoundMem(this.Handles[0]);
-
-					if (handle == -1) // ? 失敗
-						throw new DDError();
-
-					this.Handles[index] = handle;
-				}
-
-				this.PostLoaded();
+				foreach (Action<int> routine in this.PostLoadeds)
+					routine(this.Handles[0]);
 			}
 			return this.Handles[handleIndex];
+		}
+
+		public void Extend()
+		{
+			int handle = DX.DuplicateSoundMem(this.GetHandle(0));
+
+			if (handle == -1) // ? 失敗
+				throw new DDError();
+
+			foreach (Action<int> routine in this.PostLoadeds)
+				routine(handle);
+
+			this.Handles = this.Handles.Concat(new int[] { handle }).ToArray();
+		}
+
+		public bool IsPlaying()
+		{
+			if (this.Handles != null)
+				for (int index = 0; index < this.HandleCount; index++)
+					if (DDSoundUtils.IsPlaying(this.Handles[index]))
+						return true;
+
+			return false;
+		}
+
+		public int[] GetHandles()
+		{
+			return this.Handles == null ? new int[0] : this.Handles;
 		}
 	}
 }

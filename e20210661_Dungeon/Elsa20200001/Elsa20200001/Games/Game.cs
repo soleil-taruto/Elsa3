@@ -5,7 +5,6 @@ using System.Text;
 using DxLibDLL;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.GameCommons.Options;
 using Charlotte.Games.Scripts;
 
 namespace Charlotte.Games
@@ -109,7 +108,7 @@ namespace Charlotte.Games
 						this.Draw(scene.Rate);
 						DDEngine.EachFrame();
 					}
-					this.Direction = Common.RotL(this.Direction);
+					this.Direction = GameCommon.RotL(this.Direction);
 
 					foreach (DDScene scene in DDSceneUtils.Create(5))
 					{
@@ -126,7 +125,7 @@ namespace Charlotte.Games
 						this.Draw(-scene.Rate);
 						DDEngine.EachFrame();
 					}
-					this.Direction = Common.RotR(this.Direction);
+					this.Direction = GameCommon.RotR(this.Direction);
 
 					foreach (DDScene scene in DDSceneUtils.Create(5))
 					{
@@ -143,7 +142,7 @@ namespace Charlotte.Games
 						this.Draw(-scene.Rate);
 						DDEngine.EachFrame();
 					}
-					this.Direction = Common.RotR(this.Direction);
+					this.Direction = GameCommon.RotR(this.Direction);
 
 					foreach (DDScene scene in DDSceneUtils.Create(10))
 					{
@@ -151,7 +150,7 @@ namespace Charlotte.Games
 						this.Draw((1.0 - scene.Rate) * 2.0 - 1.0);
 						DDEngine.EachFrame();
 					}
-					this.Direction = Common.RotR(this.Direction);
+					this.Direction = GameCommon.RotR(this.Direction);
 
 					foreach (DDScene scene in DDSceneUtils.Create(5))
 					{
@@ -182,8 +181,8 @@ namespace Charlotte.Games
 		{
 			switch (Game.I.Direction)
 			{
-				case 4: return Game.I.Map[Game.I.X - y, Game.I.Y - x].GetWall(Common.RotL(direction)).Kind;
-				case 6: return Game.I.Map[Game.I.X + y, Game.I.Y + x].GetWall(Common.RotR(direction)).Kind;
+				case 4: return Game.I.Map[Game.I.X - y, Game.I.Y - x].GetWall(GameCommon.RotL(direction)).Kind;
+				case 6: return Game.I.Map[Game.I.X + y, Game.I.Y + x].GetWall(GameCommon.RotR(direction)).Kind;
 				case 8: return Game.I.Map[Game.I.X + x, Game.I.Y - y].GetWall(direction).Kind;
 				case 2: return Game.I.Map[Game.I.X - x, Game.I.Y + y].GetWall(10 - direction).Kind;
 
@@ -204,10 +203,10 @@ namespace Charlotte.Games
 			// 仮枠線
 			{
 				DDDraw.SetBright(0, 0, 0);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, 85, DDConsts.Screen_H);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, DDConsts.Screen_W - 85, 0, 85, DDConsts.Screen_H);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 0, DDConsts.Screen_W, 10);
-				DDDraw.DrawRect(DDGround.GeneralResource.WhiteBox, 0, 385, DDConsts.Screen_W, DDConsts.Screen_H - 385);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, 85, DDConsts.Screen_H);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, DDConsts.Screen_W - 85, 0, 85, DDConsts.Screen_H);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, DDConsts.Screen_W, 10);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 385, DDConsts.Screen_W, DDConsts.Screen_H - 385);
 				DDDraw.Reset();
 			}
 		}

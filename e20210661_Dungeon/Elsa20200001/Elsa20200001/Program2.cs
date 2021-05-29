@@ -32,7 +32,40 @@ namespace Charlotte
 
 		private void Main4()
 		{
-			if (ProcMain.ArgsReader.ArgIs("//D")) // 引数は適当な文字列
+			// *.INIT
+			{
+				// アプリ固有 >
+
+				//RippleEffect.INIT();
+				//画面分割.INIT();
+				//画面分割_Effect.INIT();
+
+				// < アプリ固有
+			}
+
+			//DDTouch.Touch(); // moved -> Logo
+
+			if (DDConfig.LOG_ENABLED)
+			{
+				DDEngine.DispDebug = () =>
+				{
+					DDPrint.SetDebug();
+					DDPrint.SetBorder(new I3Color(0, 0, 0));
+
+					DDPrint.Print(string.Join(
+						" ",
+
+						// デバッグ表示する情報をここへ追加..
+
+						DDEngine.FrameProcessingMillis,
+						DDEngine.FrameProcessingMillis_Worst
+						));
+
+					DDPrint.Reset();
+				};
+			}
+
+			if (ProcMain.DEBUG)
 			{
 				Main4_Debug();
 			}
@@ -47,12 +80,16 @@ namespace Charlotte
 			// ---- choose one ----
 
 			Main4_Release();
-			//new Test0001().Test01();
-			//new DDRandomTest().Test01();
-			//new TitleMenuTest().Test01();
+			//new Test0001().Test01(); // モーション確認
+			//new TitleMenuTest().Test01(); // タイトル画面
 			//new GameTest().Test01();
 			//new GameTest().Test02();
-			//new GameTest().Test03(); // 開始マップ名を選択
+			//new GameTest().Test03(); // 開始マップ名を選択(当面不使用)
+			//new WorldGameMasterTest().Test01();
+			//new WorldGameMasterTest().Test02();
+			//new WorldGameMasterTest().Test03(); // 開始マップ名を選択
+			//new NovelTest().Test01();
+			//new NovelTest().Test02(); // シナリオ：テスト0001
 
 			// ----
 		}

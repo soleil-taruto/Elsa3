@@ -29,6 +29,9 @@ namespace Charlotte.GameCommons
 				lines.Add("" + DDGround.RealScreenDraw_W);
 				lines.Add("" + DDGround.RealScreenDraw_H);
 
+				lines.Add("" + DDGround.UnfullScreen_W);
+				lines.Add("" + DDGround.UnfullScreen_H);
+
 				lines.Add("" + SCommon.ToLong(DDGround.MusicVolume * SCommon.IMAX));
 				lines.Add("" + SCommon.ToLong(DDGround.SEVolume * SCommon.IMAX));
 
@@ -77,6 +80,13 @@ namespace Charlotte.GameCommons
 				//lines.Add("Donut3-SaveData"); // Dummy
 				//lines.Add("Donut3-SaveData"); // Dummy
 
+				lines.Add("" + Ground.I.NovelMessageSpeed);
+
+				foreach (Ground.P_SaveDataSlot saveDataSlot in Ground.I.SaveDataSlots)
+				{
+					lines.Add(saveDataSlot.Serialize());
+				}
+
 				// 新しい項目をここへ追加...
 
 				blocks.Add(DDUtils.SplitableJoin(lines.ToArray()));
@@ -115,6 +125,9 @@ namespace Charlotte.GameCommons
 				DDGround.RealScreenDraw_T = int.Parse(lines[c++]);
 				DDGround.RealScreenDraw_W = int.Parse(lines[c++]);
 				DDGround.RealScreenDraw_H = int.Parse(lines[c++]);
+
+				DDGround.UnfullScreen_W = int.Parse(lines[c++]);
+				DDGround.UnfullScreen_H = int.Parse(lines[c++]);
 
 				DDGround.MusicVolume = long.Parse(lines[c++]) / (double)SCommon.IMAX;
 				DDGround.SEVolume = long.Parse(lines[c++]) / (double)SCommon.IMAX;
@@ -168,6 +181,13 @@ namespace Charlotte.GameCommons
 					//DDUtils.Noop(lines[c++]); // Dummy
 					//DDUtils.Noop(lines[c++]); // Dummy
 					//DDUtils.Noop(lines[c++]); // Dummy
+
+					Ground.I.NovelMessageSpeed = int.Parse(lines[c++]);
+
+					foreach (Ground.P_SaveDataSlot saveDataSlot in Ground.I.SaveDataSlots)
+					{
+						saveDataSlot.Deserialize(lines[c++]);
+					}
 
 					// 新しい項目をここへ追加...
 				}

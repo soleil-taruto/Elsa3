@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.GameCommons.Options;
 
 namespace Charlotte.Games
 {
@@ -48,20 +47,20 @@ namespace Charlotte.Games
 					if (0 <= y && y < this.H)
 					{
 						if (x == -1)
-							return Common.DefaultCell_6_Wall;
+							return GameCommon.DefaultCell_6_Wall;
 
 						if (x == this.W)
-							return Common.DefaultCell_4_Wall;
+							return GameCommon.DefaultCell_4_Wall;
 					}
 					if (0 <= x && x < this.W)
 					{
 						if (y == -1)
-							return Common.DefaultCell_2_Wall;
+							return GameCommon.DefaultCell_2_Wall;
 
 						if (y == this.H)
-							return Common.DefaultCell_8_Wall;
+							return GameCommon.DefaultCell_8_Wall;
 					}
-					return Common.DefaultCell;
+					return GameCommon.DefaultCell;
 				}
 				return this.Cells[x + y * this.W];
 			}

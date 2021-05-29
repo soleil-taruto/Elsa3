@@ -96,5 +96,52 @@ namespace Charlotte.Commons
 				((ulong)r[6] << 48) |
 				((ulong)r[7] << 56);
 		}
+
+		public ulong GetUInt64_M(ulong modulo)
+		{
+			if (modulo == 0ul)
+				throw new Exception("modulo is zero"); // ConfuserElsa のために ArgumentOutOfRangeException を使用しない。
+
+			ulong m = (ulong.MaxValue % modulo + 1ul) % modulo;
+			ulong r;
+
+			do
+			{
+				r = this.GetUInt64();
+			}
+			while (r < m);
+
+			r %= modulo;
+
+			return r;
+		}
+
+		public uint GetUInt_M(uint modulo)
+		{
+			return (uint)this.GetUInt64_M((ulong)modulo);
+		}
+
+		public int GetInt(int modulo)
+		{
+			return (int)this.GetUInt_M((uint)modulo);
+		}
+
+		public int GetRange(int minval, int maxval)
+		{
+			return this.GetInt(maxval - minval + 1) + minval;
+		}
+
+		public T ChooseOne<T>(IList<T> list)
+		{
+			return list[this.GetInt(list.Count)];
+		}
+
+		public void Shuffle<T>(IList<T> list)
+		{
+			for (int index = list.Count; 1 < index; index--)
+			{
+				SCommon.Swap(list, this.GetInt(index), index - 1);
+			}
+		}
 	}
 }
