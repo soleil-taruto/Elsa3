@@ -1,6 +1,6 @@
 ﻿===============================================================================
 
-　横スクロール アクション ゲーム(仮) / version $version$
+　Dungeon / version $version$
 　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x cerulean.charlotte
 
 ===============================================================================
@@ -15,11 +15,8 @@
 
 　カーソル
 
-　Z　　ジャンプ / 決定
-　X　　攻撃 / キャンセル
-　C　　特殊攻撃
-　D　　画面スライド
-　F　　低速移動
+　Z　　決定
+　X　　キャンセル
 
 　SPACE　　ポーズ / ポーズ解除
 
@@ -41,31 +38,15 @@
 
 ■素材（敬称略）
 
-　●プレイヤーキャラクタ
-
-　　オオバコ
-　　http://zassoh.starfree.jp/
-
-　●画像
-
-　　きつね（仮）
-　　https://seiga.nicovideo.jp/user/illust/13201234
-
-　　空想曲線
-　　https://kopacurve.blog.fc2.com/
-
-　●背景
-
-　　run
-　　https://www.pixiv.net/users/1597341
-
 　●音楽
-
-　　みるふぃ
-　　http://commons.nicovideo.jp/material/nc200903
 
 　　ユーフルカ
 　　https://wingless-seraph.net/
+
+　●効果音
+
+　　小森平
+　　http://taira-komori.jpn.org/
 
 
 ■このゲームの製作者
