@@ -37,7 +37,7 @@ namespace Charlotte.GameCommons
 			SCommon.CreateDir(dir);
 			File.WriteAllBytes(file, fileData);
 
-			if (DDWin32.AddFontResourceEx(file, DDWin32.FR_PRIVATE, IntPtr.Zero) == 0) // ? 失敗
+			if (DDWin32.W_AddFontResourceEx(file, DDWin32.FR_PRIVATE, IntPtr.Zero) == 0) // ? 失敗
 				throw new DDError();
 
 			FontFiles.Add(file);
@@ -47,7 +47,7 @@ namespace Charlotte.GameCommons
 
 		private static void Unload(string file)
 		{
-			if (DDWin32.RemoveFontResourceEx(file, DDWin32.FR_PRIVATE, IntPtr.Zero) == 0) // ? 失敗
+			if (DDWin32.W_RemoveFontResourceEx(file, DDWin32.FR_PRIVATE, IntPtr.Zero) == 0) // ? 失敗
 				throw new DDError();
 		}
 

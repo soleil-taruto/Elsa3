@@ -19,15 +19,36 @@ namespace Charlotte.GameCommons
 		}
 
 		[DllImport("user32.dll")]
-		public static extern bool ClientToScreen(IntPtr hWnd, out POINT lpPoint);
+		private static extern bool
+			ClientToScreen // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			(IntPtr hWnd, out POINT lpPoint);
+
+		public static bool W_ClientToScreen(IntPtr hWnd, out POINT lpPoint)
+		{
+			return ClientToScreen(hWnd, out lpPoint);
+		}
 
 		public delegate bool EnumWindowsCallback(IntPtr hWnd, IntPtr lParam);
 
 		[DllImport("user32.dll")]
-		public static extern bool EnumWindows(EnumWindowsCallback callback, IntPtr lParam);
+		private static extern bool
+			EnumWindows // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			(EnumWindowsCallback callback, IntPtr lParam);
+
+		public static bool W_EnumWindows(EnumWindowsCallback callback, IntPtr lParam)
+		{
+			return EnumWindows(callback, lParam);
+		}
 
 		[DllImport("user32.dll")]
-		private static extern int GetWindowText(IntPtr hWnd, StringBuilder buff, int buffLenMax);
+		private static extern int
+			GetWindowText // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			(IntPtr hWnd, StringBuilder buff, int buffLenMax);
+
+		public static int W_GetWindowText(IntPtr hWnd, StringBuilder buff, int buffLenMax)
+		{
+			return GetWindowText(hWnd, buff, buffLenMax);
+		}
 
 		public static string GetWindowTitleByHandle(IntPtr hWnd)
 		{
@@ -82,10 +103,24 @@ namespace Charlotte.GameCommons
 		public const uint FR_PRIVATE = 0x10;
 
 		[DllImport("gdi32.dll")]
-		public static extern int AddFontResourceEx(string file, uint fl, IntPtr res);
+		private static extern int
+			AddFontResourceEx // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			(string file, uint fl, IntPtr res);
+
+		public static int W_AddFontResourceEx(string file, uint fl, IntPtr res)
+		{
+			return AddFontResourceEx(file, fl, res);
+		}
 
 		[DllImport("gdi32.dll")]
-		public static extern int RemoveFontResourceEx(string file, uint fl, IntPtr res);
+		private static extern int
+			RemoveFontResourceEx // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+			(string file, uint fl, IntPtr res);
+
+		public static int W_RemoveFontResourceEx(string file, uint fl, IntPtr res)
+		{
+			return RemoveFontResourceEx(file, fl, res);
+		}
 
 		public static I2Point GetMousePosition()
 		{

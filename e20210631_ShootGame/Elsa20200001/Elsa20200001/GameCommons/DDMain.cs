@@ -235,7 +235,7 @@ namespace Charlotte.GameCommons
 				p.X = 0;
 				p.Y = 0;
 
-				DDWin32.ClientToScreen(DDWin32.GetMainWindowHandle(), out p);
+				DDWin32.W_ClientToScreen(DDWin32.GetMainWindowHandle(), out p);
 
 				int l = p.X;
 				int t = p.Y;
@@ -362,7 +362,7 @@ namespace Charlotte.GameCommons
 			p.X = 0;
 			p.Y = 0;
 
-			DDWin32.ClientToScreen(DDWin32.GetMainWindowHandle(), out p);
+			DDWin32.W_ClientToScreen(DDWin32.GetMainWindowHandle(), out p);
 
 			int pToTrgX = l - (int)p.X;
 			int pToTrgY = t - (int)p.Y;
