@@ -12,12 +12,12 @@ namespace Charlotte
 
 		public DDSE[] テスト用s = new DDSE[]
 		{
-			new DDSE(@"dat\小森平\sfxrse\01pickup\coin01.mp3"),
-			new DDSE(@"dat\小森平\sfxrse\01pickup\coin02.mp3"),
-			new DDSE(@"dat\小森平\sfxrse\01pickup\coin04.mp3"),
+			new DDSE(@"dat\小森平\coin01.mp3"),
+			new DDSE(@"dat\小森平\coin02.mp3"),
+			new DDSE(@"dat\小森平\coin04.mp3"),
 		};
 
-		public DDSE CrashToWall = new DDSE(@"dat\小森平\sfxrse\poka02.mp3");
+		public DDSE CrashToWall = new DDSE(@"dat\小森平\poka02.mp3");
 
 		public ResourceSE()
 		{

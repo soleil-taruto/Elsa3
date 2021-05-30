@@ -27,7 +27,7 @@ namespace Charlotte.Games
 
 		public static string MapNameToMapFile(string name)
 		{
-			return @"e20200001_res\Map\" + name + ".txt";
+			return @"res\Map\" + name + ".txt";
 		}
 
 		// ===========================
