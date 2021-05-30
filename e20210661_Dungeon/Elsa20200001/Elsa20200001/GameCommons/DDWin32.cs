@@ -25,7 +25,9 @@ namespace Charlotte.GameCommons
 
 		public static bool W_ClientToScreen(IntPtr hWnd, out POINT lpPoint)
 		{
-			return ClientToScreen(hWnd, out lpPoint);
+			return
+				ClientToScreen // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				(hWnd, out lpPoint);
 		}
 
 		public delegate bool EnumWindowsCallback(IntPtr hWnd, IntPtr lParam);
@@ -37,7 +39,9 @@ namespace Charlotte.GameCommons
 
 		public static bool W_EnumWindows(EnumWindowsCallback callback, IntPtr lParam)
 		{
-			return EnumWindows(callback, lParam);
+			return
+				EnumWindows // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				(callback, lParam);
 		}
 
 		[DllImport("user32.dll")]
@@ -47,7 +51,9 @@ namespace Charlotte.GameCommons
 
 		public static int W_GetWindowText(IntPtr hWnd, StringBuilder buff, int buffLenMax)
 		{
-			return GetWindowText(hWnd, buff, buffLenMax);
+			return
+				GetWindowText // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				(hWnd, buff, buffLenMax);
 		}
 
 		public static string GetWindowTitleByHandle(IntPtr hWnd)
@@ -109,7 +115,9 @@ namespace Charlotte.GameCommons
 
 		public static int W_AddFontResourceEx(string file, uint fl, IntPtr res)
 		{
-			return AddFontResourceEx(file, fl, res);
+			return
+				AddFontResourceEx // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				(file, fl, res);
 		}
 
 		[DllImport("gdi32.dll")]
@@ -119,7 +127,9 @@ namespace Charlotte.GameCommons
 
 		public static int W_RemoveFontResourceEx(string file, uint fl, IntPtr res)
 		{
-			return RemoveFontResourceEx(file, fl, res);
+			return
+				RemoveFontResourceEx // KeepComment:@^_ConfuserElsa // NoRename:@^_ConfuserElsa
+				(file, fl, res);
 		}
 
 		public static I2Point GetMousePosition()
