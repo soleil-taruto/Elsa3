@@ -77,6 +77,7 @@ namespace Charlotte
 			{
 				I = this;
 				new Program2().Main2();
+				LiteStatusDlg.EndDisplay();
 				I = null;
 
 				this.BeginInvoke((MethodInvoker)delegate
