@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
+using Charlotte.GameProgressMasters;
 using Charlotte.Novels;
 
 namespace Charlotte.Games
@@ -188,12 +189,9 @@ namespace Charlotte.Games
 							{
 								this.LeaveTitleMenu();
 
-								using (new Game())
+								using (new GameProgressMaster())
 								{
-									Game.I.Map = MapLoader.Load("t0001");
-									Game.I.Status = new GameStatus();
-
-									Game.I.Perform();
+									GameProgressMaster.I.Perform();
 								}
 								this.ReturnTitleMenu();
 							}
@@ -207,14 +205,9 @@ namespace Charlotte.Games
 								{
 									this.LeaveTitleMenu();
 
-									// TODO: ロード
-
-									using (new Game())
+									using (new GameProgressMaster())
 									{
-										Game.I.Map = MapLoader.Load("t0001");
-										Game.I.Status = new GameStatus();
-
-										Game.I.Perform();
+										GameProgressMaster.I.Perform_コンテニュー();
 									}
 									this.ReturnTitleMenu();
 								}
