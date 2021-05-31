@@ -8,6 +8,7 @@ using Charlotte.GameCommons;
 using Charlotte.Games;
 using Charlotte.Tests;
 using Charlotte.Tests.Games;
+using Charlotte.Tests.Novels;
 
 namespace Charlotte
 {
