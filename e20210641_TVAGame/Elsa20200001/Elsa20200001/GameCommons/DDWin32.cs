@@ -63,14 +63,14 @@ namespace Charlotte.GameCommons
 
 			StringBuilder buff = new StringBuilder(BUFF_SIZE + MARGIN);
 
-			GetWindowText(hWnd, buff, BUFF_SIZE);
+			W_GetWindowText(hWnd, buff, BUFF_SIZE);
 
 			return buff.ToString();
 		}
 
 		public static void EnumWindowsHandleTitle(Func<IntPtr, string, bool> routine)
 		{
-			EnumWindows((hWnd, lParam) => routine(hWnd, GetWindowTitleByHandle(hWnd)), IntPtr.Zero);
+			W_EnumWindows((hWnd, lParam) => routine(hWnd, GetWindowTitleByHandle(hWnd)), IntPtr.Zero);
 		}
 
 		private static IntPtr? MainWindowHandle = null;
