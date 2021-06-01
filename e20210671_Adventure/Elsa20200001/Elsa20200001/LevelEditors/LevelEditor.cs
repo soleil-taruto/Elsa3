@@ -5,8 +5,6 @@ using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games;
-using Charlotte.Games.Enemies;
-using Charlotte.Games.Tiles;
 
 namespace Charlotte.LevelEditors
 {

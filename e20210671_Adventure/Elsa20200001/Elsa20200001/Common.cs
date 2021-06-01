@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.Games;
-using Charlotte.Games.Tiles;
 
 namespace Charlotte
 {

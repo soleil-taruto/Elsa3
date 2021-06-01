@@ -5,10 +5,6 @@ using System.Text;
 using DxLibDLL;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.Games.Enemies;
-using Charlotte.Games.Tiles;
-using Charlotte.Games.Shots;
-using Charlotte.Games.Walls;
 using Charlotte.LevelEditors;
 
 namespace Charlotte.Games

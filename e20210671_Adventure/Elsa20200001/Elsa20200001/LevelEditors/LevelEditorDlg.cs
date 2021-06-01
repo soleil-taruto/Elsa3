@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using System.Security.Permissions;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.Games.Tiles;
-using Charlotte.Games.Enemies;
 
 namespace Charlotte.LevelEditors
 {
