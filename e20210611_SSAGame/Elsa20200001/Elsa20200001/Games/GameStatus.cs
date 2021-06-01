@@ -58,7 +58,7 @@ namespace Charlotte.Games
 		/// </summary>
 		public enum Inventory_e
 		{
-			神奈子を倒した,
+			B神奈子を倒した, // テスト用
 
 			// 新しい項目をここへ追加...
 		}

@@ -20,7 +20,7 @@ namespace Charlotte.Games.Enemies.Tests.神奈子s
 		{
 			// ---- game_制御 ----
 
-			Game.I.Status.InventoryFlags[GameStatus.Inventory_e.神奈子を倒した] = true;
+			Game.I.Status.InventoryFlags[GameStatus.Inventory_e.B神奈子を倒した] = true;
 
 			// ----
 
