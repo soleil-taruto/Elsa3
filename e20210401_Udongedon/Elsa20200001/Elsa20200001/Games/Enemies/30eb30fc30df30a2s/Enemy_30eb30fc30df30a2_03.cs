@@ -14,8 +14,8 @@ namespace Charlotte.Games.Enemies.ルーミアs
 	/// </summary>
 	public class Enemy_ルーミア_03 : Enemy
 	{
-		DDRandom RandForUT = new DDRandom(1, 2, 3, 4); // UpdateTarget_専用乱数
-		DDRandom RandForColor = new DDRandom(5, 6, 7, 8); // 色_専用乱数
+		DDRandom RandForUT = new DDRandom(1002); // UpdateTarget_専用乱数
+		DDRandom RandForColor = new DDRandom(2001); // 色_専用乱数
 
 		public Enemy_ルーミア_03(double x, double y)
 			: base(x, y, Kind_e.ENEMY, 1000, 0)

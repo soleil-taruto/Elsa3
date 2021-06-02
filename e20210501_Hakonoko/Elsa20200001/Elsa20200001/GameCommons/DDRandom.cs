@@ -49,6 +49,15 @@ namespace Charlotte.GameCommons
 			return this.Next() / (double)uint.MaxValue;
 		}
 
+		/// <summary>
+		/// -1以上1以下の乱数を返す。
+		/// </summary>
+		/// <returns>乱数</returns>
+		public double DReal()
+		{
+			return this.Real() * 2.0 - 1.0;
+		}
+
 		public uint GetUInt(uint modulo)
 		{
 			if (modulo < 1u)

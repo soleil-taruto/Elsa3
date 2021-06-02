@@ -14,7 +14,7 @@ namespace Charlotte.Games.Enemies
 		public Enemy_Frog(double x, double y)
 			: base(x, y, 3, 3, false)
 		{
-			this.Random = new DDRandom((uint)x, (uint)y);
+			this.Random = new DDRandom(((uint)x << 16) | (uint)y);
 		}
 
 		private bool FacingLeft = false;

@@ -74,7 +74,7 @@ namespace Charlotte.Games
 
 		public void Perform()
 		{
-			DDUtils.Random = new DDRandom(1u, 1u, 1u, 1u); // 電源パターン確保のため
+			DDUtils.Random = new DDRandom(1111); // 電源パターン確保のため
 
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
