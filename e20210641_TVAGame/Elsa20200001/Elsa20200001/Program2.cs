@@ -87,7 +87,7 @@ namespace Charlotte
 			new TitleMenuTest().Test01(); // タイトル画面
 			//new GameTest().Test01();
 			//new GameTest().Test02();
-			//new GameTest().Test03(); // 開始マップ名を選択(当面不使用)
+			//new GameTest().Test03(); // 開始マップ名を選択(★当面不使用)
 			//new WorldGameMasterTest().Test01();
 			//new WorldGameMasterTest().Test02();
 			//new WorldGameMasterTest().Test03(); // 開始マップ名を選択
