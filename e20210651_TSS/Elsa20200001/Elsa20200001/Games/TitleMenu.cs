@@ -192,9 +192,6 @@ namespace Charlotte.Games
 
 			for (; ; )
 			{
-				this.DrawWall.Execute();
-				this.TopMenu.Execute();
-
 				int moving = 0;
 
 				if (DDInput.DIR_8.IsPound())
@@ -310,6 +307,10 @@ namespace Charlotte.Games
 
 					this.TopMenu.Items[TopMenuTask.ITEM_NUM - 1].マウスカーソルをここへ移動();
 				}
+
+				this.DrawWall.Execute();
+				this.TopMenu.Execute();
+
 				DDEngine.EachFrame();
 			}
 		endMenu:
