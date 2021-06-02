@@ -89,6 +89,16 @@ namespace Charlotte.GameCommons
 			}
 		}
 
+		private static void LiteMaskCachedFileData(byte[] fileData)
+		{
+			int size = Math.Min(30, fileData.Length);
+
+			for (int index = 0; index < size; index++)
+			{
+				fileData[index] ^= 0xa5;
+			}
+		}
+
 		private static long CachedFileCounter = 0L;
 
 		private static byte[] LoadFile(ResInfo resInfo)
@@ -110,12 +120,14 @@ namespace Charlotte.GameCommons
 				resInfo.CachedFile = WD.MakePath();
 #endif
 
+				LiteMaskCachedFileData(fileData);
 				File.WriteAllBytes(resInfo.CachedFile, fileData);
 			}
 			else
 			{
 				fileData = File.ReadAllBytes(resInfo.CachedFile);
 			}
+			LiteMaskCachedFileData(fileData);
 			return fileData;
 		}
 
