@@ -11,24 +11,15 @@ namespace Charlotte.GameCommons
 	/// </summary>
 	public class DDRandom
 	{
-		private uint X;
-		private uint Y;
-		private uint Z;
-		private uint A;
+		private ulong X;
 
 		public DDRandom()
-			: this(SCommon.CRandom.GetUInt(), SCommon.CRandom.GetUInt(), SCommon.CRandom.GetUInt(), SCommon.CRandom.GetUInt())
+			: this(SCommon.CRandom.GetUInt())
 		{ }
 
-		public DDRandom(uint x, uint y, uint z, uint a)
+		public DDRandom(uint seed)
 		{
-			if ((x | y | z | a) == 0u)
-				x = 1u;
-
-			this.X = x;
-			this.Y = y;
-			this.Z = z;
-			this.A = a;
+			this.X = (ulong)seed;
 		}
 
 		/// <summary>
@@ -37,21 +28,16 @@ namespace Charlotte.GameCommons
 		/// <returns>乱数</returns>
 		public uint Next()
 		{
-			// Xorshift-128
+			ulong uu1 = this.Next2();
 
-			uint t;
+			uint u1 = (uint)(uu1 % 4294967311ul); // 2^32 より大きい最小の素数
 
-			t = this.X;
-			t ^= this.X << 11;
-			t ^= t >> 8;
-			t ^= this.A;
-			t ^= this.A >> 19;
-			this.X = this.Y;
-			this.Y = this.Z;
-			this.Z = this.A;
-			this.A = t;
+			return u1;
+		}
 
-			return t;
+		private ulong Next2()
+		{
+			return this.X = 1103515245 * (ulong)(uint)this.X + 12345;
 		}
 
 		/// <summary>
@@ -74,6 +60,11 @@ namespace Charlotte.GameCommons
 		public int GetInt(int modulo)
 		{
 			return (int)this.GetUInt((uint)modulo);
+		}
+
+		public int GetRange(int minval, int maxval)
+		{
+			return this.GetInt(maxval - minval + 1) + minval;
 		}
 
 		public void Shuffle<T>(T[] arr)

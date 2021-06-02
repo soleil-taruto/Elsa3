@@ -62,6 +62,11 @@ namespace Charlotte.GameCommons
 			return (int)this.GetUInt((uint)modulo);
 		}
 
+		public int GetRange(int minval, int maxval)
+		{
+			return this.GetInt(maxval - minval + 1) + minval;
+		}
+
 		public void Shuffle<T>(T[] arr)
 		{
 			for (int index = arr.Length; 2 <= index; index--)

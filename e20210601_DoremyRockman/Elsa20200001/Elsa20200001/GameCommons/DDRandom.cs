@@ -19,12 +19,7 @@ namespace Charlotte.GameCommons
 
 		public DDRandom(uint seed)
 		{
-			this.X = seed;
-		}
-
-		public DDRandom(uint seed, uint seed2)
-		{
-			this.X = ((ulong)seed << 32) + seed2;
+			this.X = (ulong)seed;
 		}
 
 		/// <summary>
@@ -65,6 +60,11 @@ namespace Charlotte.GameCommons
 		public int GetInt(int modulo)
 		{
 			return (int)this.GetUInt((uint)modulo);
+		}
+
+		public int GetRange(int minval, int maxval)
+		{
+			return this.GetInt(maxval - minval + 1) + minval;
 		}
 
 		public void Shuffle<T>(T[] arr)

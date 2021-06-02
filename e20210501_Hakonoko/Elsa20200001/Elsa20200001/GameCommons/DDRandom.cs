@@ -49,15 +49,6 @@ namespace Charlotte.GameCommons
 			return this.Next() / (double)uint.MaxValue;
 		}
 
-		/// <summary>
-		/// -1以上1以下の乱数を返す。
-		/// </summary>
-		/// <returns>乱数</returns>
-		public double DReal()
-		{
-			return this.Real() * 2.0 - 1.0;
-		}
-
 		public uint GetUInt(uint modulo)
 		{
 			if (modulo < 1u)
@@ -71,6 +62,11 @@ namespace Charlotte.GameCommons
 			return (int)this.GetUInt((uint)modulo);
 		}
 
+		public int GetRange(int minval, int maxval)
+		{
+			return this.GetInt(maxval - minval + 1) + minval;
+		}
+
 		public void Shuffle<T>(T[] arr)
 		{
 			for (int index = arr.Length; 2 <= index; index--)
@@ -80,11 +76,6 @@ namespace Charlotte.GameCommons
 		public T ChooseOne<T>(T[] arr)
 		{
 			return arr[this.GetInt(arr.Length)];
-		}
-
-		public int GetRange(int minval, int maxval)
-		{
-			return this.GetInt(maxval - minval + 1) + minval;
 		}
 	}
 }
