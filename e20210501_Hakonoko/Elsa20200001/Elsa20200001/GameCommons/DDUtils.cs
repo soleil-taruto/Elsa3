@@ -532,7 +532,7 @@ namespace Charlotte.GameCommons
 		/// <summary>
 		/// 指定値をラジアンに変換する。
 		/// 0 を 0rad
-		/// サイクル値 を (2.0 * PI)rad とする。
+		/// cycle を (2.0 * PI)rad とする。
 		/// 戻り値の範囲：0.0 ～ (2.0 * PI)
 		/// </summary>
 		/// <param name="value">指定値</param>

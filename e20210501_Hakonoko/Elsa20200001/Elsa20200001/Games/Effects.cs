@@ -76,7 +76,10 @@ namespace Charlotte.Games
 		{
 			double rot = DDUtils.ToAngle(DDEngine.ProcFrame, cycle);
 
-			foreach (DDScene scene in DDSceneUtils.Create(30))
+			const int FRAME_COUNT = 30; // このエフェクトが終わるまでのフレーム数
+			const int PROC_PER_FRAME = 10; // フレーム毎の処理回数
+
+			foreach (DDScene scene in DDSceneUtils.Create(FRAME_COUNT * PROC_PER_FRAME))
 			{
 				double centerX = Game.I.Player.X;
 				double centerY = Game.I.Player.Y;
@@ -90,11 +93,12 @@ namespace Charlotte.Games
 				MapCell cell = Game.I.Map.GetCell(mapPt);
 
 				if (!cell.IsDefault && cell.IsWall())
-					DDUtils.Approach(ref cell.ColorPhaseShift, 正しいルート ? -1.0 : 1.0, 0.5);
+					DDUtils.Approach(ref cell.ColorPhaseShift, 正しいルート ? -1.0 : 1.0, 0.85);
 
 				rot += rotAdd;
 
-				yield return true;
+				if (scene.Numer % PROC_PER_FRAME == 0)
+					yield return true;
 			}
 		}
 	}

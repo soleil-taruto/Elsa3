@@ -104,6 +104,8 @@ namespace Charlotte.Games
 		public double LastExec行き先案内_X = -SCommon.IMAX;
 		public double LastExec行き先案内_Y = -SCommon.IMAX;
 
+		private int FreezeCount_Repair_Cell_ColorPhaseShift = 0;
+
 		public void Perform()
 		{
 			this.ReloadEnemies();
@@ -703,17 +705,21 @@ namespace Charlotte.Games
 					}
 				}
 
-				for (int c = 0; c < 100; c++) // 回数_適当
+				if (!DDUtils.CountDown(ref this.FreezeCount_Repair_Cell_ColorPhaseShift))
 				{
-					MapCell cell = this.Map.GetCell(
-						DDUtils.Random.GetInt(this.Map.W),
-						DDUtils.Random.GetInt(this.Map.H)
-						);
+					for (int c = 0; c < 100; c++) // 回数_適当
+					{
+						MapCell cell = this.Map.GetCell(
+							DDUtils.Random.GetInt(this.Map.W),
+							DDUtils.Random.GetInt(this.Map.H)
+							);
 
-					//if (cell.IsDefault)
-					//    throw null; // never
+						//if (cell.IsDefault)
+						//    throw null; // never
 
-					cell.ColorPhaseShift *= 0.99;
+						cell.ColorPhaseShift *= 0.5;
+						//cell.ColorPhaseShift *= 0.99; // old
+					}
 				}
 
 				f_ゴミ回収();
@@ -771,13 +777,15 @@ namespace Charlotte.Games
 
 		private void 行き先案内_Effect(double x, double y, bool 正しいルート)
 		{
-			// TODO 2021.6.3
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(11, 0.01, 700, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(13, 0.02, 600, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(17, 0.03, 500, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(19, 0.04, 400, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(23, 0.05, 300, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(29, 0.06, 200, 正しいルート)));
+			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(31, 0.07, 100, 正しいルート)));
 
-			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(50, 0.3, 100, 正しいルート)));
-			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(60, 0.4, 200, 正しいルート)));
-			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(70, 0.5, 300, 正しいルート)));
-			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(80, 0.6, 400, 正しいルート)));
-			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(90, 0.7, 500, 正しいルート)));
+			FreezeCount_Repair_Cell_ColorPhaseShift = 60;
 		}
 
 		public void TakeSnapshot()
