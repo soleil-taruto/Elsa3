@@ -22,9 +22,9 @@ namespace Charlotte.Tests.Games
 			//startStageIndex = 4;
 			//startStageIndex = 5;
 			//startStageIndex = 6;
-			//startStageIndex = 7;
+			startStageIndex = 7;
 			//startStageIndex = 8;
-			startStageIndex = 9;
+			//startStageIndex = 9;
 
 			// ----
 

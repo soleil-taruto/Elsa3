@@ -771,6 +771,8 @@ namespace Charlotte.Games
 
 		private void 行き先案内_Effect(double x, double y, bool 正しいルート)
 		{
+			// TODO 2021.6.3
+
 			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(50, 0.3, 100, 正しいルート)));
 			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(60, 0.4, 200, 正しいルート)));
 			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(70, 0.5, 300, 正しいルート)));
