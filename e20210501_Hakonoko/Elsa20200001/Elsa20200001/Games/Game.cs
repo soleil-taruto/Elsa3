@@ -785,6 +785,8 @@ namespace Charlotte.Games
 			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(29, 0.06, 200, 正しいルート)));
 			DDGround.EL.Add(SCommon.Supplier(Effects.行き先案内(31, 0.07, 100, 正しいルート)));
 
+			// Effects.行き先案内()は30フレームで終了する。
+
 			FreezeCount_Repair_Cell_ColorPhaseShift = 60;
 		}
 
