@@ -64,6 +64,8 @@ namespace Charlotte
 						Game.I == null ? "-" : "" + Game.I.Player.X.ToString("F1"),
 						Game.I == null ? "-" : "" + Game.I.Player.Y.ToString("F1"),
 
+						Game.I == null ? "-" : "" + Game.I.RepairingCells.Count,
+
 						// デバッグ表示する情報をここへ追加..
 
 						DDEngine.FrameProcessingMillis,

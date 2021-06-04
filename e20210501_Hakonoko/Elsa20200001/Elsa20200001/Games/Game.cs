@@ -104,6 +104,8 @@ namespace Charlotte.Games
 		public double LastExec行き先案内_X = -SCommon.IMAX;
 		public double LastExec行き先案内_Y = -SCommon.IMAX;
 
+		public DDList<MapCell> RepairingCells = new DDList<MapCell>();
+
 		public void Perform()
 		{
 			this.ReloadEnemies();
@@ -703,18 +705,32 @@ namespace Charlotte.Games
 					}
 				}
 
-				for (int c = 0; c < 100; c++) // 回数_適当
+				// RepairingCell
 				{
-					MapCell cell = this.Map.GetCell(
-						DDUtils.Random.GetInt(this.Map.W),
-						DDUtils.Random.GetInt(this.Map.H)
-						);
+					for (int c = 0; c < 100; c++) // 回数_適当
+					{
+						MapCell cell = this.Map.GetCell(
+							DDUtils.Random.GetInt(this.Map.W),
+							DDUtils.Random.GetInt(this.Map.H)
+							);
 
-					//if (cell.IsDefault)
-					//    throw null; // never
+						//if (cell.IsDefault)
+						//    throw null; // never
 
-					cell.ColorPhaseShift *= 0.5;
-					//cell.ColorPhaseShift *= 0.99; // old
+						this.RepairingCells.Add(cell);
+					}
+					for (int c = 0; c < 100; c++) // 回数_適当
+					{
+						int a = DDUtils.Random.GetInt(this.RepairingCells.Count);
+						int b = DDUtils.Random.GetInt(this.RepairingCells.Count);
+
+						if (a != b && this.RepairingCells[a] == this.RepairingCells[b]) // ? 異なる位置 && 同じセル -> 削除
+							this.RepairingCells.FastRemoveAt(a);
+					}
+					this.RepairingCells.RemoveAll(cell => Math.Abs(cell.ColorPhaseShift) < SCommon.MICRO);
+
+					foreach (MapCell cell in this.RepairingCells.Iterate())
+						cell.ColorPhaseShift *= Math.Abs(cell.ColorPhaseShift) < 0.1 ? 0.7 : 0.99;
 				}
 
 				f_ゴミ回収();
