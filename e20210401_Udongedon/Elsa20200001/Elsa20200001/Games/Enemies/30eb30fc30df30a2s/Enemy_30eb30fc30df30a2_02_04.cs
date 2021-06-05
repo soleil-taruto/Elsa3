@@ -91,12 +91,42 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			{
 				for (int c = 0; c < 4; c++)
 				{
-					Enemy_Tama_01 tama = new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.INDIGO, 5.0, c * Math.PI * 0.5, -1, prevTamas[c]);
-					prevTamas[c] = tama;
+					Enemy_Tama_01 tama = new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.INDIGO, 5.0, c * Math.PI * 0.5);
+					Enemy_Tama_01 prevTama = prevTamas[c];
+
 					Game.I.Enemies.Add(tama);
+
+					if (prevTama != null)
+						AddSubTama(tama, prevTama);
+
+					prevTamas[c] = tama;
 				}
 				for (int c = 0; c < 6; c++)
 					yield return true;
+			}
+		}
+
+		private void AddSubTama(Enemy_Tama_01 tama1, Enemy_Tama_01 tama2)
+		{
+			const int SUB_TAMA_NUM = 5;
+
+			for (int d = 0; d < SUB_TAMA_NUM; d++)
+			{
+				double rate = (double)d / SUB_TAMA_NUM;
+
+				D2Point pt = DDUtils.AToBRate(
+					new D2Point(tama1.X, tama1.Y),
+					new D2Point(tama2.X, tama2.Y),
+					rate
+					);
+				D2Point speed = DDUtils.AToBRate(
+					new D2Point(tama1.XAdd, tama1.YAdd),
+					new D2Point(tama2.XAdd, tama2.YAdd),
+					rate
+					);
+
+				Enemy_Tama_02 subTama = new Enemy_Tama_02(pt.X, pt.Y, speed.X, speed.Y, EnemyCommon.TAMA_KIND_e.SMALL, tama1.TamaColor);
+				Game.I.Enemies.Add(subTama);
 			}
 		}
 

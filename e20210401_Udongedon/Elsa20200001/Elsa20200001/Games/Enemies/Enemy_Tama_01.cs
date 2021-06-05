@@ -7,16 +7,17 @@ using Charlotte.GameCommons;
 
 namespace Charlotte.Games.Enemies
 {
+	/// <summary>
+	/// 自機狙い弾・偶数弾・奇数弾を想定した普通の敵弾
+	/// </summary>
 	public class Enemy_Tama_01 : Enemy
 	{
-		private EnemyCommon.TAMA_KIND_e TamaKind;
-		private EnemyCommon.TAMA_COLOR_e TamaColor;
-		private double Speed;
-		private double Angle;
-		private Enemy Friend; // null == 無効
-		private bool Friended = false;
+		public EnemyCommon.TAMA_KIND_e TamaKind;
+		public EnemyCommon.TAMA_COLOR_e TamaColor;
+		public double Speed;
+		public double Angle;
 
-		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1, Enemy friend = null)
+		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1)
 			: base(x, y, Kind_e.TAMA, 0, 0, absorbableWeapon)
 		{
 			// x
@@ -30,43 +31,31 @@ namespace Charlotte.Games.Enemies
 			this.TamaColor = tamaColor;
 			this.Speed = speed;
 			this.Angle = angle;
-			this.Friend = friend;
 
-			{
-				Enemy_Tama_01 friendTama = friend as Enemy_Tama_01;
+			this.SetXYSpeed();
+		}
 
-				if (friendTama != null)
-					friendTama.Friended = true;
-			}
+		public double XAdd;
+		public double YAdd;
+
+		private void SetXYSpeed()
+		{
+			DDUtils.MakeXYSpeed(this.X, this.Y, Game.I.Player.X, Game.I.Player.Y, this.Speed, out this.XAdd, out this.YAdd);
+			DDUtils.Rotate(ref this.XAdd, ref this.YAdd, this.Angle);
 		}
 
 		protected override IEnumerable<bool> E_Draw()
 		{
-			double r;
+			double r = EnemyCommon_Tama.GetRadius(this.TamaKind);
 
-			switch (this.TamaKind)
-			{
-				case EnemyCommon.TAMA_KIND_e.NORMAL: r = 8.0; break;
-				case EnemyCommon.TAMA_KIND_e.BIG: r = 12.0; break;
-				case EnemyCommon.TAMA_KIND_e.LARGE: r = 30.0; break;
-
-				// TODO: その他の敵弾についてもここへ追加..
-
-				default:
-					throw null; // never
-			}
-			double xAdd;
-			double yAdd;
-
-			DDUtils.MakeXYSpeed(this.X, this.Y, Game.I.Player.X, Game.I.Player.Y, this.Speed, out xAdd, out yAdd);
-			DDUtils.Rotate(ref xAdd, ref yAdd, this.Angle);
+			//this.SetXYSpeed(); // moved -> Ctor
 
 			DDPicture picture = EnemyCommon.GetTamaPicture(this.TamaKind, this.TamaColor);
 
 			for (; ; )
 			{
-				this.X += xAdd;
-				this.Y += yAdd;
+				this.X += this.XAdd;
+				this.Y += this.YAdd;
 
 				DDDraw.DrawCenter(picture, this.X, this.Y);
 
@@ -85,33 +74,9 @@ namespace Charlotte.Games.Enemies
 					DDPrint.Print("[" + this.AbsorbableWeapon + "]");
 					DDPrint.Reset();
 				}
-				List<DDCrash> crashes = new List<DDCrash>();
+				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), r);
 
-				crashes.Add(DDCrashUtils.Circle(new D2Point(this.X, this.Y), r));
-
-				if (this.Friend != null && this.Friend.HP != -1)
-				{
-					D2Point pt1 = new D2Point(this.X, this.Y);
-					D2Point pt2 = new D2Point(this.Friend.X, this.Friend.Y);
-
-					const int SUB_TAMA_NUM = 5;
-					const double SUB_TAMA_ZOOM = 0.5;
-
-					for (int c = 0; c < SUB_TAMA_NUM; c++)
-					{
-						D2Point pt = DDUtils.AToBRate(pt1, pt2, (double)c / SUB_TAMA_NUM);
-
-						DDDraw.DrawBegin(picture, pt.X, pt.Y);
-						DDDraw.DrawZoom(SUB_TAMA_ZOOM);
-						DDDraw.DrawEnd();
-
-						crashes.Add(DDCrashUtils.Circle(pt, r * SUB_TAMA_ZOOM));
-					}
-				}
-				this.Crash = DDCrashUtils.Multi(crashes.ToArray());
-
-				// フレンド有り || フレンドされている場合 -> 中間の弾がフィールド上で突然消えるのをなるべく避けるため、画面外でも長めに維持する。
-				yield return !EnemyCommon.IsEvacuated(this, this.Friend != null || this.Friended ? 500.0 : 100.0);
+				yield return !EnemyCommon.IsEvacuated(this);
 			}
 		}
 
