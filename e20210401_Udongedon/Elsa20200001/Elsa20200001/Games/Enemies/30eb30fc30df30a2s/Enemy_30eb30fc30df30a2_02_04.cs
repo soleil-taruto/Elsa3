@@ -85,11 +85,16 @@ namespace Charlotte.Games.Enemies.ルーミアs
 
 		private IEnumerable<bool> E_Attack_01()
 		{
+			Enemy_Tama_01[] prevTamas = new Enemy_Tama_01[4];
+
 			for (; ; )
 			{
-				for (int c = -1; c <= 2; c++)
-					Game.I.Enemies.Add(new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.INDIGO, 5.0, c * Math.PI * 0.5));
-
+				for (int c = 0; c < 4; c++)
+				{
+					Enemy_Tama_01 tama = new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.INDIGO, 5.0, c * Math.PI * 0.5, -1, prevTamas[c]);
+					prevTamas[c] = tama;
+					Game.I.Enemies.Add(tama);
+				}
 				for (int c = 0; c < 6; c++)
 					yield return true;
 			}

@@ -13,8 +13,9 @@ namespace Charlotte.Games.Enemies
 		private EnemyCommon.TAMA_COLOR_e TamaColor;
 		private double Speed;
 		private double Angle;
+		private Enemy Friend; // null == 無効
 
-		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1)
+		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1, Enemy friend = null)
 			: base(x, y, Kind_e.TAMA, 0, 0, absorbableWeapon)
 		{
 			// x
@@ -28,6 +29,7 @@ namespace Charlotte.Games.Enemies
 			this.TamaColor = tamaColor;
 			this.Speed = speed;
 			this.Angle = angle;
+			this.Friend = friend;
 		}
 
 		protected override IEnumerable<bool> E_Draw()
@@ -77,6 +79,25 @@ namespace Charlotte.Games.Enemies
 				}
 				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), r);
 
+				if (this.Friend != null && this.Friend.HP != -1)
+				{
+					D2Point pt1 = new D2Point(this.X, this.Y);
+					D2Point pt2 = new D2Point(this.Friend.X, this.Friend.Y);
+
+					const int SUB_TAMA_NUM = 5;
+					const double SUB_TAMA_ZOOM = 0.5;
+
+					for (int c = 0; c < SUB_TAMA_NUM; c++)
+					{
+						D2Point pt = DDUtils.AToBRate(pt1, pt2, (double)c / SUB_TAMA_NUM);
+
+						DDDraw.DrawBegin(picture, pt.X, pt.Y);
+						DDDraw.DrawZoom(SUB_TAMA_ZOOM);
+						DDDraw.DrawEnd();
+
+						this.Crash = DDCrashUtils.Circle(pt, r * SUB_TAMA_ZOOM);
+					}
+				}
 				yield return !EnemyCommon.IsEvacuated(this);
 			}
 		}
