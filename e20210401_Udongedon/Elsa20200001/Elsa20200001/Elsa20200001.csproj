@@ -227,6 +227,7 @@
     <Compile Include="Games\Walls\Wall_13001.cs" />
     <Compile Include="Games\Walls\Wall_21001.cs" />
     <Compile Include="Games\Walls\Wall_21002.cs" />
+    <Compile Include="Games\Walls\Wall_31001.cs" />
     <Compile Include="Games\Walls\Wall_Dark.cs" />
     <Compile Include="Games\Walls\Wall_22001.cs" />
     <Compile Include="Games\ぼかし効果.cs" />
