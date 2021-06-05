@@ -431,7 +431,7 @@ namespace Charlotte.Games.Enemies
 		/// </summary>
 		/// <param name="enemy">敵</param>
 		/// <returns>この敵を退場させるべきか</returns>
-		public static bool IsEvacuated(Enemy enemy)
+		public static bool IsEvacuated(Enemy enemy, double margin = 100.0, double margin_登場前 = 10000.0)
 		{
 			// memo: Game.Perform にゴミ回収を設置した。
 			// -- Game.IsProbablyEvacuated()
@@ -440,8 +440,8 @@ namespace Charlotte.Games.Enemies
 				new D2Point(enemy.X, enemy.Y),
 				new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H),
 				enemy.Kind == Enemy.Kind_e.TAMA ?
-				100.0 : // 画面外の敵弾はすぐに消えてもらう。
-				1 <= enemy.OnFieldFrame ? 100.0 : 10000.0 // 画面に登場する前ならそう簡単に退場させない。
+				margin : // 画面外の敵弾はすぐに消えてもらう。
+				1 <= enemy.OnFieldFrame ? margin : margin_登場前 // 画面に登場する前ならそう簡単に退場させない。
 				);
 		}
 

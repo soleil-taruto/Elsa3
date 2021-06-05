@@ -14,6 +14,7 @@ namespace Charlotte.Games.Enemies
 		private double Speed;
 		private double Angle;
 		private Enemy Friend; // null == 無効
+		private bool Friended = false;
 
 		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1, Enemy friend = null)
 			: base(x, y, Kind_e.TAMA, 0, 0, absorbableWeapon)
@@ -30,6 +31,13 @@ namespace Charlotte.Games.Enemies
 			this.Speed = speed;
 			this.Angle = angle;
 			this.Friend = friend;
+
+			{
+				Enemy_Tama_01 friendTama = friend as Enemy_Tama_01;
+
+				if (friendTama != null)
+					friendTama.Friended = true;
+			}
 		}
 
 		protected override IEnumerable<bool> E_Draw()
@@ -77,7 +85,9 @@ namespace Charlotte.Games.Enemies
 					DDPrint.Print("[" + this.AbsorbableWeapon + "]");
 					DDPrint.Reset();
 				}
-				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), r);
+				List<DDCrash> crashes = new List<DDCrash>();
+
+				crashes.Add(DDCrashUtils.Circle(new D2Point(this.X, this.Y), r));
 
 				if (this.Friend != null && this.Friend.HP != -1)
 				{
@@ -95,10 +105,13 @@ namespace Charlotte.Games.Enemies
 						DDDraw.DrawZoom(SUB_TAMA_ZOOM);
 						DDDraw.DrawEnd();
 
-						this.Crash = DDCrashUtils.Circle(pt, r * SUB_TAMA_ZOOM);
+						crashes.Add(DDCrashUtils.Circle(pt, r * SUB_TAMA_ZOOM));
 					}
 				}
-				yield return !EnemyCommon.IsEvacuated(this);
+				this.Crash = DDCrashUtils.Multi(crashes.ToArray());
+
+				// フレンド有り || フレンドされている場合 -> 中間の弾がフィールド上で突然消えるのをなるべく避けるため、画面外でも長めに維持する。
+				yield return !EnemyCommon.IsEvacuated(this, this.Friend != null || this.Friended ? 500.0 : 100.0);
 			}
 		}
 
