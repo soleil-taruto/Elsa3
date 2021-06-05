@@ -53,6 +53,7 @@ namespace Charlotte.Games
 
 		// ====
 
+#if false // 廃止 -- 視覚効果としてイマイチ
 		private static DDSubScreen EM_Screen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
 
 		public static IEnumerable<bool> E_復元()
@@ -63,12 +64,15 @@ namespace Charlotte.Games
 				{
 					白黒効果.Perform(DDGround.MainScreen);
 				}
-				DDDraw.SetAlpha(0.666);
+				DDDraw.SetAlpha(1.0 - scene.Rate);
+				//DDDraw.SetAlpha(0.666);
+				//DDDraw.SetAlpha(0.5);
 				DDDraw.DrawSimple(EM_Screen.ToPicture(), 0, 0);
 				DDDraw.Reset();
 
 				yield return true;
 			}
 		}
+#endif
 	}
 }
