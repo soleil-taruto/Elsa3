@@ -729,8 +729,11 @@ namespace Charlotte.Games
 					}
 					this.RepairingCells.RemoveAll(cell => Math.Abs(cell.ColorPhaseShift) < SCommon.MICRO);
 
+					while (500 < this.RepairingCells.Count) // 長さ制限(長さ_適当)
+						this.RepairingCells.FastRemoveAt(DDUtils.Random.GetInt(this.RepairingCells.Count));
+
 					foreach (MapCell cell in this.RepairingCells.Iterate())
-						cell.ColorPhaseShift *= Math.Abs(cell.ColorPhaseShift) < 0.1 ? 0.7 : 0.99;
+						cell.ColorPhaseShift *= Math.Abs(cell.ColorPhaseShift) < 0.1 ? 0.93 : 0.99;
 				}
 
 				f_ゴミ回収();
