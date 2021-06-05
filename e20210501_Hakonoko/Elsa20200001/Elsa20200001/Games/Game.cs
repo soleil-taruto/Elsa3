@@ -1180,6 +1180,8 @@ namespace Charlotte.Games
 
 			波紋効果.Add(this.Player.X, this.Player.Y);
 			Ground.I.SE.Reborn.Play();
+
+			DDGround.EL.Add(SCommon.Supplier(SnapshotEffects.E_復元()));
 		}
 
 		private void RespawnCommon()

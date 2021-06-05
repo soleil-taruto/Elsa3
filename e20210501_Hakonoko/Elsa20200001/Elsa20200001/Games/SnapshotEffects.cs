@@ -50,5 +50,25 @@ namespace Charlotte.Games
 				yield return true;
 			}
 		}
+
+		// ====
+
+		private static DDSubScreen EM_Screen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
+
+		public static IEnumerable<bool> E_復元()
+		{
+			foreach (DDScene scene in DDSceneUtils.Create(30))
+			{
+				using (EM_Screen.Section())
+				{
+					白黒効果.Perform(DDGround.MainScreen);
+				}
+				DDDraw.SetAlpha(0.666);
+				DDDraw.DrawSimple(EM_Screen.ToPicture(), 0, 0);
+				DDDraw.Reset();
+
+				yield return true;
+			}
+		}
 	}
 }
