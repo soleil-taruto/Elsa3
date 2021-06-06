@@ -60,6 +60,10 @@ namespace Charlotte
 		public DDPicture P_BW_ARMY = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-camo-1a.png");
 		public DDPicture P_BW_NAVY = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-camo-1b.png");
 		public DDPicture P_BW_PUMPKIN = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-55b.png");
+		public DDPicture P_WALL_31001_前面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-zebra-1a.png");
+		public DDPicture P_WALL_31001_背面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-35a.png");
+		public DDPicture P_WALL_32001_前面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern70c.png");
+		public DDPicture P_WALL_32001_背面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-24c.png");
 		public DDPicture P_DIGITS_W = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_06.png");
 		public DDPicture P_DIGITS_DDY = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_01.png");
 		public DDPicture P_DIGITS_DY = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_02.png");

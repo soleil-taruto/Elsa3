@@ -227,10 +227,12 @@
     <Compile Include="Games\Walls\Wall_13001.cs" />
     <Compile Include="Games\Walls\Wall_21001.cs" />
     <Compile Include="Games\Walls\Wall_21002.cs" />
-    <Compile Include="Games\Walls\Wall_31001.cs" />
+    <Compile Include="Games\Walls\Wall_31001_背面.cs" />
     <Compile Include="Games\Walls\Wall_Dark.cs" />
     <Compile Include="Games\Walls\Wall_22001.cs" />
-    <Compile Include="Games\Walls\Wall_32001.cs" />
+    <Compile Include="Games\Walls\Wall_32001_背面.cs" />
+    <Compile Include="Games\Walls\Wall_31001_前面.cs" />
+    <Compile Include="Games\Walls\Wall_32001_前面.cs" />
     <Compile Include="Games\ぼかし効果.cs" />
     <Compile Include="Games\画面分割_Effect.cs" />
     <Compile Include="Games\RippleEffect.cs" />

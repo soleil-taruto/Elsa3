@@ -410,7 +410,7 @@ namespace Charlotte.Games.Enemies
 								TAMA_COLOR_e color = TAMA_COLOR_e.YELLOW;
 								int absorbableWeapon = -1;
 
-								if (div == 5 && (c == 0 || c == 5))
+								if (div == 0 || div == 5 && (c == 0 || c == 5))
 								{
 									color = TAMA_COLOR_e.BLUE;
 									absorbableWeapon = 3;

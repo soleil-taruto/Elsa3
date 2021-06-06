@@ -21,11 +21,11 @@ namespace Charlotte.Games.Scripts
 			// TODO TODO TODO TODO TODO
 			// TODO TODO TODO TODO TODO
 
-			Ground.I.Music.MUS_STAGE_02.Play();
+			Ground.I.Music.MUS_STAGE_03.Play();
 
 			Game.I.Walls.Add(new Wall_Dark());
-			Game.I.Walls.Add(new Wall_21001());
-			Game.I.Walls.Add(new Wall_21002());
+			Game.I.Walls.Add(new Wall_31001_背面());
+			Game.I.Walls.Add(new Wall_31001_前面());
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
@@ -101,6 +101,9 @@ namespace Charlotte.Games.Scripts
 				yield return true;
 
 			// ---- BOSS 登場
+
+			Game.I.Walls.Add(new Wall_32001_背面());
+			Game.I.Walls.Add(new Wall_32001_前面());
 
 			{
 				Game.I.Shots.Add(new Shot_BossBomb());
