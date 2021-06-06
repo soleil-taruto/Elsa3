@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Charlotte.Games.Walls
 {
-	public class Wall_31001 : Wall
+	public class Wall_32001 : Wall
 	{
 		protected override IEnumerable<bool> E_Draw()
 		{

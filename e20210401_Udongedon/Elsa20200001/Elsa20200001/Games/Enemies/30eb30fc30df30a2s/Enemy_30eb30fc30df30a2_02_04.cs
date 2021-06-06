@@ -91,7 +91,8 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			{
 				for (int c = 0; c < 4; c++)
 				{
-					Enemy_Tama_01 tama = new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.INDIGO, 5.0, c * Math.PI * 0.5);
+					EnemyCommon.TAMA_COLOR_e tamaColor = c % 2 == 0 ? EnemyCommon.TAMA_COLOR_e.INDIGO : EnemyCommon.TAMA_COLOR_e.GREEN;
+					Enemy_Tama_01 tama = new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, tamaColor, 5.0, c * Math.PI * 0.5);
 					Enemy_Tama_01 prevTama = prevTamas[c];
 
 					Game.I.Enemies.Add(tama);
