@@ -453,5 +453,30 @@ namespace Charlotte.GameCommons
 		{
 			return (value - a) / (b - a);
 		}
+
+		public static Func<bool> Scripter(IEnumerable<int> script)
+		{
+			return SCommon.Supplier(E_Scripter(SCommon.Supplier(script)));
+		}
+
+		private static IEnumerable<bool> E_Scripter(Func<int> a_script)
+		{
+			for (; ; )
+			{
+				int wait = a_script();
+
+				if (
+					wait < 0 ||
+					SCommon.IMAX < wait // ? 大きすぎる
+					)
+					throw new DDError("Bad wait: " + wait);
+
+				if (wait == 0) // ? default(int) -- スクリプト終了
+					break;
+
+				for (int c = 0; c < wait; c++)
+					yield return true;
+			}
+		}
 	}
 }
