@@ -70,10 +70,10 @@
 
 ■このゲームの製作者
 
-　cerulean.charlotte
+　cerulean.charlotte (soleil.taruto)
 
 　URL:
-　　http://ornithopter.ccsp.mydns.jp/recollections/SSAGame
+　　https://github.com/soleil-taruto
 
 　MAIL:
 　　cerulean.charlottes@gmail.com

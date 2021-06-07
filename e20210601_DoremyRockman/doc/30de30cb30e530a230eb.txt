@@ -54,11 +54,11 @@
 
 ■このゲームの製作者
 
-　stackprobe (soleil.taruto)
+　cerulean.charlotte (soleil.taruto)
 
 　URL:
-　　http://ornithopter.ccsp.mydns.jp/recollections/DoremyRockman
+　　https://github.com/soleil-taruto
 
 　MAIL:
-　　stackprobes@gmail.com
+　　cerulean.charlottes@gmail.com
 
