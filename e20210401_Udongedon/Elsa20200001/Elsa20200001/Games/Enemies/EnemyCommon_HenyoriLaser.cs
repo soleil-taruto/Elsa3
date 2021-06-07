@@ -7,9 +7,12 @@ namespace Charlotte.Games.Enemies
 {
 	public static class EnemyCommon_HenyoriLaser
 	{
+		/// <summary>
+		/// レーザーの長さ
+		/// </summary>
 		public enum LASER_LENGTH_KIND_e
 		{
-			SHORT,
+			SHORT = 1,
 			MIDDLE,
 			LONG,
 		}
