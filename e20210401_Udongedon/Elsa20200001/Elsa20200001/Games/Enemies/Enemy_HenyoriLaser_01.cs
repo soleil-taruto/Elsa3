@@ -8,8 +8,8 @@ namespace Charlotte.Games.Enemies
 {
 	public class Enemy_HenyoriLaser_01 : Enemy_HenyoriLaser
 	{
-		public Enemy_HenyoriLaser_01(double x, double y, EnemyCommon_HenyoriLaser.LASER_COLOR_e color)
-			: base(x, y, color)
+		public Enemy_HenyoriLaser_01(double x, double y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e lenKind, EnemyCommon_HenyoriLaser.LASER_COLOR_e color)
+			: base(x, y, lenKind, color)
 		{ }
 
 		protected override IEnumerable<bool> E_UpdateParameters()

@@ -21,6 +21,7 @@ namespace Charlotte.Games.Scripts.Tests
 				Game.I.Enemies.Add(new Enemy_HenyoriLaser_01(
 					GameConsts.FIELD_W / 2,
 					GameConsts.FIELD_H / 2,
+					(EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e)DDUtils.Random.GetInt(3),
 					(EnemyCommon_HenyoriLaser.LASER_COLOR_e)DDUtils.Random.GetInt(7)
 					));
 

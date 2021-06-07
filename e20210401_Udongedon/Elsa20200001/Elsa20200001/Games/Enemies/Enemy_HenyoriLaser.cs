@@ -12,21 +12,44 @@ namespace Charlotte.Games.Enemies
 	/// </summary>
 	public abstract class Enemy_HenyoriLaser : Enemy
 	{
+		private DDPicture[,] PictureTable;
+		private int PointNum;
 		private EnemyCommon_HenyoriLaser.LASER_COLOR_e Color;
-		protected double Speed = 10.0;
-		protected double Angle = 0.0;
-		protected double Width = 20.0;
-		private D2Point[] Points = new D2Point[EnemyCommon_HenyoriLaser.POINT_NUM];
-		private int FirstPointIndex = 0;
+		private D2Point[] Points;
+		private P4Poly[] Polys;
 
-		public Enemy_HenyoriLaser(double x, double y, EnemyCommon_HenyoriLaser.LASER_COLOR_e color)
+		public Enemy_HenyoriLaser(double x, double y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e lenKind, EnemyCommon_HenyoriLaser.LASER_COLOR_e color)
 			: base(x, y, Kind_e.TAMA, 0, 0)
 		{
-			this.Color = color;
+			switch (lenKind)
+			{
+				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.SHORT:
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_01;
+					this.PointNum = 17;
+					break;
 
-			for (int index = 0; index < EnemyCommon_HenyoriLaser.POINT_NUM; index++)
+				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.MIDDLE:
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_02;
+					this.PointNum = 33;
+					break;
+
+				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.LONG:
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_03;
+					this.PointNum = 65;
+					break;
+
+				default:
+					throw new DDError();
+			}
+			this.Color = color;
+			this.Points = new D2Point[this.PointNum];
+			this.Polys = new P4Poly[this.PointNum - 1];
+
+			for (int index = 0; index < this.Points.Length; index++)
 				this.Points[index] = new D2Point(x, y);
 		}
+
+		private int FirstPointIndex = 0;
 
 		protected override IEnumerable<bool> E_Draw()
 		{
@@ -40,8 +63,8 @@ namespace Charlotte.Games.Enemies
 
 				int prevFirstPointIndex = this.FirstPointIndex;
 
-				this.FirstPointIndex += EnemyCommon_HenyoriLaser.POINT_NUM - 1;
-				this.FirstPointIndex %= EnemyCommon_HenyoriLaser.POINT_NUM;
+				this.FirstPointIndex += this.PointNum - 1;
+				this.FirstPointIndex %= this.PointNum;
 
 				this.Points[this.FirstPointIndex] = this.Points[prevFirstPointIndex];
 				this.Points[this.FirstPointIndex].X += ptAdd.X;
@@ -54,14 +77,12 @@ namespace Charlotte.Games.Enemies
 			}
 		}
 
-		private P4Poly[] Polys = new P4Poly[EnemyCommon_HenyoriLaser.POINT_NUM - 1];
-
 		private void DrawLaser()
 		{
-			for (int index = 0; index < EnemyCommon_HenyoriLaser.POINT_NUM - 1; index++)
+			for (int index = 0; index < this.PointNum - 1; index++)
 			{
-				int currPtIndex = (this.FirstPointIndex + index + 0) % EnemyCommon_HenyoriLaser.POINT_NUM;
-				int prevPtIndex = (this.FirstPointIndex + index + 1) % EnemyCommon_HenyoriLaser.POINT_NUM;
+				int currPtIndex = (this.FirstPointIndex + index + 0) % this.PointNum;
+				int prevPtIndex = (this.FirstPointIndex + index + 1) % this.PointNum;
 
 				double angle = DDUtils.GetAngle(this.Points[currPtIndex] - this.Points[prevPtIndex]);
 				D2Point leftWing = DDUtils.AngleToPoint(angle - Math.PI * 0.5, this.Width * 0.5);
@@ -89,7 +110,7 @@ namespace Charlotte.Games.Enemies
 			for (int index = 0; index < this.Polys.Length; index++)
 			{
 				DDDraw.SetIgnoreError();
-				DDDraw.DrawFree(Ground.I.Picture2.D_HENYORI_LASER[(int)this.Color, index], this.Polys[index]);
+				DDDraw.DrawFree(this.PictureTable[(int)this.Color, index], this.Polys[index]);
 				DDDraw.Reset();
 			}
 		}
@@ -98,6 +119,10 @@ namespace Charlotte.Games.Enemies
 		{
 			//throw new NotImplementedException(); // TODO
 		}
+
+		protected double Speed = 10.0;
+		protected double Angle = 0.0;
+		protected double Width = 20.0;
 
 		/// <summary>
 		/// 処理すべきこと：

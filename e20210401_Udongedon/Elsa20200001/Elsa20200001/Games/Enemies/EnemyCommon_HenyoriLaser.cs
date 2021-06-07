@@ -7,7 +7,12 @@ namespace Charlotte.Games.Enemies
 {
 	public static class EnemyCommon_HenyoriLaser
 	{
-		public const int POINT_NUM = 17;
+		public enum LASER_LENGTH_KIND_e
+		{
+			SHORT,
+			MIDDLE,
+			LONG,
+		}
 
 		/// <summary>
 		/// レーザーの色

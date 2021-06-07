@@ -97,6 +97,8 @@ namespace Charlotte
 
 		public DDPicture 吸収している武器 = DDDerivations.GetPicture(Ground.I.Picture.P_FAIRYETC, 128, 0, 64, 64);
 
-		public DDPicture[,] D_HENYORI_LASER = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 16, 7, 16);
+		public DDPicture[,] D_HENYORI_LASER_01 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 16, 7, 16);
+		public DDPicture[,] D_HENYORI_LASER_02 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 8, 7, 32);
+		public DDPicture[,] D_HENYORI_LASER_03 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 4, 7, 64);
 	}
 }
