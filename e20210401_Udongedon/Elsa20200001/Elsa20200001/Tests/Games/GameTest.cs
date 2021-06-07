@@ -38,7 +38,9 @@ namespace Charlotte.Tests.Games
 			//script = new Script_テスト0002();
 			//script = new Script_テスト1001(); // サンプルゲーム用メイン0001
 			//script = new Script_テスト2001();
-			script = new Script_テスト3001();
+			//script = new Script_テスト3001();
+			//script = new Script_テスト3002();
+			script = new Script_テスト3011();
 			//script = new Script_鍵山雛テスト0001();
 			//script = new Script_鍵山雛テスト0002();
 			//script = new Script_鍵山雛通しテスト0001();

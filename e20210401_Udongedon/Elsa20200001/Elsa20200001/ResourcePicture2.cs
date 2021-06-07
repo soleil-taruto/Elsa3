@@ -49,11 +49,12 @@ namespace Charlotte
 		// --
 
 		public DDPicture[] D_ENEMYDIE_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_ENEMYDIE, 0, 0, 192, 192, 5, 2).ToArray();
-		public DDPicture[] D_ENEMYDIE_00_BGRA = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_ENEMYDIE_ABGR, 0, 0, 192, 192, 5, 2).ToArray();
+		public DDPicture[] D_ENEMYDIE_00_ABGR = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_ENEMYDIE_ABGR, 0, 0, 192, 192, 5, 2).ToArray();
 		public DDPicture[] D_ENEMYSHOTDIE_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_ENEMYSHOTDIE, 0, 0, 60, 60, 10, 1).ToArray();
 		public DDPicture[] D_PLAYERDIE_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_PLAYERDIE, 0, 0, 240, 240, 10, 1).ToArray();
 		public DDPicture[] D_PUMPKIN_00 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_PUMPKIN, 0, 0, 32, 32, 1, 2).ToArray();
-		public DDPicture[] D_PUMPKIN_00_GRBA = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_PUMPKIN_AGRB, 0, 0, 32, 32, 1, 2).ToArray();
+		public DDPicture[] D_PUMPKIN_00_AGRB = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_PUMPKIN_AGRB, 0, 0, 32, 32, 1, 2).ToArray();
+		public DDPicture[] D_PUMPKIN_00_ARBG = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_PUMPKIN_ARBG, 0, 0, 32, 32, 1, 2).ToArray();
 
 		/// <summary>
 		/// 添字：D_TAMA_00[EnemyCommon.TAMA_KIND_e][EnemyCommon.TAMA_COLOR_e]

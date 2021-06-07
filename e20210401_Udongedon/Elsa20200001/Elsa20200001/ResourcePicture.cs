@@ -51,6 +51,7 @@ namespace Charlotte
 		public DDPicture P_PLAYERDIE = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\sentou-effect-anime4\640x480\pipo-btleffect049.png");
 		public DDPicture P_PUMPKIN = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\DVDM\Enemy11.png");
 		public DDPicture P_PUMPKIN_AGRB = DDPictureLoaders.SelectARGB(@"dat\Shoot_old_Resource\DVDM\Enemy11.png", "AGRB");
+		public DDPicture P_PUMPKIN_ARBG = DDPictureLoaders.SelectARGB(@"dat\Shoot_old_Resource\DVDM\Enemy11.png", "ARBG");
 		public DDPicture P_TAMA = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\kuushot\kuushot.png");
 		public DDPicture P_TAMA_B = DDPictureLoaders.RGBToTrans(@"dat\Shoot_old_Resource\kuushot\kuushot.png", new I3Color(0, 0, 0));
 		public DDPicture P_BLUETILE_01 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\989-tileable-midnight-blue-grunge-patterns\tileable_midnight_blue_grunge_pattern_1.jpg");

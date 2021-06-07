@@ -52,7 +52,7 @@ namespace Charlotte.Games.Enemies
 				koma %= 2;
 
 				DDDraw.SetMosaic();
-				DDDraw.DrawBegin(Ground.I.Picture2.D_PUMPKIN_00_GRBA[koma], this.X, this.Y);
+				DDDraw.DrawBegin(Ground.I.Picture2.D_PUMPKIN_00_AGRB[koma], this.X, this.Y);
 				DDDraw.DrawZoom(3.0);
 				DDDraw.DrawEnd();
 				DDDraw.Reset();

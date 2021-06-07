@@ -47,7 +47,7 @@ namespace Charlotte.Games
 			foreach (DDScene scene in DDSceneUtils.Create(19))
 			{
 				DDDraw.SetAlpha(0.7);
-				DDDraw.DrawBegin(Ground.I.Picture2.D_ENEMYDIE_00_BGRA[scene.Numer / 2], x, y);
+				DDDraw.DrawBegin(Ground.I.Picture2.D_ENEMYDIE_00_ABGR[scene.Numer / 2], x, y);
 				DDDraw.DrawRotate(r);
 				DDDraw.DrawEnd();
 				DDDraw.Reset();
