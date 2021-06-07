@@ -127,7 +127,7 @@ namespace Charlotte.Games.Enemies
 				D2Point currPt = this.Points[currPtIndex];
 				D2Point prevPt = this.Points[prevPtIndex];
 
-				int R = Math.Max(4, (int)(this.Width / 2) - 1);
+				double R = this.Width * 0.4;
 
 				if (index < this.PointNum / 3 || this.PointNum / 3 * 2 < index)
 					R /= 2;
