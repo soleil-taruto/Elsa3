@@ -20,6 +20,8 @@ namespace Charlotte.Games.Enemies
 		public Enemy_Tama_01(double x, double y, EnemyCommon.TAMA_KIND_e tamaKind, EnemyCommon.TAMA_COLOR_e tamaColor, double speed, double angle, int absorbableWeapon = -1)
 			: base(x, y, Kind_e.TAMA, 0, 0, absorbableWeapon)
 		{
+			// angle == 自機に対して何度ずらすか
+
 			// x
 			// y
 			// tamaKind

@@ -74,5 +74,6 @@ namespace Charlotte
 		public DDPicture P_MAHOJIN_HAJIKE = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\sentou-effect-anime1\640x480\pipo-btleffect007.png");
 		//public DDPicture P_TITLE_WALL = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\run\22350006_big_p20.jpg");
 		public DDPicture P_FUJINBOSS = DDPictureLoaders.RGBToTrans(@"dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-kaze-ti2.png", new I3Color(0, 0, 0));
+		public DDPicture P_HENYORI_LASER = DDPictureLoaders.Standard(@"dat\lazer.png");
 	}
 }

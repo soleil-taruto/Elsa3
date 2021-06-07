@@ -8,7 +8,7 @@ using Charlotte.GameCommons;
 namespace Charlotte.Games.Enemies
 {
 	/// <summary>
-	/// シンプルな敵弾
+	/// シンプルな普通の敵弾
 	/// </summary>
 	public class Enemy_Tama_02 : Enemy
 	{

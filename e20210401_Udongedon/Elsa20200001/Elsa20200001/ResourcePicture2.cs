@@ -96,5 +96,7 @@ namespace Charlotte
 		public DDPicture[] ルーミア = DDDerivations.GetAnimation_YX(Ground.I.Picture.DotOther, 0, 256, 128, 128, 4, 1).ToArray();
 
 		public DDPicture 吸収している武器 = DDDerivations.GetPicture(Ground.I.Picture.P_FAIRYETC, 128, 0, 64, 64);
+
+		public DDPicture[,] D_HENYORI_LASER = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 16, 7, 16);
 	}
 }

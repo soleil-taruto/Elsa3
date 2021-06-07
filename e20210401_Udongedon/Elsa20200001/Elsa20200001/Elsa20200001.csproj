@@ -91,9 +91,12 @@
     <Compile Include="Consts.cs" />
     <Compile Include="GameCommons\DDTask.cs" />
     <Compile Include="GameCommons\DDTouch.cs" />
+    <Compile Include="Games\Enemies\EnemyCommon_HenyoriLaser.cs" />
     <Compile Include="Games\Enemies\EnemyCommon_Tama.cs" />
     <Compile Include="Games\Enemies\Enemy_0001B.cs" />
+    <Compile Include="Games\Enemies\Enemy_HenyoriLaser_01.cs" />
     <Compile Include="Games\Enemies\Enemy_JackOLantern_02.cs" />
+    <Compile Include="Games\Enemies\Enemy_HenyoriLaser.cs" />
     <Compile Include="Games\Enemies\Enemy_Tama_02.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyCommon_ルーミア.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyConsts_ルーミア.cs" />
@@ -189,6 +192,7 @@
     <Compile Include="Games\Scripts\Tests\Script_テスト0001.cs" />
     <Compile Include="Games\Scripts\Tests\Script_テスト0002.cs" />
     <Compile Include="Games\Scripts\Tests\Script_テスト1001.cs" />
+    <Compile Include="Games\Scripts\Tests\Script_テスト3001.cs" />
     <Compile Include="Games\Scripts\Tests\Script_ルーミアテスト_0001.cs" />
     <Compile Include="Games\Scripts\Tests\Script_ルーミアテスト_0002.cs" />
     <Compile Include="Games\Scripts\Tests\Script_ルーミアテスト_0003.cs" />
