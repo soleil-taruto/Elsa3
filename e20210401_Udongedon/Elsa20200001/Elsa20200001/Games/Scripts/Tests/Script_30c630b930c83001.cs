@@ -18,9 +18,13 @@ namespace Charlotte.Games.Scripts.Tests
 
 			for (; ; )
 			{
-				Game.I.Enemies.Add(new Enemy_HenyoriLaser_01(200, 100, (EnemyCommon_HenyoriLaser.LASER_COLOR_e)DDUtils.Random.GetInt(7)));
+				Game.I.Enemies.Add(new Enemy_HenyoriLaser_01(
+					GameConsts.FIELD_W / 2,
+					GameConsts.FIELD_H / 2,
+					(EnemyCommon_HenyoriLaser.LASER_COLOR_e)DDUtils.Random.GetInt(7)
+					));
 
-				for (int w = 0; w < 60; w++)
+				for (int w = 0; w < 10; w++)
 					yield return true;
 
 				yield return true;

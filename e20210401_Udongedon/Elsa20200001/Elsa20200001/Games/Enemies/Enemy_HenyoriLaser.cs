@@ -50,7 +50,7 @@ namespace Charlotte.Games.Enemies
 				this.DrawLaser();
 				this.Put当たり判定();
 
-				yield return true;
+				yield return this.Points.Any(pt => !DDUtils.IsOut(pt, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H), this.Width * 0.5));
 			}
 		}
 
