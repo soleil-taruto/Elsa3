@@ -16,13 +16,13 @@ namespace Charlotte.Games.Enemies
 		{
 			this.Angle = DDUtils.Random.Real() * Math.PI * 2.0;
 			this.Speed = DDUtils.Random.Real() * 10.0 + 5.0;
-			this.Width = DDUtils.Random.Real() * 10.0 + 5.0;
+			this.Width = DDUtils.Random.Real() * 15.0 + 5.0;
 
 			double ad = this.Angle + DDUtils.Random.DReal() * Math.PI * 2.0;
 			double ar = DDUtils.Random.Real() * 0.098 + 0.901;
 			double sd = DDUtils.Random.Real() * 10.0 + 5.0;
 			double sr = DDUtils.Random.Real() * 0.098 + 0.901;
-			double wd = DDUtils.Random.Real() * 10.0 + 5.0;
+			double wd = DDUtils.Random.Real() * 15.0 + 5.0;
 			double wr = DDUtils.Random.Real() * 0.098 + 0.901;
 
 			for (; ; )

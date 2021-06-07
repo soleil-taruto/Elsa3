@@ -117,7 +117,31 @@ namespace Charlotte.Games.Enemies
 
 		private void Put当たり判定()
 		{
-			//throw new NotImplementedException(); // TODO
+			List<DDCrash> crashes = new List<DDCrash>();
+
+			for (int index = 1; index < this.PointNum - 2; index++) // 先頭と終端は除外
+			{
+				int currPtIndex = (this.FirstPointIndex + index + 0) % this.PointNum;
+				int prevPtIndex = (this.FirstPointIndex + index + 1) % this.PointNum;
+
+				D2Point currPt = this.Points[currPtIndex];
+				D2Point prevPt = this.Points[prevPtIndex];
+
+				int R = Math.Max(4, (int)(this.Width / 2) - 1);
+
+				if (index < this.PointNum / 3 || this.PointNum / 3 * 2 < index)
+					R /= 2;
+
+				int PLOT_NUM = (int)(DDUtils.GetDistance(currPt, prevPt) / R) + 1;
+
+				for (int c = 0; c < PLOT_NUM; c++)
+				{
+					D2Point pt = DDUtils.AToBRate(currPt, prevPt, (double)c / PLOT_NUM);
+
+					crashes.Add(DDCrashUtils.Circle(pt, R));
+				}
+			}
+			this.Crash = DDCrashUtils.Multi(crashes.ToArray());
 		}
 
 		protected double Speed = 10.0;
