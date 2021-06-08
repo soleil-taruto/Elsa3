@@ -7,10 +7,10 @@ using Charlotte.GameCommons;
 namespace Charlotte.Games.Enemies
 {
 	/// <summary>
-	/// へにょりレーザー妖精
-	/// 放射レーザー
+	/// へにょりレーザー妖精_v2
+	/// 自機狙いレーザー
 	/// </summary>
-	public class Enemy_3001 : Enemy
+	public class Enemy_3002 : Enemy
 	{
 		private EnemyCommon.FairyInfo Fairy;
 		//private int ShotType;
@@ -21,7 +21,7 @@ namespace Charlotte.Games.Enemies
 		private double YAdd;
 		private double ApproachingRate;
 
-		public Enemy_3001(double x, double y, int hp, int transFrame, int fairyKind, int shotType, int dropItemType, double targetX, double targetY, double xAdd, double yAdd, double approachingRate)
+		public Enemy_3002(double x, double y, int hp, int transFrame, int fairyKind, int shotType, int dropItemType, double targetX, double targetY, double xAdd, double yAdd, double approachingRate)
 			: base(x, y, Kind_e.ENEMY, hp, transFrame)
 		{
 			if (shotType != 0) throw null; // 不使用なので常にゼロを指定すること。
@@ -69,22 +69,9 @@ namespace Charlotte.Games.Enemies
 				double x = this.X;
 				double y = this.Y;
 
-				const int SHOOT_NUM = 24;
+				Game.I.Enemies.Add(new Enemy_HenyoriLaser_04(x, y, EnemyCommon_HenyoriLaser.LASER_COLOR_e.BLUE));
 
-				// 射撃
-				for (int c = 0; c < SHOOT_NUM; c++)
-				{
-					EnemyCommon_HenyoriLaser.LASER_COLOR_e color =
-						c % 2 == 0 ?
-						EnemyCommon_HenyoriLaser.LASER_COLOR_e.YELLOW :
-						EnemyCommon_HenyoriLaser.LASER_COLOR_e.PURPLE;
-
-					Game.I.Enemies.Add(new Enemy_HenyoriLaser_03(x, y, color, Math.PI * 0.5 + ((double)c / SHOOT_NUM) * Math.PI * 2.0));
-
-					yield return 5; // 射撃_間隔
-				}
-
-				yield return 60; // 移動
+				yield return 10; // 移動
 			}
 		}
 

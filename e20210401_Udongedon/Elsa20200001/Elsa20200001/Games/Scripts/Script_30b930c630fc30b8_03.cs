@@ -24,20 +24,27 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 60; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 30, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 30, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_0001(200.0, -50.0, 1, 30, 5, 100, 22, 4.0, -1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(300.0, -100.0, 1, 30, 5, 100, 22, 4.0, -1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(400.0, -150.0, 1, 30, 5, 100, 22, 4.0, -1, 350.0, 0.97));
+
+			for (int c = 0; c < 240; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 200, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 200, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
 
 			for (int c = 0; c < 90; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(200, -100.0, 30, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(312, -100.0, 30, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(200, -100.0, 200, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(312, -100.0, 200, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
 
 			for (int c = 0; c < 90; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 30, 10, 0, 21, 50.0, 2.0, 0.0, 0.1));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 30, 10, 0, 22, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 200, 10, 0, 21, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 200, 10, 0, 22, 50.0, 2.0, 0.0, 0.1));
 
 			for (int c = 0; c < 240; c++)
 				yield return true;
@@ -60,59 +67,37 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 180; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_3001(-100, -100, 1000, 60, 4, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
+			Game.I.Enemies.Add(new Enemy_3001(-100, -100, 300, 60, 4, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_3001(GameConsts.FIELD_W + 100, -100, 1000, 60, 4, 0, 22, GameConsts.FIELD_W, 300.0, -1.0, 0.0, 0.98));
-
-			for (int c = 0; c < 6000; c++)
-				yield return true;
-
-
-
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -50.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -100.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -150.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -200.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -250.0, 1, 30, 1, 111, 2, 4.0, -1, 350.0, 0.97));
-
-			for (int c = 0; c < 180; c++)
-				yield return true;
-
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-50.0, 450.0, 150, 30, 200, 2, 1.0));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-150.0, 450.0, 150, 30, 200, 2, 1.0));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-250.0, 450.0, 150, 30, 200, 2, 1.0));
-
-			for (int c = 0; c < 180; c++)
-				yield return true;
-
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(GameConsts.FIELD_W + 50.0, 450.0, 150, 30, 200, 2, -1.0));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(GameConsts.FIELD_W + 150.0, 400.0, 150, 30, 200, 2, -1.0));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(GameConsts.FIELD_W + 250.0, 350.0, 300, 30, 210, 2, -1.0));
-
-			for (int c = 0; c < 500; c++)
-				yield return true;
-
-			for (int c = 0; c < 100; c++)
-			{
-				double rate = DDUtils.Random.Real();
-
-				Game.I.Enemies.Add(new Enemy_0001B(-30.0,
-					rate * GameConsts.FIELD_H, 1, 10, 1, 0, 2, 1.0));
-				Game.I.Enemies.Add(new Enemy_0001B(GameConsts.FIELD_W + 30.0,
-					rate * GameConsts.FIELD_H, 1, 10, 2, 0, 2, 1.0));
-				Game.I.Enemies.Add(new Enemy_0001B(rate * GameConsts.FIELD_W, -30.0,
-					1, 10, 3, 0, 3, 1.0));
-				Game.I.Enemies.Add(new Enemy_0001B(rate * GameConsts.FIELD_W, GameConsts.FIELD_H + 30.0,
-					1, 10, 4, 0, 4, 1.0));
-
-				for (int d = 0; d < 10; d++)
-					yield return true;
-			}
+			Game.I.Enemies.Add(new Enemy_3001(GameConsts.FIELD_W + 100, -100, 300, 60, 4, 0, 22, GameConsts.FIELD_W, 300.0, -1.0, 0.0, 0.98));
 
 			for (int c = 0; c < 300; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_3002(-100, -100, 1000, 60, 6, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
+
+			for (int c = 0; c < 200; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_3002(600, -100, 1000, 60, 6, 0, 22, 500, 300.0, -1.0, 0.0, 0.98));
+
+			for (int c = 0; c < 250; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-50.0, 100.0, 150, 30, 200, 22, 1.0));
+
+			Game.I.Enemies.Add(new Enemy_3002(-99, 600, 1000, 60, 6, 0, 21, 100, 300.0, 0.0, -0.2, 0.99));
+			Game.I.Enemies.Add(new Enemy_3002(600, 600, 1000, 60, 6, 0, 21, 412, 300.0, 0.0, -0.2, 0.99));
+
+			for (int c = 0; c < 200; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_JackOLantern_02(600.0, 150.0, 150, 30, 200, 22, -1.0));
+
+			for (int c = 0; c < 600; c++)
 				yield return true;
 
 			// ---- BOSS 登場

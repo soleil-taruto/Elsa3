@@ -16,12 +16,12 @@ namespace Charlotte.Games.Scripts.Tests
 			Game.I.Walls.Add(new Wall_21001());
 			Game.I.Walls.Add(new Wall_21002());
 
-			Game.I.Enemies.Add(new Enemy_3001(-100, -100, 300, 60, 4, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
+			Game.I.Enemies.Add(new Enemy_3001(-100, -100, 1000, 60, 4, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_3001(GameConsts.FIELD_W + 100, -100, 300, 60, 4, 0, 22, GameConsts.FIELD_W, 300.0, -1.0, 0.0, 0.98));
+			Game.I.Enemies.Add(new Enemy_3001(GameConsts.FIELD_W + 100, -100, 1000, 60, 4, 0, 22, GameConsts.FIELD_W, 300.0, -1.0, 0.0, 0.98));
 
 			for (; ; )
 			{
