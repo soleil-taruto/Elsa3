@@ -26,7 +26,8 @@ namespace Charlotte.Games.Shots
 			this.マスク_TargetColor.G = 0.0;
 			this.マスク_TargetColor.A = 0.25;
 
-			for (int frame = 0; frame < GameConsts.PLAYER_BOMB_FRAME_MAX + 60; frame++)
+			for (int frame = 0; frame < GameConsts.PLAYER_BOMB_FRAME_MAX - 90; frame++)
+			//for (int frame = 0; frame < GameConsts.PLAYER_BOMB_FRAME_MAX + 60; frame++) // 長すぎる
 			{
 				this.Crash = DDCrashUtils.Rect(D4Rect.LTRB(
 					0,

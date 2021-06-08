@@ -292,6 +292,7 @@ namespace Charlotte.Games.Enemies
 
 				case 100: // 自機狙い_Normal_W
 				case 101: // 自機狙い_Normal_R
+				case 102: // 自機狙い_Normal_Y
 					{
 						int frm = enemy.OnFieldFrame;
 						int cyc = 10;
@@ -306,6 +307,7 @@ namespace Charlotte.Games.Enemies
 							{
 								case 100: color = TAMA_COLOR_e.WHITE; break;
 								case 101: color = TAMA_COLOR_e.RED; break;
+								case 102: color = TAMA_COLOR_e.YELLOW; break;
 
 								default:
 									throw null; // never

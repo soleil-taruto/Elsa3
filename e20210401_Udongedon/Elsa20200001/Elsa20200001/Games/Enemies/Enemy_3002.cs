@@ -46,6 +46,9 @@ namespace Charlotte.Games.Enemies
 
 			for (int frame = 0; ; frame++)
 			{
+				if (600 < frame) // 長く画面に居座っているので、退場を促す。
+					this.YAdd -= 0.01;
+
 				a_attack();
 
 				this.TargetX += this.XAdd;
