@@ -17,7 +17,7 @@ namespace Charlotte.Games.Enemies
 		{
 			this.Angle = angle;
 			this.Speed = 5.0;
-			this.Width = 12.0;
+			this.Width = 13.0;
 		}
 
 		protected override IEnumerable<bool> E_UpdateParameters()

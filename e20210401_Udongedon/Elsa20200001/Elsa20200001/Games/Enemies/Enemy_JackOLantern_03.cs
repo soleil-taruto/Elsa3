@@ -19,6 +19,8 @@ namespace Charlotte.Games.Enemies
 		public Enemy_JackOLantern_03(double x, double y, int hp, int transFrame, int shotType, int dropItemType, double xRate, double yAdd, double rot, double rotAdd)
 			: base(x, y, Kind_e.ENEMY, hp, transFrame)
 		{
+			if (shotType != 0) throw null; // 不使用なので常にゼロを指定すること。
+
 			//this.ShotType = shotType;
 			this.DropItemMode = dropItemType;
 			this.XRate = xRate;
@@ -46,6 +48,8 @@ namespace Charlotte.Games.Enemies
 					this.Rot += this.RotAdd;
 				}
 
+				//EnemyCommon.Shoot(this, this.ShotType); // 不使用 -> E_Attack
+
 				int koma = frame / 7;
 				koma %= 2;
 
@@ -68,13 +72,13 @@ namespace Charlotte.Games.Enemies
 			for (; ; )
 			{
 				this.FreezeFlag = true;
-				yield return 10; // ショット前待ち
+				yield return 10; // 射撃_前_待ち
 
-				// ショット
+				// 射撃
 				for (int c = 0; c < 4; c++)
 					Game.I.Enemies.Add(new Enemy_HenyoriLaser_02(this.X, this.Y, EnemyCommon_HenyoriLaser.LASER_COLOR_e.GREEN, c * Math.PI * 0.5));
 
-				yield return 20; // ショット後待ち
+				yield return 20; // 射撃_後_待ち
 				this.FreezeFlag = false;
 				yield return 60; // 移動
 			}

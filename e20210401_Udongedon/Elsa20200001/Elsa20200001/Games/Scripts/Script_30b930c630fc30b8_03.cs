@@ -15,12 +15,6 @@ namespace Charlotte.Games.Scripts
 	{
 		protected override IEnumerable<bool> E_EachFrame()
 		{
-			// TODO TODO TODO TODO TODO
-			// TODO TODO TODO TODO TODO
-			// TODO TODO TODO TODO TODO
-			// TODO TODO TODO TODO TODO
-			// TODO TODO TODO TODO TODO
-
 			Ground.I.Music.MUS_STAGE_03.Play();
 
 			Game.I.Walls.Add(new Wall_Dark());
@@ -30,16 +24,25 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 60; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -50.0, 1, 10, 0, 110, 2, 4.0, 1, 250.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -100.0, 1, 10, 0, 100, 2, 4.0, 1, 250.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -150.0, 1, 10, 0, 100, 2, 4.0, 1, 250.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -200.0, 1, 10, 0, 100, 2, 4.0, 1, 250.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -250.0, 1, 10, 0, 100, 2, 4.0, 1, 250.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 30, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 30, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
 
-			for (int c = 0; c < 60; c++)
+			for (int c = 0; c < 90; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_0001(472.0, -50.0, 1, 10, 0, 110, 2, 4.0, -1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(200, -100.0, 30, 10, 0, 12, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(312, -100.0, 30, 10, 0, 11, 50.0, 2.0, 0.0, 0.1));
+
+			for (int c = 0; c < 90; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(100, -100.0, 30, 10, 0, 21, 50.0, 2.0, 0.0, 0.1));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_03(412, -100.0, 30, 10, 0, 22, 50.0, 2.0, 0.0, 0.1));
+
+			for (int c = 0; c < 240; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_0001(472.0, -50.0, 1, 10, 0, 100, 2, 4.0, -1, 350.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(472.0, -100.0, 1, 10, 0, 100, 2, 4.0, -1, 350.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(472.0, -150.0, 1, 10, 0, 100, 2, 4.0, -1, 350.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(472.0, -200.0, 1, 10, 0, 100, 2, 4.0, -1, 350.0, 0.97));
@@ -52,10 +55,22 @@ namespace Charlotte.Games.Scripts
 			Game.I.Enemies.Add(new Enemy_0001(40.0, -100.0, 1, 30, 1, 101, 2, 4.0, 1, 250.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(40.0, -150.0, 1, 30, 1, 101, 2, 4.0, 1, 250.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(40.0, -200.0, 1, 30, 1, 101, 2, 4.0, 1, 250.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(40.0, -250.0, 1, 30, 1, 111, 2, 4.0, 1, 250.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(40.0, -250.0, 1, 30, 1, 101, 2, 4.0, 1, 250.0, 0.97));
+
+			for (int c = 0; c < 180; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_3001(-100, -100, 1000, 60, 4, 0, 21, 0.0, 100.0, 1.0, 0.0, 0.98));
 
 			for (int c = 0; c < 60; c++)
 				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_3001(GameConsts.FIELD_W + 100, -100, 1000, 60, 4, 0, 22, GameConsts.FIELD_W, 300.0, -1.0, 0.0, 0.98));
+
+			for (int c = 0; c < 6000; c++)
+				yield return true;
+
+
 
 			Game.I.Enemies.Add(new Enemy_0001(472.0, -50.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(472.0, -100.0, 1, 30, 1, 101, 2, 4.0, -1, 350.0, 0.97));

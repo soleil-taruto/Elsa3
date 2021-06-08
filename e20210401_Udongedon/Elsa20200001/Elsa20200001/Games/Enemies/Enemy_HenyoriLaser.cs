@@ -144,6 +144,11 @@ namespace Charlotte.Games.Enemies
 			this.Crash = DDCrashUtils.Multi(crashes.ToArray());
 		}
 
+		// レーザーの幅(Width)は 12.5 以上であること。
+		// -- 最小の当たり判定の直径を 5.0 以上にするため。
+		// ---- レーザー最小の当たり判定の直径 == (12.5 * 0.4) / 2 == 5.0
+		// ---- 自機最小移動量 == 5.0 
+
 		protected double Speed = 10.0;
 		protected double Angle = 0.0;
 		protected double Width = 20.0;
