@@ -24,7 +24,7 @@ namespace Charlotte.Games
 		{
 			new StageInfo(() => new Script_ステージ_01(), "01.通常ステージ"),
 			new StageInfo(() => new Script_ステージ_02(), "02.敵弾吸収テスト_ステージ"),
-			new StageInfo(() => new Script_ステージ_03(), "03.通常？ステージ"),
+			new StageInfo(() => new Script_ステージ_03(), "03.へにょりレーザー_ステージ"),
 
 			// 後続のステージをここへ追加..
 		};
