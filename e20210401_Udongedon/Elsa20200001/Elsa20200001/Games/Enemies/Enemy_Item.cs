@@ -131,11 +131,13 @@ namespace Charlotte.Games.Enemies
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.HEART:
+					Game.I.Score += 150;
 					Game.I.Zanki++;
 					Game.I.Zanki = Math.Min(Game.I.Zanki, GameConsts.ZANKI_MAX);
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.CANDY:
+					Game.I.Score += 10;
 					Game.I.Player.Power += 17;
 					//Game.I.Player.Power += 7;
 					//Game.I.Player.Power++;
@@ -143,11 +145,13 @@ namespace Charlotte.Games.Enemies
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.BOMB:
+					Game.I.Score += 150;
 					Game.I.ZanBomb++;
 					Game.I.ZanBomb = Math.Min(Game.I.ZanBomb, GameConsts.ZAN_BOMB_MAX);
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.ABSORBABLE_SHOT:
+					Game.I.Score += 2500;
 					Game.I.Player.AbsorbedWeapon = this.AbsorbableWeapon;
 					Game.I.Player.Power += 50;
 					Game.I.Player.Power = Math.Min(Game.I.Player.Power, GameConsts.PLAYER_POWER_MAX);

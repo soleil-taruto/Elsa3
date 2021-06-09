@@ -71,6 +71,9 @@ namespace Charlotte.Games.Enemies
 
 				const int SHOOT_NUM = 24;
 
+				double bkApproachingRate = this.ApproachingRate;
+				this.ApproachingRate = 0.9999;
+
 				// 射撃
 				for (int c = 0; c < SHOOT_NUM; c++)
 				{
@@ -83,6 +86,7 @@ namespace Charlotte.Games.Enemies
 
 					yield return 5; // 射撃_間隔
 				}
+				this.ApproachingRate = bkApproachingRate; // restore
 
 				yield return 60; // 移動
 			}
