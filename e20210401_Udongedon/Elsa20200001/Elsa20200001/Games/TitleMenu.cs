@@ -124,7 +124,10 @@ namespace Charlotte.Games
 			{
 				public override IEnumerable<bool> E_Task()
 				{
-					DDPicture picture = GetPicture(DDUtils.Random.GetRange(PIC_INDEX_MIN, PIC_INDEX_MAX));
+					DDPicture picture =
+						DDUtils.Random.GetInt(10) == 0 ?
+						GetUdongePicture(DDUtils.Random.GetRange(UDONGE_PIC_INDEX_MIN, UDONGE_PIC_INDEX_MAX)) :
+						GetPicture(DDUtils.Random.GetRange(PIC_INDEX_MIN, PIC_INDEX_MAX));
 					double x = DDConsts.Screen_W + 300.0;
 					double y = DDConsts.Screen_H - 200.0;
 
@@ -146,22 +149,35 @@ namespace Charlotte.Games
 				private const int PIC_INDEX_MIN = 0;
 				private const int PIC_INDEX_MAX = 10;
 
+				private const string UDONGE_PIC_PREFIX = @"dat\dairi\66329679_p";
+				private const string UDONGE_PIC_SUFFIX = ".png";
+				private const int UDONGE_PIC_INDEX_MIN = 0;
+				private const int UDONGE_PIC_INDEX_MAX = 11;
+
 				private static DDPicture GetPicture(int index)
 				{
 					return DDCCResource.GetPicture(PIC_PREFIX + index + PIC_SUFFIX);
+				}
+
+				private static DDPicture GetUdongePicture(int index)
+				{
+					return DDCCResource.GetPicture(UDONGE_PIC_PREFIX + index + UDONGE_PIC_SUFFIX);
 				}
 
 				public static void Touch()
 				{
 					for (int index = PIC_INDEX_MIN; index <= PIC_INDEX_MAX; index++)
 						GetPicture(index).GetHandle();
+
+					for (int index = UDONGE_PIC_INDEX_MIN; index <= UDONGE_PIC_INDEX_MAX; index++)
+						GetUdongePicture(index).GetHandle();
 				}
 			}
 		}
 
 		public static void TouchWallDrawerResources()
 		{
-			WallDrawerTask.響子Task.Touch(); // 響子の画像を全部触っておく
+			WallDrawerTask.響子Task.Touch(); // 響子(とうどんげ)の画像を全部触っておく
 		}
 
 		#endregion

@@ -41,7 +41,7 @@ namespace Charlotte.Tests.Games
 			//script = new Script_テスト3001();
 			//script = new Script_テスト3002();
 			//script = new Script_テスト3011();
-			//script = new Script_テスト3012();
+			script = new Script_テスト3012();
 			//script = new Script_テスト3013();
 			//script = new Script_鍵山雛テスト0001();
 			//script = new Script_鍵山雛テスト0002();
@@ -53,7 +53,7 @@ namespace Charlotte.Tests.Games
 			//script = new Script_ルーミアテスト_0004();
 			//script = new Script_ステージ_01();
 			//script = new Script_ステージ_02();
-			script = new Script_ステージ_03();
+			//script = new Script_ステージ_03();
 
 			// ----
 
