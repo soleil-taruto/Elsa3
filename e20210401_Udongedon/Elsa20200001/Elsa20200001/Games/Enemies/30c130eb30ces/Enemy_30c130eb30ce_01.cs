@@ -8,10 +8,10 @@ using Charlotte.Games.Enemies.鍵山雛s;
 using Charlotte.Games.Shots;
 using Charlotte.Games.Walls;
 
-namespace Charlotte.Games.Enemies.ルーミアs
+namespace Charlotte.Games.Enemies.チルノs
 {
 	/// <summary>
-	/// ルーミア
+	/// チルノ
 	/// 第01形態
 	/// </summary>
 	public class Enemy_チルノ_01 : Enemy
@@ -43,13 +43,13 @@ namespace Charlotte.Games.Enemies.ルーミアs
 				DDUtils.Approach(ref this.X, this.Target_X, apprRate);
 				DDUtils.Approach(ref this.Y, this.Target_Y, apprRate);
 
-				if (EnemyConsts_ルーミア.TRANS_FRAME < frame)
+				if (EnemyConsts_チルノ.TRANS_FRAME < frame)
 				{
 					f_attack();
 				}
 
-				EnemyCommon_ルーミア.PutCrash(this, frame);
-				EnemyCommon_ルーミア.Draw(this.X, this.Y);
+				EnemyCommon_チルノ.PutCrash(this, frame);
+				EnemyCommon_チルノ.Draw(this.X, this.Y);
 
 				yield return true;
 			}
@@ -118,7 +118,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			// 次の形態へ移行する。
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
-			Game.I.Enemies.Add(new Enemy_ルーミア_02_04(this.X, this.Y, true));
+			//Game.I.Enemies.Add(new Enemy_ルーミア_02_04(this.X, this.Y, true));
 			Game.I.Score += 2500000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;

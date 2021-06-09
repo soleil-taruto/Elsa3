@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using Charlotte.GameCommons;
 
-namespace Charlotte.Games.Enemies.ルーミアs
+namespace Charlotte.Games.Enemies.チルノs
 {
 	/// <summary>
-	/// ルーミア
+	/// チルノ
 	/// 掛け合い用
 	/// </summary>
-	public class Enemy_ルーミア : Enemy
+	public class Enemy_チルノ : Enemy
 	{
-		public Enemy_ルーミア()
+		public Enemy_チルノ()
 			: base(-20.0, -20.0, Kind_e.ENEMY, 0, 0) // 掛け合い用なので、無敵
 		{ }
 
@@ -25,7 +25,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 				DDUtils.Approach(ref this.X, GameConsts.FIELD_W / 2 + Math.Sin(DDEngine.ProcFrame / 57.0) * 3.0, 0.97);
 				DDUtils.Approach(ref this.Y, GameConsts.FIELD_H / 7 + Math.Sin(DDEngine.ProcFrame / 53.0) * 5.0, 0.91);
 
-				EnemyCommon_ルーミア.Draw(this.X, this.Y);
+				EnemyCommon_チルノ.Draw(this.X, this.Y);
 
 				// 掛け合い用なので、当たり判定無し
 

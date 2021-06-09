@@ -319,6 +319,7 @@ namespace Charlotte.Games.Enemies
 
 				case 110: // 自機狙い_Normal_W + 吸収
 				case 111: // 自機狙い_Normal_R + 吸収
+				case 112: // 自機狙い_Normal_Y + 吸収
 					{
 						int frm = enemy.OnFieldFrame;
 						int cyc = 10;
@@ -335,6 +336,7 @@ namespace Charlotte.Games.Enemies
 								{
 									case 110: absorbableWeapon = 1; break;
 									case 111: absorbableWeapon = 2; break;
+									case 112: absorbableWeapon = 3; break;
 
 									default:
 										throw null; // never
@@ -349,6 +351,7 @@ namespace Charlotte.Games.Enemies
 								{
 									case 110: color = TAMA_COLOR_e.WHITE; break;
 									case 111: color = TAMA_COLOR_e.RED; break;
+									case 112: color = TAMA_COLOR_e.YELLOW; break;
 
 									default:
 										throw null; // never

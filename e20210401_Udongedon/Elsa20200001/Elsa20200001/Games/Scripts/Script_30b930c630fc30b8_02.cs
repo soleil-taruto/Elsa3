@@ -74,6 +74,16 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 500; c++)
 				yield return true;
 
+			// ---- Script_テスト3021 ----
+
+			Game.I.Enemies.Add(new Enemy_0001(150.0, -50.0, 1, 60, 4, 112, 1, 1.5, -1, 400.0, 0.99));
+			Game.I.Enemies.Add(new Enemy_0001(350.0, -100.0, 1, 60, 4, 112, 1, 1.5, 1, 400.0, 0.99));
+
+			// ----
+
+			for (int c = 0; c < 200; c++)
+				yield return true;
+
 			for (int c = 0; c < 100; c++)
 			{
 				double rate = DDUtils.Random.Real();

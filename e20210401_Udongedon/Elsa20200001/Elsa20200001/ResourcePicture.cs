@@ -26,6 +26,8 @@ namespace Charlotte
 		public DDPicture 立ち絵_メディスン_02 = DDPictureLoaders.Standard(@"dat\dairi\66537404_p3.png");
 		public DDPicture 立ち絵_ルーミア_01 = DDPictureLoaders.Standard(@"dat\dairi\65997323_p0.png");
 		public DDPicture 立ち絵_ルーミア_02 = DDPictureLoaders.Standard(@"dat\dairi\65997323_p2.png");
+		public DDPicture 立ち絵_チルノ_01 = DDPictureLoaders.Standard(@"dat\dairi\66022662_p0.png");
+		public DDPicture 立ち絵_チルノ_02 = DDPictureLoaders.Standard(@"dat\dairi\66022662_p2.png");
 
 		public DDPicture MessageWindow = DDPictureLoaders.Standard(@"dat\フキダシデザイン\e0165_1.png");
 
@@ -64,7 +66,7 @@ namespace Charlotte
 		public DDPicture P_WALL_31001_前面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-zebra-1a.png");
 		public DDPicture P_WALL_31001_背面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-35a.png");
 		public DDPicture P_WALL_32001_前面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern70c.png");
-		public DDPicture P_WALL_32001_背面 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-24c.png");
+		public DDPicture P_WALL_32001_背面 = DDPictureLoaders.SelectARGB(@"dat\Shoot_old_Resource\speckboy\pattern8-pattern-2\pattern8-pattern-24c.png", "ABGR");
 		public DDPicture P_DIGITS_W = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_06.png");
 		public DDPicture P_DIGITS_DDY = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_01.png");
 		public DDPicture P_DIGITS_DY = DDPictureLoaders.Standard(@"dat\ぴぽや倉庫\suuji-font\suuji16x32_02.png");

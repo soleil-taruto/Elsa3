@@ -104,6 +104,10 @@
     <Compile Include="Games\Enemies\Enemy_HenyoriLaser_03.cs" />
     <Compile Include="Games\Enemies\Enemy_3002.cs" />
     <Compile Include="Games\Enemies\Enemy_HenyoriLaser_04.cs" />
+    <Compile Include="Games\Enemies\チルノs\EnemyCommon_チルノ.cs" />
+    <Compile Include="Games\Enemies\チルノs\EnemyConsts_チルノ.cs" />
+    <Compile Include="Games\Enemies\チルノs\Enemy_チルノ.cs" />
+    <Compile Include="Games\Enemies\チルノs\Enemy_チルノ_01.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyCommon_ルーミア.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyConsts_ルーミア.cs" />
     <Compile Include="Games\Enemies\ルーミアs\Enemy_ルーミア.cs" />
@@ -214,6 +218,7 @@
     <Compile Include="Games\Scripts\Tests\Script_テスト3011.cs" />
     <Compile Include="Games\Scripts\Tests\Script_テスト3012.cs" />
     <Compile Include="Games\Scripts\Tests\Script_テスト3013.cs" />
+    <Compile Include="Games\Scripts\Tests\Script_テスト3021.cs" />
     <Compile Include="Games\Shots\Shot.cs" />
     <Compile Include="Games\Shots\ShotConsts.cs" />
     <Compile Include="Games\Shots\Shot_Bomb.cs" />

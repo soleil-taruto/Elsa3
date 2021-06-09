@@ -42,6 +42,8 @@ namespace Charlotte.Games.Surfaces
 			new PictureInfo("メディスン_ジト目", Ground.I.Picture.立ち絵_メディスン_02),
 			new PictureInfo("ルーミア_普通", Ground.I.Picture.立ち絵_ルーミア_01),
 			new PictureInfo("ルーミア_ジト目", Ground.I.Picture.立ち絵_ルーミア_02),
+			new PictureInfo("チルノ_普通", Ground.I.Picture.立ち絵_チルノ_01),
+			new PictureInfo("チルノ_ジト目", Ground.I.Picture.立ち絵_チルノ_02),
 		};
 
 		#endregion
