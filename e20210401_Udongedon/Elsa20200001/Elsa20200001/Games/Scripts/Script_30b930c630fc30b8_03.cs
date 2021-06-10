@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Charlotte.Games.Walls;
 using Charlotte.Games.Enemies;
-using Charlotte.GameCommons;
+using Charlotte.Games.Enemies.チルノs;
 using Charlotte.Games.Shots;
-using Charlotte.Games.Enemies.ルーミアs;
 using Charlotte.Commons;
+using Charlotte.GameCommons;
 
 namespace Charlotte.Games.Scripts
 {
@@ -118,7 +118,7 @@ namespace Charlotte.Games.Scripts
 			{
 				Game.I.Shots.Add(new Shot_BossBomb());
 
-				Enemy_ルーミア boss = new Enemy_ルーミア();
+				Enemy_チルノ boss = new Enemy_チルノ();
 
 				Game.I.Enemies.Add(boss);
 
@@ -130,11 +130,11 @@ namespace Charlotte.Games.Scripts
 				switch (Game.I.Player.PlayerWho)
 				{
 					case Player.PlayerWho_e.メディスン:
-						scenarioFile = @"res\掛け合いシナリオ\メディスン_ルーミア.txt";
+						scenarioFile = @"res\掛け合いシナリオ\メディスン_チルノ.txt";
 						break;
 
 					case Player.PlayerWho_e.小悪魔:
-						scenarioFile = @"res\掛け合いシナリオ\小悪魔_ルーミア.txt";
+						scenarioFile = @"res\掛け合いシナリオ\小悪魔_チルノ.txt";
 						break;
 
 					default:
@@ -148,7 +148,7 @@ namespace Charlotte.Games.Scripts
 				// boss はすぐに消滅することに注意
 			}
 
-			Ground.I.Music.MUS_BOSS_02.Play();
+			Ground.I.Music.MUS_BOSS_03.Play();
 
 			while (!Game.I.BossKilled)
 				yield return true;

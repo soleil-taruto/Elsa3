@@ -19,7 +19,7 @@ namespace Charlotte
 		public DDMusic MUS_STAGE_02 = new DDMusic(@"dat\hmix\n62.mp3");
 		public DDMusic MUS_BOSS_02 = new DDMusic(@"dat\Reda\nc136551.mp3").SetLoopByStEnd(625000, 7365000);
 		public DDMusic MUS_STAGE_03 = new DDMusic(@"dat\hmix\n4.mp3");
-		public DDMusic MUS_BOSS_03 = new DDMusic(@"dat\Reda\nc136551.mp3").SetLoopByStEnd(625000, 7365000);
+		public DDMusic MUS_BOSS_03 = new DDMusic(@"dat\aocha\nc199237_muon-100-100.mp3");
 
 		public ResourceMusic()
 		{
