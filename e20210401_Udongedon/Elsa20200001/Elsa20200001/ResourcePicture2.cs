@@ -95,6 +95,7 @@ namespace Charlotte
 
 		public DDPicture[,] メディスン = DDDerivations.GetAnimation(Ground.I.Picture.メディスン, 0, 0, 64, 64, 3, 3);
 		public DDPicture[] ルーミア = DDDerivations.GetAnimation_YX(Ground.I.Picture.DotOther, 0, 256, 128, 128, 4, 1).ToArray();
+		public DDPicture[] チルノ = DDDerivations.GetAnimation_XY(Ground.I.Picture.チルノ, 0, 0, 128, 128, 7, 4).ToArray();
 
 		public DDPicture 吸収している武器 = DDDerivations.GetPicture(Ground.I.Picture.P_FAIRYETC, 128, 0, 64, 64);
 

@@ -33,6 +33,7 @@ namespace Charlotte
 
 		public DDPicture メディスン = DDPictureLoaders.Standard(@"dat\メディスン\medicine.png");
 		public DDPicture DotOther = DDPictureLoaders.RGBToTrans(@"dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-Other.png", new I3Color(0, 0, 0));
+		public DDPicture チルノ = DDPictureLoaders.Standard(@"dat\チルノ\dot_cirno.png");
 
 		public DDPicture P_KOAKUMA_P1 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\jiki-koakuma-sozai\19740345_big_p1.png");
 		public DDPicture P_KOAKUMA_P3 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\jiki-koakuma-sozai\19740345_big_p3.png");
