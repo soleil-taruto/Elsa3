@@ -280,6 +280,25 @@ namespace Charlotte.Games.Enemies
 			return Ground.I.Picture2.D_TAMA_00[(int)kind][(int)color];
 		}
 
+		public static void DrawTamaPicture(DDPicture picture, double x, double y, double xAdd, double yAdd, EnemyCommon.TAMA_KIND_e kind, EnemyCommon.TAMA_COLOR_e color)
+		{
+			if (kind == TAMA_KIND_e.KNIFE)
+			{
+				double angle = DDUtils.GetAngle(xAdd, yAdd) + Math.PI * 0.5;
+
+				DDDraw.DrawCenter(Ground.I.Picture2.D_TAMA_00[(int)EnemyCommon.TAMA_KIND_e.DOUBLE][(int)color], x, y);
+
+				DDDraw.DrawBegin(picture, x, y);
+				DDDraw.DrawZoom(1.5);
+				DDDraw.DrawRotate(angle);
+				DDDraw.DrawEnd();
+			}
+			else
+			{
+				DDDraw.DrawCenter(picture, x, y);
+			}
+		}
+
 		public static void Shoot(Enemy enemy, int shotType)
 		{
 			if (DDUtils.IsOut(new D2Point(enemy.X, enemy.Y), new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H))) // ? フィールド外

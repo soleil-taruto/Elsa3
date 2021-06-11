@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.Games.Enemies.鍵山雛s;
 using Charlotte.Games.Shots;
 using Charlotte.Games.Walls;
 
@@ -27,7 +26,7 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			// ---- 環境制御 ----
 
-			Game.I.Walls.Add(new Wall_22001());
+			//Game.I.Walls.Add(new Wall_22001());
 
 			// ----
 
@@ -38,10 +37,10 @@ namespace Charlotte.Games.Enemies.チルノs
 			{
 				f_updateTarget();
 
-				double apprRate = 1.0 - Math.Min(1.0, frame / 60.0) * 0.05;
+				const double APPR_RATE = 0.98;
 
-				DDUtils.Approach(ref this.X, this.Target_X, apprRate);
-				DDUtils.Approach(ref this.Y, this.Target_Y, apprRate);
+				DDUtils.Approach(ref this.X, this.Target_X, APPR_RATE);
+				DDUtils.Approach(ref this.Y, this.Target_Y, APPR_RATE);
 
 				if (EnemyConsts_チルノ.TRANS_FRAME < frame)
 				{
@@ -57,38 +56,31 @@ namespace Charlotte.Games.Enemies.チルノs
 
 		private IEnumerable<bool> E_UpdateTarget()
 		{
-			const double MARGIN = 50.0;
+			const double MARGIN = 30.0;
+			const double Y_MAX = 100.0;
 			const int FRAME_MAX = 100;
+
+			double[] pts = new double[]
+			{
+				MARGIN, MARGIN,
+				GameConsts.FIELD_W / 2, MARGIN,
+				GameConsts.FIELD_W / 2, Y_MAX,
+				GameConsts.FIELD_W - MARGIN, Y_MAX,
+				GameConsts.FIELD_W - MARGIN, MARGIN,
+				GameConsts.FIELD_W / 2, MARGIN,
+				GameConsts.FIELD_W / 2, Y_MAX,
+				MARGIN, Y_MAX,
+			};
 
 			for (; ; )
 			{
-				foreach (DDScene scene in DDSceneUtils.Create(FRAME_MAX))
+				for (int index = 0; index < pts.Length; index += 2)
 				{
-					this.Target_X = MARGIN;
-					this.Target_Y = DDUtils.AToBRate(MARGIN, GameConsts.FIELD_H - MARGIN, scene.Rate);
+					this.Target_X = pts[index + 0];
+					this.Target_Y = pts[index + 1];
 
-					yield return true;
-				}
-				foreach (DDScene scene in DDSceneUtils.Create(FRAME_MAX))
-				{
-					this.Target_X = DDUtils.AToBRate(MARGIN, GameConsts.FIELD_W - MARGIN, scene.Rate);
-					this.Target_Y = GameConsts.FIELD_H - MARGIN;
-
-					yield return true;
-				}
-				foreach (DDScene scene in DDSceneUtils.Create(FRAME_MAX))
-				{
-					this.Target_X = GameConsts.FIELD_W - MARGIN;
-					this.Target_Y = DDUtils.AToBRate(GameConsts.FIELD_H - MARGIN, MARGIN, scene.Rate);
-
-					yield return true;
-				}
-				foreach (DDScene scene in DDSceneUtils.Create(FRAME_MAX))
-				{
-					this.Target_X = DDUtils.AToBRate(GameConsts.FIELD_W - MARGIN, MARGIN, scene.Rate);
-					this.Target_Y = MARGIN;
-
-					yield return true;
+					for (int c = 0; c < FRAME_MAX; c++)
+						yield return true;
 				}
 			}
 		}
@@ -97,19 +89,87 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			for (; ; )
 			{
-				for (int loop = 1; loop <= 5; loop++)
+				/*
+				for (int c = 0; c < 3; c++)
 				{
-					for (int c = 1; c <= 9; c++)
+					// 攻撃_01 ナイフ
 					{
-						if (loop == 5 && c == 5)
-							Game.I.Enemies.Add(new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.BLUE, c * 0.7, 0.0, 1));
-						else
-							Game.I.Enemies.Add(new Enemy_Tama_01(this.X, this.Y, EnemyCommon.TAMA_KIND_e.BIG, EnemyCommon.TAMA_COLOR_e.RED, c * 0.7, 0.0));
+						double speed = 5.0;
+
+						foreach (int div in new int[] { 0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0 })
+						{
+							for (int cnt = 0; cnt <= div; cnt++)
+							{
+								double angleStep = 0.15;
+								double angle = cnt * angleStep - div * angleStep / 2.0;
+
+								Game.I.Enemies.Add(new Enemy_Tama_01(
+									this.X,
+									this.Y,
+									EnemyCommon.TAMA_KIND_e.KNIFE,
+									EnemyCommon.TAMA_COLOR_e.WHITE,
+									speed,
+									angle
+									));
+							}
+							speed -= 0.2;
+						}
 					}
 
-					for (int c = 0; c < 60; c++)
+					for (int d = 0; d < 60; d++)
 						yield return true;
 				}
+				 * */
+
+				for (int c = 0; c < 90; c++)
+					yield return true;
+
+				// 攻撃_02 へにょりレーザー
+				{
+#if true
+					bool 画面左寄り = this.X < GameConsts.FIELD_W / 2;
+
+					double angleRnd_01 = DDUtils.Random.DReal() * 0.01;
+					double angleRnd_02 = DDUtils.Random.DReal() * 0.01;
+
+					for (int cnt = 0; cnt < 10; cnt++)
+					{
+						double plAngle = DDUtils.GetAngle(new D2Point(Game.I.Player.X, Game.I.Player.Y) - new D2Point(this.X, this.Y));
+
+						double speed = (double)cnt * 0.3 + 3.0;
+						double angle = plAngle + (double)cnt * 0.13 * (画面左寄り ? -1 : 1);
+
+						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(
+							this.X,
+							this.Y,
+							speed,
+							angle,
+							new double[]
+							{
+#if true
+								0.02 * (画面左寄り ? -1 : 1) + angleRnd_01,
+								0.06 * (画面左寄り ? 1 : -1) + angleRnd_02,
+#else // 不規則やばい
+								0.02 * (画面左寄り ? -1 : 1) + DDUtils.Random.DReal() * 0.01,
+								0.06 * (画面左寄り ? 1 : -1) + DDUtils.Random.DReal() * 0.01,
+#endif
+							}
+							));
+					}
+#else // old
+					for (int cnt = 0; cnt < 10; cnt++)
+					{
+						double speed = (double)cnt * 0.5 + 5.0;
+						double angle = (double)cnt * 0.03;
+
+						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(this.X, this.Y, speed, angle));
+						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(this.X, this.Y, speed, angle + Math.PI));
+					}
+#endif
+				}
+
+				for (int c = 0; c < 240; c++)
+					yield return true;
 			}
 		}
 

@@ -24,17 +24,17 @@ namespace Charlotte.Games.Enemies
 			switch (lenKind)
 			{
 				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.SHORT:
-					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_01;
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_DIV16;
 					this.PointNum = 17;
 					break;
 
 				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.MIDDLE:
-					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_02;
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_DIV32;
 					this.PointNum = 33;
 					break;
 
 				case EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.LONG:
-					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_03;
+					this.PictureTable = Ground.I.Picture2.D_HENYORI_LASER_DIV64;
 					this.PointNum = 65;
 					break;
 
@@ -73,7 +73,8 @@ namespace Charlotte.Games.Enemies
 				this.DrawLaser();
 				this.Put当たり判定();
 
-				yield return this.Points.Any(pt => !DDUtils.IsOut(pt, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H), this.Width * 0.5));
+				//yield return this.Points.Any(pt => !DDUtils.IsOut(pt, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H), 100.0));
+				yield return this.Points.Any(pt => !DDUtils.IsOut(pt, new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H), this.Width * 0.5)); // マージンほぼ無し
 			}
 		}
 

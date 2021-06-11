@@ -42,7 +42,7 @@ namespace Charlotte.Games.Enemies
 				this.X += this.XAdd;
 				this.Y += this.YAdd;
 
-				DDDraw.DrawCenter(picture, this.X, this.Y);
+				EnemyCommon.DrawTamaPicture(picture, this.X, this.Y, this.XAdd, this.YAdd, this.TamaKind, this.TamaColor);
 
 				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), r);
 
