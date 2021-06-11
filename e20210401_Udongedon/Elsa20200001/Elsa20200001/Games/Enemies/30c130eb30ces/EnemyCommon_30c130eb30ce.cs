@@ -91,13 +91,14 @@ namespace Charlotte.Games.Enemies.チルノs
 			if (1 <= rem_w)
 			{
 				DDDraw.SetAlpha(a);
+				DDDraw.SetBright(0.5, 1.0, 1.0);
 				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, L, T, rem_w, H);
 				DDDraw.Reset();
 			}
 			if (1 <= emp_w)
 			{
 				DDDraw.SetAlpha(a);
-				DDDraw.SetBright(1.0, 0.0, 0.0);
+				DDDraw.SetBright(1.0 - hp, 0.5, 1.0);
 				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, L + rem_w, T, emp_w, H);
 				DDDraw.Reset();
 			}

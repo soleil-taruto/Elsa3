@@ -16,7 +16,7 @@ namespace Charlotte.Games.Enemies.チルノs
 	public class Enemy_チルノ_01 : Enemy
 	{
 		public Enemy_チルノ_01(double x, double y)
-			: base(x, y, Kind_e.ENEMY, 1000, 0)
+			: base(x, y, Kind_e.ENEMY, 3000, 0)
 		{ }
 
 		private double Target_X;
@@ -89,7 +89,6 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			for (; ; )
 			{
-				/*
 				for (int c = 0; c < 3; c++)
 				{
 					// 攻撃_01 ナイフ
@@ -119,14 +118,12 @@ namespace Charlotte.Games.Enemies.チルノs
 					for (int d = 0; d < 60; d++)
 						yield return true;
 				}
-				 * */
 
 				for (int c = 0; c < 90; c++)
 					yield return true;
 
 				// 攻撃_02 へにょりレーザー
 				{
-#if true
 					bool 画面左寄り = this.X < GameConsts.FIELD_W / 2;
 
 					double angleRnd_01 = DDUtils.Random.DReal() * 0.01;
@@ -146,26 +143,11 @@ namespace Charlotte.Games.Enemies.チルノs
 							angle,
 							new double[]
 							{
-#if true
 								0.02 * (画面左寄り ? -1 : 1) + angleRnd_01,
 								0.06 * (画面左寄り ? 1 : -1) + angleRnd_02,
-#else // 不規則やばい
-								0.02 * (画面左寄り ? -1 : 1) + DDUtils.Random.DReal() * 0.01,
-								0.06 * (画面左寄り ? 1 : -1) + DDUtils.Random.DReal() * 0.01,
-#endif
 							}
 							));
 					}
-#else // old
-					for (int cnt = 0; cnt < 10; cnt++)
-					{
-						double speed = (double)cnt * 0.5 + 5.0;
-						double angle = (double)cnt * 0.03;
-
-						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(this.X, this.Y, speed, angle));
-						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(this.X, this.Y, speed, angle + Math.PI));
-					}
-#endif
 				}
 
 				for (int c = 0; c < 240; c++)
