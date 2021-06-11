@@ -11,11 +11,11 @@ namespace Charlotte.Games.Enemies.チルノs
 {
 	/// <summary>
 	/// チルノ
-	/// 第01形態
+	/// 第02形態
 	/// </summary>
-	public class Enemy_チルノ_01 : Enemy
+	public class Enemy_チルノ_02 : Enemy
 	{
-		public Enemy_チルノ_01(double x, double y)
+		public Enemy_チルノ_02(double x, double y)
 			: base(x, y, Kind_e.ENEMY, 3000, 0)
 		{ }
 

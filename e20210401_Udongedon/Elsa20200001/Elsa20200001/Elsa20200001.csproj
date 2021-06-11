@@ -110,6 +110,7 @@
     <Compile Include="Games\Enemies\チルノs\Enemy_チルノ_01.cs" />
     <Compile Include="Games\Enemies\チルノs\Enemy_チルノ_HenyoriLaser_01.cs" />
     <Compile Include="Games\Enemies\チルノs\Enemy_チルノ_HenyoriLaser_02.cs" />
+    <Compile Include="Games\Enemies\チルノs\Enemy_チルノ_02.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyCommon_ルーミア.cs" />
     <Compile Include="Games\Enemies\ルーミアs\EnemyConsts_ルーミア.cs" />
     <Compile Include="Games\Enemies\ルーミアs\Enemy_ルーミア.cs" />

@@ -10,8 +10,8 @@ namespace Charlotte.Games.Enemies.チルノs
 	{
 		private double[] AngleAdds;
 
-		public Enemy_チルノ_HenyoriLaser_01(double x, double y, double speed, double angle, double[] angleAdds)
-			: base(x, y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.LONG, EnemyCommon_HenyoriLaser.LASER_COLOR_e.CYAN)
+		public Enemy_チルノ_HenyoriLaser_01(double x, double y, double speed, double angle, double[] angleAdds, EnemyCommon_HenyoriLaser.LASER_COLOR_e color)
+			: base(x, y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.LONG, color)
 		{
 			this.Speed = speed;
 			this.Angle = angle;
