@@ -34,10 +34,10 @@ namespace Charlotte.Games.Enemies.チルノs
 		}
 
 		private static double Last_X = GameConsts.FIELD_W / 2;
+		private static int XMoveFrame = 0;
 
 		public static void Draw(double x, double y)
 		{
-			int xMoveFrame = 0;
 			int picIndex;
 
 			{
@@ -45,18 +45,18 @@ namespace Charlotte.Games.Enemies.チルノs
 
 				if (x < Last_X - MARGIN)
 				{
-					xMoveFrame++;
-					picIndex = 8 + Math.Min(xMoveFrame / 10, 1);
+					picIndex = 8 + Math.Min(XMoveFrame / 10, 1);
+					XMoveFrame++;
 				}
 				else if (Last_X + MARGIN < x)
 				{
-					xMoveFrame++;
-					picIndex = 10 + Math.Min(xMoveFrame / 10, 1);
+					picIndex = 10 + Math.Min(XMoveFrame / 10, 1);
+					XMoveFrame++;
 				}
 				else
 				{
-					xMoveFrame = 0;
 					picIndex = DDEngine.ProcFrame / 10 % 6;
+					XMoveFrame = 0;
 				}
 			}
 
@@ -78,15 +78,15 @@ namespace Charlotte.Games.Enemies.チルノs
 
 		private static void Draw水平体力ゲージ(double hp)
 		{
-			const int L = 20;
-			const int T = 20;
-			const int W = DDConsts.Screen_W - 40;
-			const int H = 20;
+			const int L = 10;
+			const int T = 5;
+			const int W = DDConsts.Screen_W - 20;
+			const int H = 5;
 
 			int rem_w = (int)(W * hp);
 			int emp_w = W - rem_w;
 
-			const double a = 0.5;
+			const double a = 0.75;
 
 			if (1 <= rem_w)
 			{
