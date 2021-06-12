@@ -107,6 +107,9 @@ namespace Charlotte.Games
 					if (DDKey.IsPound(DX.KEY_INPUT_PGUP))
 					{
 						this.Player.Power += GameConsts.PLAYER_POWER_PER_LEVEL;
+
+						if (this.Zanki < GameConsts.ZANKI_MAX)
+							this.Zanki++;
 					}
 					if (DDKey.IsPound(DX.KEY_INPUT_PGDN))
 					{

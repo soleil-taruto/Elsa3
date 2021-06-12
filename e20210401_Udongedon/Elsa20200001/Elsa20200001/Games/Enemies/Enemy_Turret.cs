@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Charlotte.GameCommons;
+using Charlotte.Commons;
 
 namespace Charlotte.Games.Enemies
 {
@@ -13,14 +14,16 @@ namespace Charlotte.Games.Enemies
 	{
 		private double Target_X;
 		private double Target_Y;
+		private double R;
 		private DDPicture Picture;
 		private int ShotType;
 
-		public Enemy_Turret(double x, double y, double targetX, double targetY, DDPicture picture, int shotType)
+		public Enemy_Turret(double x, double y, double targetX, double targetY, double r, DDPicture picture, int shotType)
 			: base(x, y, Kind_e.TAMA, 0, 0)
 		{
 			this.Target_X = targetX;
 			this.Target_Y = targetY;
+			this.R = r;
 			this.Picture = picture;
 			this.ShotType = shotType;
 		}
@@ -38,7 +41,7 @@ namespace Charlotte.Games.Enemies
 				DDDraw.DrawRotate(DDEngine.ProcFrame * 0.01);
 				DDDraw.DrawEnd();
 
-				// 当たり判定_無し
+				this.Crash = DDCrashUtils.Circle(new D2Point(this.X, this.Y), this.R);
 
 				yield return true;
 			}

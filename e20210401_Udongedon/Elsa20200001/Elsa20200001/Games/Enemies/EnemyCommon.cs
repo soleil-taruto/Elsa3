@@ -534,7 +534,7 @@ namespace Charlotte.Games.Enemies
 			}
 		}
 
-		private static void DropItem(Enemy enemy, int dropItemMode)
+		public static void DropItem(Enemy enemy, int dropItemMode)
 		{
 			switch (dropItemMode)
 			{

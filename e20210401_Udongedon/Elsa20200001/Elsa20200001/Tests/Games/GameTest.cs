@@ -52,10 +52,10 @@ namespace Charlotte.Tests.Games
 			//script = new Script_ルーミアテスト_0002();
 			//script = new Script_ルーミアテスト_0003();
 			//script = new Script_ルーミアテスト_0004();
-			//script = new Script_チルノテスト_0001();
+			script = new Script_チルノテスト_0001();
 			//script = new Script_チルノテスト_0002();
 			//script = new Script_チルノテスト_0003();
-			script = new Script_チルノテスト_0004();
+			//script = new Script_チルノテスト_0004();
 			//script = new Script_ステージ_01();
 			//script = new Script_ステージ_02();
 			//script = new Script_ステージ_03();

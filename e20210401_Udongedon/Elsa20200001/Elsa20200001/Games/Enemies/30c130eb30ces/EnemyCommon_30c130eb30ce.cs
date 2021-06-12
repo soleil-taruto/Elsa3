@@ -14,7 +14,7 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			if (frame == 0)
 			{
-				Game.I.Shots.Add(new Shot_BossBomb());
+				Game.I.Shots.Add(new Shot_BossBomb(EnemyConsts_チルノ.BOSS_BOMB_FRAME));
 			}
 			else if (frame < EnemyConsts_チルノ.BOSS_BOMB_FRAME)
 			{

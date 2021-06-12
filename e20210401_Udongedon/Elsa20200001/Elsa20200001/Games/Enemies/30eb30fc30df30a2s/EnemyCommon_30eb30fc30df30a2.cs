@@ -14,7 +14,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 		{
 			if (frame == 0)
 			{
-				Game.I.Shots.Add(new Shot_BossBomb());
+				Game.I.Shots.Add(new Shot_BossBomb(EnemyConsts_ルーミア.BOSS_BOMB_FRAME));
 			}
 			else if (frame < EnemyConsts_ルーミア.BOSS_BOMB_FRAME)
 			{

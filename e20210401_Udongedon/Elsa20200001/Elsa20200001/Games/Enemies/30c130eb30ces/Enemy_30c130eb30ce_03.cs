@@ -16,7 +16,7 @@ namespace Charlotte.Games.Enemies.チルノs
 	public class Enemy_チルノ_03 : Enemy
 	{
 		public Enemy_チルノ_03(double x, double y)
-			: base(x, y, Kind_e.ENEMY, 9000, 0)
+			: base(x, y, Kind_e.ENEMY, 6000, 0)
 		{ }
 
 		private double Target_X;
@@ -26,7 +26,8 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			// ---- 環境制御 ----
 
-			//Game.I.Walls.Add(new Wall_22001());
+			Game.I.Walls.Add(new Wall_32011_背面());
+			Game.I.Walls.Add(new Wall_31001_前面());
 
 			// ----
 
@@ -48,6 +49,7 @@ namespace Charlotte.Games.Enemies.チルノs
 							this.Y,
 							MARGIN,
 							MARGIN,
+							20.0,
 							Ground.I.Picture2.D_DVDM_BULLET_03[1],
 							123
 							));
@@ -57,6 +59,7 @@ namespace Charlotte.Games.Enemies.チルノs
 							this.Y,
 							GameConsts.FIELD_W - MARGIN,
 							MARGIN,
+							20.0,
 							Ground.I.Picture2.D_DVDM_BULLET_03[4],
 							124
 							));
@@ -198,7 +201,11 @@ namespace Charlotte.Games.Enemies.チルノs
 			// 次の形態へ移行する。
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
-			//Game.I.Enemies.Add(new Enemy_チルノ_03(this.X, this.Y));
+
+			EnemyCommon.Killed(this, 21);
+
+			Game.I.BossKilled = true;
+			Game.I.Shots.Add(new Shot_BossBomb());
 			Game.I.Score += 8500000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;

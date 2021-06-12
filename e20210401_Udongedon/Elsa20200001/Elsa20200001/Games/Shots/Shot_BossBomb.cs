@@ -13,14 +13,18 @@ namespace Charlotte.Games.Shots
 	/// </summary>
 	public class Shot_BossBomb : Shot
 	{
-		public Shot_BossBomb()
+		private int FrameMax;
+
+		public Shot_BossBomb(int frameMax = 60)
 			: base(0, 0, Kind_e.BOMB, SCommon.IMAX)
-		{ }
+		{
+			this.FrameMax = frameMax;
+		}
 
 		protected override IEnumerable<bool> E_Draw()
 		{
 #if true
-			foreach (DDScene scene in DDSceneUtils.Create(10))
+			foreach (DDScene scene in DDSceneUtils.Create(this.FrameMax))
 			{
 				this.Crash = DDCrashUtils.Rect(D4Rect.LTRB(
 					0,

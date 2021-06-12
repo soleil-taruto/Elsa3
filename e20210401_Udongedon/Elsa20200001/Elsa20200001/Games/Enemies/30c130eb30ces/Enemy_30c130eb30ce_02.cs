@@ -26,7 +26,8 @@ namespace Charlotte.Games.Enemies.チルノs
 		{
 			// ---- 環境制御 ----
 
-			//Game.I.Walls.Add(new Wall_22001());
+			Game.I.Walls.Add(new Wall_32021_背面());
+			Game.I.Walls.Add(new Wall_32011_前面());
 
 			// ----
 
@@ -163,7 +164,11 @@ namespace Charlotte.Games.Enemies.チルノs
 			// 次の形態へ移行する。
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
-			//Game.I.Enemies.Add(new Enemy_チルノ_02(this.X, this.Y));
+
+			EnemyCommon.DropItem(this, 3);
+			EnemyCommon.DropItem(this, 22);
+
+			Game.I.Enemies.Add(new Enemy_チルノ_03(this.X, this.Y));
 			Game.I.Score += 8500000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;
