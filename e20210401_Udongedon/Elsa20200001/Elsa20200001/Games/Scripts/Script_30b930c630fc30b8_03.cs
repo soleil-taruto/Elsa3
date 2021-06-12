@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Charlotte.Games.Walls;
+using Charlotte.Commons;
+using Charlotte.GameCommons;
 using Charlotte.Games.Enemies;
 using Charlotte.Games.Enemies.チルノs;
 using Charlotte.Games.Shots;
-using Charlotte.Commons;
-using Charlotte.GameCommons;
+using Charlotte.Games.Walls;
 
 namespace Charlotte.Games.Scripts
 {
@@ -94,7 +94,7 @@ namespace Charlotte.Games.Scripts
 				yield return true;
 
 			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-50.0, 100.0, 150, 30, 102, 22, 1.0));
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-100.0, 200.0, 150, 30, 102, 22, 1.0));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_02(-100.0, 200.0, 150, 30, 102, 3, 1.0));
 
 			Game.I.Enemies.Add(new Enemy_3002(-99, 600, 800, 60, 6, 0, 21, 100, 300.0, 0.0, -0.2, 0.99));
 			Game.I.Enemies.Add(new Enemy_3002(600, 600, 800, 60, 6, 0, 21, 412, 300.0, 0.0, -0.2, 0.99));
@@ -102,7 +102,7 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 200; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_JackOLantern_02(600.0, 150.0, 150, 30, 102, 22, -1.0));
+			Game.I.Enemies.Add(new Enemy_JackOLantern_02(600.0, 150.0, 150, 30, 102, 3, -1.0));
 			Game.I.Enemies.Add(new Enemy_JackOLantern_02(650.0, 250.0, 150, 30, 102, 22, -1.0));
 
 			// ----
@@ -160,7 +160,7 @@ namespace Charlotte.Games.Scripts
 
 			// ---- BOSS 撃破
 
-			for (int c = 0; c < 180; c++)
+			for (int c = 0; c < 300; c++)
 				yield return true;
 
 			// All Clear Bonus

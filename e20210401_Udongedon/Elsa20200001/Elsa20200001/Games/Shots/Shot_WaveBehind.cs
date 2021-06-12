@@ -33,8 +33,9 @@ namespace Charlotte.Games.Shots
 				this.X += ax;
 				this.Y += ay;
 
-				//if (DDUtils.IsOut(new D2Point(this.X, this.Y), new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H)))
-				//    break;
+				// 弾道の性質上、画面外に出てから画面内に戻ってくる場合あり。
+				if (DDUtils.IsOut(new D2Point(this.X, this.Y), new D4Rect(0, 0, GameConsts.FIELD_W, GameConsts.FIELD_H), 300.0))
+					break;
 
 				this.R += this.RAdd;
 				DDUtils.Approach(ref this.RAdd, 0.0, this.RAddRatePerFrame);

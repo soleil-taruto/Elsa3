@@ -206,7 +206,7 @@ namespace Charlotte.Games.Enemies.チルノs
 
 			Game.I.BossKilled = true;
 			Game.I.Shots.Add(new Shot_BossBomb());
-			Game.I.Score += 8500000 * (Game.I.PlayerWasDead ? 1 : 2);
+			Game.I.Score += 135000000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;
 		}

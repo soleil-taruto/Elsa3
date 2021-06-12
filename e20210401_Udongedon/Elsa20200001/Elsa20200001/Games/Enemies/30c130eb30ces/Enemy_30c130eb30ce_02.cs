@@ -169,7 +169,7 @@ namespace Charlotte.Games.Enemies.チルノs
 			EnemyCommon.DropItem(this, 22);
 
 			Game.I.Enemies.Add(new Enemy_チルノ_03(this.X, this.Y));
-			Game.I.Score += 8500000 * (Game.I.PlayerWasDead ? 1 : 2);
+			Game.I.Score += 85000000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;
 		}

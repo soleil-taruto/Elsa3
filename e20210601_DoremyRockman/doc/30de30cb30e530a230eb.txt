@@ -1,9 +1,24 @@
 ﻿===============================================================================
 
 　DoremyRockman / version $version$
-　　　　　　　　　　　　　　　　　　　　　　(C) 202x stackprobe (soleil.taruto)
+　　　　　　　　　　　　　　　　　　　　　　(C) 2021 stackprobe (soleil.taruto)
 
 ===============================================================================
+
+
+■概要
+
+　・ドレミースイートがロックマンやっています。
+　・何故かはこれから考えます。
+　・開発中
+
+
+　●著作権に関する記載
+
+　　当ゲームは、上海アリス幻樂団 制作 東方Project の二次創作作品になります。
+
+　　東方Projectの二次創作ガイドライン
+　　https://touhou-project.news/guideline/
 
 
 ■起動方法
@@ -54,11 +69,11 @@
 
 ■このゲームの製作者
 
-　cerulean.charlotte (soleil.taruto)
+　stackprobe (soleil.taruto)
 
 　URL:
 　　https://github.com/soleil-taruto
 
 　MAIL:
-　　cerulean.charlottes@gmail.com
+　　stackprobes@gmail.com
 

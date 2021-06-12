@@ -102,10 +102,13 @@ namespace Charlotte.Games
 				DDPrint.Reset();
 			};
 
+			const double BOARD_A = 0.7;
+			I3Color BOARD_COLOR = new I3Color(0, 0, 0);
+
 			foreach (DDScene scene in DDSceneUtils.Create(20))
 			{
-				DDDraw.SetAlpha(0.5);
-				DDDraw.SetBright(0, 0, 0);
+				DDDraw.SetAlpha(BOARD_A);
+				DDDraw.SetBright(BOARD_COLOR);
 				DDDraw.DrawRect_LTRB(
 					Ground.I.Picture.WhiteBox,
 					0,
@@ -121,8 +124,8 @@ namespace Charlotte.Games
 			}
 			foreach (DDScene scene in DDSceneUtils.Create(180))
 			{
-				DDDraw.SetAlpha(0.5);
-				DDDraw.SetBright(0, 0, 0);
+				DDDraw.SetAlpha(BOARD_A);
+				DDDraw.SetBright(BOARD_COLOR);
 				DDDraw.DrawRect_LTRB(
 					Ground.I.Picture.WhiteBox,
 					0,
@@ -138,8 +141,8 @@ namespace Charlotte.Games
 			}
 			foreach (DDScene scene in DDSceneUtils.Create(20))
 			{
-				DDDraw.SetAlpha(0.5);
-				DDDraw.SetBright(0, 0, 0);
+				DDDraw.SetAlpha(BOARD_A);
+				DDDraw.SetBright(BOARD_COLOR);
 				DDDraw.DrawRect_LTRB(
 					Ground.I.Picture.WhiteBox,
 					0,
