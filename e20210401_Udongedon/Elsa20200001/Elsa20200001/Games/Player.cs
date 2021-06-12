@@ -76,7 +76,8 @@ namespace Charlotte.Games
 
 			if (死亡した)
 			{
-				this.Power -= GameConsts.PLAYER_POWER_PER_LEVEL;
+				this.Power -= GameConsts.PLAYER_POWER_PER_LEVEL / 10; // 0.1 Lv ダウン
+				//this.Power -= GameConsts.PLAYER_POWER_PER_LEVEL; // 1 Lv ダウン
 				this.Power = Math.Max(this.Power, 0);
 			}
 			else

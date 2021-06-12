@@ -79,5 +79,6 @@ namespace Charlotte
 		//public DDPicture P_TITLE_WALL = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\run\22350006_big_p20.jpg");
 		public DDPicture P_FUJINBOSS = DDPictureLoaders.RGBToTrans(@"dat\Shoot_old_Resource\th_fuuchi-sozai\img\dot-kaze-ti2.png", new I3Color(0, 0, 0));
 		public DDPicture P_HENYORI_LASER = DDPictureLoaders.Standard(@"dat\lazer.png");
+		public DDPicture P_DVDM_BULLET_03 = DDPictureLoaders.Standard(@"dat\Shoot_old_Resource\DVDM\Bullet03_64x64.png");
 	}
 }

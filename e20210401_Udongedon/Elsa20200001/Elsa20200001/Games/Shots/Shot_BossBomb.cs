@@ -20,7 +20,7 @@ namespace Charlotte.Games.Shots
 		protected override IEnumerable<bool> E_Draw()
 		{
 #if true
-			foreach (DDScene scene in DDSceneUtils.Create(60))
+			foreach (DDScene scene in DDSceneUtils.Create(10))
 			{
 				this.Crash = DDCrashUtils.Rect(D4Rect.LTRB(
 					0,

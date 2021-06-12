@@ -102,5 +102,7 @@ namespace Charlotte
 		public DDPicture[,] D_HENYORI_LASER_DIV16 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 16, 7, 16);
 		public DDPicture[,] D_HENYORI_LASER_DIV32 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 8, 7, 32);
 		public DDPicture[,] D_HENYORI_LASER_DIV64 = DDDerivations.GetAnimation(Ground.I.Picture.P_HENYORI_LASER, 0, 0, 20, 4, 7, 64);
+
+		public DDPicture[] D_DVDM_BULLET_03 = DDDerivations.GetAnimation_YX(Ground.I.Picture.P_DVDM_BULLET_03, 0, 0, 64, 64, 5, 1).ToArray();
 	}
 }

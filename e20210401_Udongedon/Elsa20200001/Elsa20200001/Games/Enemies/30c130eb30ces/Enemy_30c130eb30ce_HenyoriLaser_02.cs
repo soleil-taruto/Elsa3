@@ -7,22 +7,25 @@ namespace Charlotte.Games.Enemies.チルノs
 {
 	public class Enemy_チルノ_HenyoriLaser_02 : Enemy_HenyoriLaser
 	{
-		public Enemy_チルノ_HenyoriLaser_02(double x, double y, double speed, double angle)
-			: base(x, y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e.LONG, EnemyCommon_HenyoriLaser.LASER_COLOR_e.CYAN)
+		private double AngleAdd;
+		private double AngleAddMul;
+
+		public Enemy_チルノ_HenyoriLaser_02(double x, double y, EnemyCommon_HenyoriLaser.LASER_LENGTH_KIND_e kind, EnemyCommon_HenyoriLaser.LASER_COLOR_e color, double speed, double angle, double angleAdd, double angleAddMul, double width)
+			: base(x, y, kind, color)
 		{
 			this.Speed = speed;
 			this.Angle = angle;
-			this.Width = 13.0;
+			this.AngleAdd = angleAdd;
+			this.AngleAddMul = angleAddMul;
+			this.Width = width;
 		}
 
 		protected override IEnumerable<bool> E_UpdateParameters()
 		{
-			double angleAdd = 0.1;
-
 			for (; ; )
 			{
-				this.Angle += angleAdd;
-				angleAdd *= 0.99;
+				this.Angle += this.AngleAdd;
+				this.AngleAdd *= this.AngleAddMul;
 
 				yield return true;
 			}

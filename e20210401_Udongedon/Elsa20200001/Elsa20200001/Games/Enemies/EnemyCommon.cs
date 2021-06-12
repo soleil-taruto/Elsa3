@@ -381,6 +381,39 @@ namespace Charlotte.Games.Enemies
 					}
 					break;
 
+				//case 120: // 自機狙い(連続)_Normal_W
+				//case 121: // 自機狙い(連続)_Normal_R
+				//case 122: // 自機狙い(連続)_Normal_Y
+				case 123: // 自機狙い(連続)_Normal_B
+				case 124: // 自機狙い(連続)_Normal_P
+					{
+						int frm = enemy.OnFieldFrame;
+						int cyc = 20;
+						int div = frm / cyc;
+						int mod = frm % cyc;
+
+						div %= 17;
+
+						if (mod == 0 && SCommon.IsRange(div, 3, 10))
+						{
+							TAMA_COLOR_e color;
+
+							switch (shotType)
+							{
+								//case 120: color = TAMA_COLOR_e.WHITE; break;
+								//case 121: color = TAMA_COLOR_e.RED; break;
+								//case 122: color = TAMA_COLOR_e.YELLOW; break;
+								case 123: color = TAMA_COLOR_e.BLUE; break;
+								case 124: color = TAMA_COLOR_e.PURPLE; break;
+
+								default:
+									throw null; // never
+							}
+							Game.I.Enemies.Add(new Enemy_Tama_01(enemy.X, enemy.Y, TAMA_KIND_e.BIG, color, 4.0, 0.0));
+						}
+					}
+					break;
+
 				case 200: // 三角形_Normal_W
 					{
 						int frm = enemy.OnFieldFrame;
