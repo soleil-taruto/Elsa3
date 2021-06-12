@@ -7,6 +7,9 @@ namespace Charlotte.Games.Enemies
 {
 	public static class EnemyCommon_HenyoriLaser
 	{
+		public const int LASER_LENGTH_KIND_e_MIN = 1;
+		public const int LASER_LENGTH_KIND_e_MAX = 3;
+
 		/// <summary>
 		/// レーザーの長さ
 		/// </summary>
@@ -16,6 +19,8 @@ namespace Charlotte.Games.Enemies
 			MIDDLE,
 			LONG,
 		}
+
+		public const int LASER_COLOR_e_NUM = 7;
 
 		/// <summary>
 		/// レーザーの色

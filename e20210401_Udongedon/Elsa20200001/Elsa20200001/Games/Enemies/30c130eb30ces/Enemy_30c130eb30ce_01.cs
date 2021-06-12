@@ -161,8 +161,8 @@ namespace Charlotte.Games.Enemies.チルノs
 			// 次の形態へ移行する。
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
-			//Game.I.Enemies.Add(new Enemy_ルーミア_02_04(this.X, this.Y, true));
-			Game.I.Score += 2500000 * (Game.I.PlayerWasDead ? 1 : 2);
+			Game.I.Enemies.Add(new Enemy_チルノ_02(this.X, this.Y));
+			Game.I.Score += 3500000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;
 		}

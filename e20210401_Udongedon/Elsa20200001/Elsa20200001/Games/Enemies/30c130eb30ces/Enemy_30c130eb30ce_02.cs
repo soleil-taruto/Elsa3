@@ -16,7 +16,7 @@ namespace Charlotte.Games.Enemies.チルノs
 	public class Enemy_チルノ_02 : Enemy
 	{
 		public Enemy_チルノ_02(double x, double y)
-			: base(x, y, Kind_e.ENEMY, 3000, 0)
+			: base(x, y, Kind_e.ENEMY, 6000, 0)
 		{ }
 
 		private double Target_X;
@@ -37,7 +37,7 @@ namespace Charlotte.Games.Enemies.チルノs
 			{
 				f_updateTarget();
 
-				const double APPR_RATE = 0.98;
+				const double APPR_RATE = 0.99;
 
 				DDUtils.Approach(ref this.X, this.Target_X, APPR_RATE);
 				DDUtils.Approach(ref this.Y, this.Target_Y, APPR_RATE);
@@ -56,20 +56,19 @@ namespace Charlotte.Games.Enemies.チルノs
 
 		private IEnumerable<bool> E_UpdateTarget()
 		{
-			const double MARGIN = 30.0;
-			const double Y_MAX = 100.0;
-			const int FRAME_MAX = 100;
+			const int FRAME_MAX = 120;
+			const double R = 200.0;
 
 			double[] pts = new double[]
 			{
-				MARGIN, MARGIN,
-				GameConsts.FIELD_W / 2, MARGIN,
-				GameConsts.FIELD_W / 2, Y_MAX,
-				GameConsts.FIELD_W - MARGIN, Y_MAX,
-				GameConsts.FIELD_W - MARGIN, MARGIN,
-				GameConsts.FIELD_W / 2, MARGIN,
-				GameConsts.FIELD_W / 2, Y_MAX,
-				MARGIN, Y_MAX,
+				GameConsts.FIELD_W / 2 - R,
+				GameConsts.FIELD_H / 2 - R,
+				GameConsts.FIELD_W / 2 + R,
+				GameConsts.FIELD_H / 2 - R,
+				GameConsts.FIELD_W / 2 + R,
+				GameConsts.FIELD_H / 2 + R,
+				GameConsts.FIELD_W / 2 - R,
+				GameConsts.FIELD_H / 2 + R,
 			};
 
 			for (; ; )
@@ -87,54 +86,19 @@ namespace Charlotte.Games.Enemies.チルノs
 
 		private IEnumerable<bool> E_Attack()
 		{
+			DDRandom rand = new DDRandom(1112);
+			EnemyCommon_HenyoriLaser.LASER_COLOR_e color = EnemyCommon_HenyoriLaser.LASER_COLOR_e.RED;
+
 			for (; ; )
 			{
-				for (int c = 0; c < 3; c++)
+				rand.Next(); // 調整
+
+				foreach (DDScene scene in DDSceneUtils.Create(10))
 				{
-					// 攻撃_01 ナイフ
+					// 攻撃_へにょりレーザー_個別
 					{
 						double speed = 5.0;
-
-						foreach (int div in new int[] { 0, 1, 2, 3, 4, 5, 6, 5, 4, 3, 2, 1, 0 })
-						{
-							for (int cnt = 0; cnt <= div; cnt++)
-							{
-								double angleStep = 0.15;
-								double angle = cnt * angleStep - div * angleStep / 2.0;
-
-								Game.I.Enemies.Add(new Enemy_Tama_01(
-									this.X,
-									this.Y,
-									EnemyCommon.TAMA_KIND_e.KNIFE,
-									EnemyCommon.TAMA_COLOR_e.WHITE,
-									speed,
-									angle
-									));
-							}
-							speed -= 0.2;
-						}
-					}
-
-					for (int d = 0; d < 60; d++)
-						yield return true;
-				}
-
-				for (int c = 0; c < 90; c++)
-					yield return true;
-
-				// 攻撃_02 へにょりレーザー
-				{
-					bool 画面左寄り = this.X < GameConsts.FIELD_W / 2;
-
-					double angleRnd_01 = DDUtils.Random.DReal() * 0.01;
-					double angleRnd_02 = DDUtils.Random.DReal() * 0.01;
-
-					for (int cnt = 0; cnt < 10; cnt++)
-					{
-						double plAngle = DDUtils.GetAngle(new D2Point(Game.I.Player.X, Game.I.Player.Y) - new D2Point(this.X, this.Y));
-
-						double speed = (double)cnt * 0.3 + 3.0;
-						double angle = plAngle + (double)cnt * 0.13 * (画面左寄り ? -1 : 1);
+						double angle = scene.Rate * Math.PI * 2.0 + Math.PI * 0.5;
 
 						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(
 							this.X,
@@ -143,16 +107,54 @@ namespace Charlotte.Games.Enemies.チルノs
 							angle,
 							new double[]
 							{
-								0.02 * (画面左寄り ? -1 : 1) + angleRnd_01,
-								0.06 * (画面左寄り ? 1 : -1) + angleRnd_02,
+								rand.DReal() * 0.35,
+								rand.DReal() * 0.25,
+								rand.DReal() * 0.15,
+								rand.DReal() * 0.05,
 							},
-							EnemyCommon_HenyoriLaser.LASER_COLOR_e.CYAN
+							color
+							));
+					}
+
+					for (int c = 0; c < 20; c++)
+						yield return true;
+				}
+
+				for (int c = 0; c < 180; c++)
+					yield return true;
+
+				color = (EnemyCommon_HenyoriLaser.LASER_COLOR_e)(((int)color + 1) % EnemyCommon_HenyoriLaser.LASER_COLOR_e_NUM);
+
+				// 攻撃_へにょりレーザー_まとめて
+				{
+					double[] angleRnds = new double[]
+					{
+						rand.DReal() * 0.35,
+						rand.DReal() * 0.25,
+						rand.DReal() * 0.15,
+					};
+
+					foreach (DDScene scene in DDSceneUtils.Create(10))
+					{
+						double speed = 7.5;
+						double angle = scene.Rate * Math.PI * 2.0 + Math.PI * 0.5;
+
+						Game.I.Enemies.Add(new Enemy_チルノ_HenyoriLaser_01(
+							this.X,
+							this.Y,
+							speed,
+							angle,
+							angleRnds,
+							color
 							));
 					}
 				}
 
-				for (int c = 0; c < 240; c++)
+				//for (int c = 0; c < 400 && Game.I.Enemies.Iterate().Any(enemy => enemy is Enemy_HenyoriLaser); c++)
+				for (int c = 0; c < 400; c++)
 					yield return true;
+
+				color = (EnemyCommon_HenyoriLaser.LASER_COLOR_e)(((int)color + 1) % EnemyCommon_HenyoriLaser.LASER_COLOR_e_NUM);
 			}
 		}
 
@@ -161,8 +163,8 @@ namespace Charlotte.Games.Enemies.チルノs
 			// 次の形態へ移行する。
 
 			Ground.I.SE.SE_ENEMYKILLED.Play();
-			//Game.I.Enemies.Add(new Enemy_ルーミア_02_04(this.X, this.Y, true));
-			Game.I.Score += 2500000 * (Game.I.PlayerWasDead ? 1 : 2);
+			//Game.I.Enemies.Add(new Enemy_チルノ_02(this.X, this.Y));
+			Game.I.Score += 8500000 * (Game.I.PlayerWasDead ? 1 : 2);
 			EnemyCommon.Drawノーミス();
 			Game.I.PlayerWasDead = false;
 		}
