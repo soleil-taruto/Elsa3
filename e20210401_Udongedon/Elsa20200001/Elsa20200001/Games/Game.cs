@@ -893,8 +893,35 @@ namespace Charlotte.Games
 				this.AH_PlayerCrashedFlag = false;
 			}
 
-			if (this.掛け合い中) // 掛け合い中は何にも当たらない。
+			if (this.掛け合い中) // 掛け合い中は(アイテム以外)何にも当たらない。
+			{
+				// アイテム_被弾判定
+				{
+					for (int ecIndex = 0; ecIndex < this.EnemyCrashes.Count; ecIndex++) // 敵 x 自機
+					{
+						DDCrash ec = this.EnemyCrashes[ecIndex];
+
+						if (ec.OwnerEnemy.HP == -1) // ? 死亡
+							continue;
+
+						if (ec.OwnerEnemy.Kind != Enemy.Kind_e.ITEM) // ? アイテムではない
+							continue;
+
+						for (int pcIndex = 0; pcIndex < this.PlayerCrashes.Count; pcIndex++)
+						{
+							DDCrash pc = this.PlayerCrashes[pcIndex];
+
+							if (DDCrashUtils.IsCrashed(ec, pc))
+							{
+								this.AH_PlayerCrashed(ec.OwnerEnemy);
+								break;
+							}
+						}
+					}
+				}
+
 				return;
+			}
 
 			for (int ecIndex = 0; ecIndex < this.EnemyCrashes.Count; ecIndex++) // 敵 x 自弾(通常弾)
 			{

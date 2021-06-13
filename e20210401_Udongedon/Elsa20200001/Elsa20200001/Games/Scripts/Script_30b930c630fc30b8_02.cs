@@ -151,7 +151,8 @@ namespace Charlotte.Games.Scripts
 
 			// ---- BOSS 撃破
 
-			for (int c = 0; c < 180; c++)
+			//for (int c = 0; c < 180; c++)
+			for (int c = 0; c < 240; c++) // 何となく少し長めに...
 				yield return true;
 		}
 	}
