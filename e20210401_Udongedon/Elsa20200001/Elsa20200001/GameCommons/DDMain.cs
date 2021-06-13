@@ -189,7 +189,7 @@ namespace Charlotte.GameCommons
 
 		public static void SetMainWindowTitle()
 		{
-			DX.SetMainWindowText(DDDatStrings.Title + " " + DDUserDatStrings.Version);
+			DX.SetMainWindowText(DDDatStrings.Title + " / " + DDUserDatStrings.Version);
 		}
 
 		private static IntPtr GetAppIcon()
