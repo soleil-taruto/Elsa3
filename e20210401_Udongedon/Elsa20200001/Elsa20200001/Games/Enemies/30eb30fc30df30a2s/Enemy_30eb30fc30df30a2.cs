@@ -33,7 +33,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			}
 
 			Game.I.BossBattleStarted = true;
-			Game.I.Enemies.Add(new Enemy_チルノ_01(this.X, this.Y));
+			Game.I.Enemies.Add(new Enemy_ルーミア_01(this.X, this.Y));
 		}
 
 		protected override void Killed()

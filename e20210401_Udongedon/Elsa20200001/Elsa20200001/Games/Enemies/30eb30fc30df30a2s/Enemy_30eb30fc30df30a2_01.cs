@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
-using Charlotte.Games.Enemies.鍵山雛s;
 using Charlotte.Games.Shots;
 using Charlotte.Games.Walls;
 
@@ -14,9 +13,9 @@ namespace Charlotte.Games.Enemies.ルーミアs
 	/// ルーミア
 	/// 第01形態
 	/// </summary>
-	public class Enemy_チルノ_01 : Enemy
+	public class Enemy_ルーミア_01 : Enemy
 	{
-		public Enemy_チルノ_01(double x, double y)
+		public Enemy_ルーミア_01(double x, double y)
 			: base(x, y, Kind_e.ENEMY, 1000, 0)
 		{ }
 

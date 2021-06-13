@@ -46,6 +46,22 @@ namespace Charlotte.GameCommons
 				);
 		}
 
+		public static DDPicture[,] GetAnimation(DDPicture parentPicture, int x, int y, int w, int h, int xNum, int yNum)
+		{
+			return GetAnimation(parentPicture, x, y, w, h, xNum, yNum, w, h);
+		}
+
+		public static DDPicture[,] GetAnimation(DDPicture parentPicture, int x, int y, int w, int h, int xNum, int yNum, int xStep, int yStep)
+		{
+			DDPicture[,] table = new DDPicture[xNum, yNum];
+
+			for (int xc = 0; xc < xNum; xc++)
+				for (int yc = 0; yc < yNum; yc++)
+					table[xc, yc] = GetPicture(parentPicture, x + xc * xStep, y + yc * yStep, w, h);
+
+			return table;
+		}
+
 		public static IEnumerable<DDPicture> GetAnimation_YX(DDPicture parentPicture, int x, int y, int w, int h, int xNum, int yNum)
 		{
 			return GetAnimation_YX(parentPicture, x, y, w, h, xNum, yNum, w, h);

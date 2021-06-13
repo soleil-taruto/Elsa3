@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Charlotte.Games.Enemies.Bosses.コピーマンs
+namespace Charlotte.Games.Enemies.Bosses.ゆドレミーs
 {
-	public class Enemy_Boss_コピーマン : Enemy
+	public class Enemy_Boss_ゆドレミー : Enemy
 	{
-		public Enemy_Boss_コピーマン(double x, double y)
+		public Enemy_Boss_ゆドレミー(double x, double y)
 			: base(x, y, 0, 0, false)
 		{ }
 

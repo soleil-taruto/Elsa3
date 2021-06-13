@@ -5,7 +5,7 @@ using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games.Enemies.Tests;
-using Charlotte.Games.Enemies.Bosses.コピーマンs;
+using Charlotte.Games.Enemies.Bosses.ゆドレミーs;
 using Charlotte.Games.Enemies.アイテムs;
 
 namespace Charlotte.Games.Enemies
@@ -113,7 +113,7 @@ namespace Charlotte.Games.Enemies
 			new EnemyInfo("アイテム/ハンマー陰陽玉", () => new Enemy_Item_ハンマー陰陽玉(X, Y)),
 			new EnemyInfo("アイテム/エアーシューター", () => new Enemy_Item_エアーシューター(X, Y)),
 			new EnemyInfo("アイテム/マグネットエアー", () => new Enemy_Item_マグネットエアー(X, Y)),
-			new EnemyInfo("Boss/コピーマン", () => new Enemy_Boss_コピーマン(X, Y)),
+			new EnemyInfo("Boss/ゆドレミー", () => new Enemy_Boss_ゆドレミー(X, Y)),
 
 			// 新しい敵をここへ追加..
 		};

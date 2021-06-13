@@ -75,7 +75,7 @@
     <Compile Include="GameCommons\DDTableMenu.cs" />
     <Compile Include="GameCommons\DDTouch.cs" />
     <Compile Include="Games\Confirm.cs" />
-    <Compile Include="Games\Enemies\Bosses\コピーマンs\Enemy_Boss_コピーマン.cs" />
+    <Compile Include="Games\Enemies\Bosses\ゆドレミーs\Enemy_Boss_ゆドレミー.cs" />
     <Compile Include="Games\Enemies\EnemyCommon.cs" />
     <Compile Include="Games\Enemies\Enemy_Bird.cs" />
     <Compile Include="Games\Enemies\Enemy_BirdShit.cs" />
@@ -88,6 +88,8 @@
     <Compile Include="Games\Enemies\Enemy_地蔵.cs" />
     <Compile Include="Games\Enemies\Enemy_弾.cs" />
     <Compile Include="Games\Enemies\Enemy_即死トラップThe針.cs" />
+    <Compile Include="Games\Enemies\アイテムs\EnemyCommon_Item.cs" />
+    <Compile Include="Games\Enemies\アイテムs\Enemy_Item.cs" />
     <Compile Include="Games\Enemies\アイテムs\Enemy_Item_跳ねる陰陽玉.cs" />
     <Compile Include="Games\Enemies\アイテムs\Enemy_Item_ハンマー陰陽玉.cs" />
     <Compile Include="Games\Enemies\アイテムs\Enemy_Item_エアーシューター.cs" />

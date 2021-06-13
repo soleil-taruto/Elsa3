@@ -23,10 +23,6 @@ namespace Charlotte.GameProgressMasters
 
 		public void Perform()
 		{
-			// zantei zantei zantei
-			// zantei zantei zantei
-			// zantei zantei zantei
-
 			// TODO
 			// TODO
 			// TODO
@@ -46,10 +42,6 @@ namespace Charlotte.GameProgressMasters
 
 		public void Perform_コンテニュー()
 		{
-			// zantei zantei zantei
-			// zantei zantei zantei
-			// zantei zantei zantei
-
 			// TODO
 			// TODO
 			// TODO

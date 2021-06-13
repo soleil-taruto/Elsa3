@@ -7,37 +7,25 @@ using Charlotte.Commons;
 
 namespace Charlotte.Games.Enemies.アイテムs
 {
-	public class Enemy_Item_跳ねる陰陽玉 : Enemy
+	public class Enemy_Item_跳ねる陰陽玉 : Enemy_Item
 	{
 		public Enemy_Item_跳ねる陰陽玉(double x, double y)
-			: base(x, y, 0, 0, false)
+			: base(x, y, 3)
 		{ }
 
-		protected override IEnumerable<bool> E_Draw()
+		protected override bool IsAlreadyCollected()
 		{
-			for (; ; )
-			{
-				if (DDUtils.GetDistance(new D2Point(Game.I.Player.X, Game.I.Player.Y), new D2Point(this.X, this.Y)) < 30.0) // ? 十分に接近 -> 取得する。
-				{
-					Game.I.Status.InventoryFlags[GameStatus.Inventory_e.取得済み_跳ねる陰陽玉] = true;
-					break;
-				}
+			return Game.I.Status.InventoryFlags[GameStatus.Inventory_e.取得済み_跳ねる陰陽玉];
+		}
 
-				if (!DDUtils.IsOutOfCamera(new D2Point(this.X, this.Y), 50.0))
-				{
-					DDDraw.DrawBegin(Ground.I.Picture.Dummy, this.X - DDGround.ICamera.X, this.Y - DDGround.ICamera.Y);
-					DDDraw.DrawRotate(DDEngine.ProcFrame / 30.0);
-					DDDraw.DrawEnd();
+		protected override void Collected()
+		{
+			Game.I.Status.InventoryFlags[GameStatus.Inventory_e.取得済み_跳ねる陰陽玉] = true;
+		}
 
-					DDPrint.SetDebug((int)this.X - DDGround.ICamera.X, (int)this.Y - DDGround.ICamera.Y);
-					DDPrint.SetBorder(new I3Color(0, 0, 0));
-					DDPrint.PrintLine("跳ねる陰陽玉");
-					DDPrint.Reset();
-
-					// 当たり判定無し
-				}
-				yield return true;
-			}
+		protected override string GetTitle()
+		{
+			return "跳ねる陰陽玉";
 		}
 	}
 }

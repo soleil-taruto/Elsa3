@@ -349,5 +349,14 @@ namespace Charlotte
 		public DDPicture 陰陽玉 = DDPictureLoaders.Standard(@"dat\Game\blueberry\nc116914.png");
 		//public DDPicture 陰陽玉 = DDPictureLoaders.Expand(@"dat\Game\blueberry\nc116914.png", CHARA_TIP_EXPNUM);
 		public DDPicture Laser = DDPictureLoaders.Standard(@"dat\Game\Laser.png");
+
+		public DDPicture[] Crystals = new DDPicture[]
+		{
+			DDPictureLoaders.Standard(@"dat\Game\ぴぽや倉庫\pipo-etcchara002.png"), // 青
+			DDPictureLoaders.Standard(@"dat\Game\ぴぽや倉庫\pipo-etcchara002a.png"), // 赤
+			DDPictureLoaders.Standard(@"dat\Game\ぴぽや倉庫\pipo-etcchara002b.png"), // 緑
+			DDPictureLoaders.Standard(@"dat\Game\ぴぽや倉庫\pipo-etcchara002c.png"), // 黄色
+			DDPictureLoaders.Standard(@"dat\Game\ぴぽや倉庫\pipo-etcchara002d.png"), // 白黒
+		};
 	}
 }

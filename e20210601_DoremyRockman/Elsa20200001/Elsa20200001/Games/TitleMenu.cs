@@ -182,6 +182,11 @@ namespace Charlotte.Games
 							}
 							else
 							{
+#if true // 暫定
+								this.DrawWall.TopMenuLeaved = true;
+								this.暫定スタートメニュー();
+								this.DrawWall.TopMenuLeaved = false; // restore
+#else
 								this.LeaveTitleMenu();
 
 								using (new GameProgressMaster())
@@ -189,11 +194,17 @@ namespace Charlotte.Games
 									GameProgressMaster.I.Perform();
 								}
 								this.ReturnTitleMenu();
+#endif
 							}
 							break;
 
 						case 1:
 							{
+#if true // 暫定
+								this.DrawWall.TopMenuLeaved = true;
+								this.暫定コンテニューメニュー();
+								this.DrawWall.TopMenuLeaved = false; // restore
+#else
 								this.LeaveTitleMenu();
 
 								using (new GameProgressMaster())
@@ -201,6 +212,7 @@ namespace Charlotte.Games
 									GameProgressMaster.I.Perform_コンテニュー();
 								}
 								this.ReturnTitleMenu();
+#endif
 							}
 							break;
 
@@ -249,6 +261,81 @@ namespace Charlotte.Games
 
 			DDEngine.FreezeInput();
 		}
+
+		// 暫定メニュー_ここから
+
+		private void 暫定スタートメニュー()
+		{
+			Action<string> a_gameStart = startMapName =>
+			{
+				this.LeaveTitleMenu();
+
+				using (new WorldGameMaster())
+				{
+					WorldGameMaster.I.World = new World(startMapName);
+					WorldGameMaster.I.Status = new GameStatus();
+					WorldGameMaster.I.Perform();
+				}
+				this.ReturnTitleMenu();
+			};
+
+			for (; ; )
+			{
+				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "ステージ選択(仮)", new string[]
+				{
+					"ステージ１",
+					"ステージ２",
+					"戻る",
+				},
+				0
+				);
+
+				switch (selectIndex)
+				{
+					case 0:
+						a_gameStart("Stage_0001_v001\\t1001");
+						break;
+
+					case 1:
+						a_gameStart("Stage_0002_v001\\t1001");
+						break;
+
+					case 2:
+						goto endMenu;
+
+					default:
+						throw new DDError();
+				}
+			}
+		endMenu:
+			;
+		}
+
+		private void 暫定コンテニューメニュー()
+		{
+			for (; ; )
+			{
+				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "コンテニュー(仮)", new string[]
+				{
+					"未実装",
+				},
+				0
+				);
+
+				switch (selectIndex)
+				{
+					case 0:
+						goto endMenu;
+
+					default:
+						throw new DDError();
+				}
+			}
+		endMenu:
+			;
+		}
+
+		// 暫定メニュー_ここまで
 
 		private void CheatMainMenu()
 		{
