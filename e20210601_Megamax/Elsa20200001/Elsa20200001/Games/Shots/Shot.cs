@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
+using Charlotte.Games.Enemies;
 
 namespace Charlotte.Games.Shots
 {
@@ -35,6 +36,13 @@ namespace Charlotte.Games.Shots
 		/// これにより「フレームの最後に」自弾リストから除去される。
 		/// </summary>
 		public bool DeadFlag = false;
+
+		/// <summary>
+		/// 直前にクラッシュした敵
+		/// 貫通武器について、貫通中に複数回ダメージを与えないように制御する。
+		/// -- 複数の敵に同時に当たると意図通りにならないが、厳格に制御する必要は無いので、看過する。
+		/// </summary>
+		public Enemy LastCrashedEnemy = null;
 
 		/// <summary>
 		/// 現在のフレームにおける当たり判定を保持する。
