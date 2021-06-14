@@ -28,6 +28,12 @@ namespace Charlotte.Games.Scripts
 			Game.I.Enemies.Add(new Enemy_0001(300.0, -100.0, 1, 30, 5, 100, 22, 4.0, -1, 350.0, 0.97));
 			Game.I.Enemies.Add(new Enemy_0001(400.0, -150.0, 1, 30, 5, 100, 22, 4.0, -1, 350.0, 0.97));
 
+			for (int c = 0; c < 180; c++)
+				yield return true;
+
+			Game.I.Enemies.Add(new Enemy_0001(100.0, -150.0, 1, 30, 5, 100, 3, 4.0, -1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(256.0, -50.0, 1, 30, 5, 100, 3, 4.0, -1, 350.0, 0.97));
+
 			for (int c = 0; c < 240; c++)
 				yield return true;
 
