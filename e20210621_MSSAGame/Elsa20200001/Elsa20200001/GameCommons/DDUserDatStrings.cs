@@ -9,7 +9,7 @@ namespace Charlotte.GameCommons
 {
 	public static class DDUserDatStrings
 	{
-		// DatStrings.dat
+		// Properties.dat
 
 		private static Dictionary<string, string> Name2Value = SCommon.CreateDictionary<string>();
 
