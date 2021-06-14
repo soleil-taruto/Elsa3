@@ -182,11 +182,6 @@ namespace Charlotte.Games
 							}
 							else
 							{
-#if true // 暫定
-								this.DrawWall.TopMenuLeaved = true;
-								this.暫定スタートメニュー();
-								this.DrawWall.TopMenuLeaved = false; // restore
-#else
 								this.LeaveTitleMenu();
 
 								using (new GameProgressMaster())
@@ -194,17 +189,11 @@ namespace Charlotte.Games
 									GameProgressMaster.I.Perform();
 								}
 								this.ReturnTitleMenu();
-#endif
 							}
 							break;
 
 						case 1:
 							{
-#if true // 暫定
-								this.DrawWall.TopMenuLeaved = true;
-								this.暫定コンテニューメニュー();
-								this.DrawWall.TopMenuLeaved = false; // restore
-#else
 								this.LeaveTitleMenu();
 
 								using (new GameProgressMaster())
@@ -212,7 +201,6 @@ namespace Charlotte.Games
 									GameProgressMaster.I.Perform_コンテニュー();
 								}
 								this.ReturnTitleMenu();
-#endif
 							}
 							break;
 
@@ -262,81 +250,6 @@ namespace Charlotte.Games
 			DDEngine.FreezeInput();
 		}
 
-		// 暫定メニュー_ここから
-
-		private void 暫定スタートメニュー()
-		{
-			Action<string> a_gameStart = startMapName =>
-			{
-				this.LeaveTitleMenu();
-
-				using (new WorldGameMaster())
-				{
-					WorldGameMaster.I.World = new World(startMapName);
-					WorldGameMaster.I.Status = new GameStatus();
-					WorldGameMaster.I.Perform();
-				}
-				this.ReturnTitleMenu();
-			};
-
-			for (; ; )
-			{
-				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "ステージ選択(仮)", new string[]
-				{
-					"ステージ１",
-					"ステージ２",
-					"戻る",
-				},
-				0
-				);
-
-				switch (selectIndex)
-				{
-					case 0:
-						a_gameStart("Stage_0001_v001\\t1001");
-						break;
-
-					case 1:
-						a_gameStart("Stage_0002_v001\\t1001");
-						break;
-
-					case 2:
-						goto endMenu;
-
-					default:
-						throw new DDError();
-				}
-			}
-		endMenu:
-			;
-		}
-
-		private void 暫定コンテニューメニュー()
-		{
-			for (; ; )
-			{
-				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "コンテニュー(仮)", new string[]
-				{
-					"未実装",
-				},
-				0
-				);
-
-				switch (selectIndex)
-				{
-					case 0:
-						goto endMenu;
-
-					default:
-						throw new DDError();
-				}
-			}
-		endMenu:
-			;
-		}
-
-		// 暫定メニュー_ここまで
-
 		private void CheatMainMenu()
 		{
 			Action<string> a_gameStart = startMapName =>
@@ -356,10 +269,16 @@ namespace Charlotte.Games
 			{
 				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "開発デバッグ用メニュー", new string[]
 				{
-					"Stage_0001_v001",
-					"Stage_0002_v001",
-					"Stage_0003_v001",
 					"ノベルパートテスト",
+					"Stage1", // 左下
+					"Stage2", // 下
+					"Stage3", // 右下
+					"Stage4", // 左
+					"Stage5", // 中央
+					"Stage6", // 右
+					"Stage7", // 左上
+					"Stage8", // 上
+					"Stage9", // 右上
 					"戻る",
 				},
 				0
@@ -368,18 +287,6 @@ namespace Charlotte.Games
 				switch (selectIndex)
 				{
 					case 0:
-						a_gameStart("Stage_0001_v001\\t1001");
-						break;
-
-					case 1:
-						a_gameStart("Stage_0002_v001\\t1001");
-						break;
-
-					case 2:
-						a_gameStart("Stage_0002_v001\\t1001");
-						break;
-
-					case 3:
 						{
 							this.LeaveTitleMenu();
 
@@ -392,7 +299,17 @@ namespace Charlotte.Games
 						}
 						break;
 
-					case 4:
+					case 1: a_gameStart("Stage1/t1001"); break;
+					case 2: a_gameStart("Stage2/t1001"); break;
+					case 3: a_gameStart("Stage3/t1001"); break;
+					case 4: a_gameStart("Stage4/t1001"); break;
+					case 5: a_gameStart("Stage5/t1001"); break;
+					case 6: a_gameStart("Stage6/t1001"); break;
+					case 7: a_gameStart("Stage7/t1001"); break;
+					case 8: a_gameStart("Stage8/t1001"); break;
+					case 9: a_gameStart("Stage9/t1001"); break;
+
+					case 10:
 						goto endMenu;
 
 					default:
