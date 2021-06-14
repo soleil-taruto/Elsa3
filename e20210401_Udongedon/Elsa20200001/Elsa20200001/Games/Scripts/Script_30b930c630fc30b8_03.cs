@@ -31,8 +31,8 @@ namespace Charlotte.Games.Scripts
 			for (int c = 0; c < 180; c++)
 				yield return true;
 
-			Game.I.Enemies.Add(new Enemy_0001(100.0, -150.0, 1, 30, 5, 100, 3, 4.0, -1, 350.0, 0.97));
-			Game.I.Enemies.Add(new Enemy_0001(256.0, -50.0, 1, 30, 5, 100, 3, 4.0, -1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(100.0, -150.0, 1, 30, 5, 100, 3, 4.0, 1, 350.0, 0.97));
+			Game.I.Enemies.Add(new Enemy_0001(256.0, -50.0, 1, 30, 5, 100, 3, 4.0, 1, 350.0, 0.97));
 
 			for (int c = 0; c < 240; c++)
 				yield return true;

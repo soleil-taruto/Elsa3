@@ -260,9 +260,9 @@ namespace Charlotte.Games.Enemies
 			else if (mode == 1)
 				relKoma = 4 + koma;
 			else
-				relKoma = 0;
+				relKoma = koma;
 
-			return Ground.I.Picture2.D_BIGFAIRY_00[color * 8 + relKoma + koma];
+			return Ground.I.Picture2.D_BIGFAIRY_00[color * 8 + relKoma];
 		}
 
 		private static DDPicture GetOnibiPicture(int color, int koma)

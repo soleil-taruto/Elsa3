@@ -461,6 +461,13 @@ namespace Charlotte.GameCommons
 			return a + (b - a) * rate;
 		}
 
+		public static int Sign(int value)
+		{
+			if (value < 0) return -1;
+			if (value > 0) return 1;
+			return 0;
+		}
+
 		public static int Sign(double value)
 		{
 			if (value < 0) return -1;
