@@ -706,9 +706,19 @@ namespace Charlotte.Games
 							{
 								// ★ 敵_被弾ここから
 
+								// 貫通武器について、貫通中に複数回クラッシュしないように制御する。
+								// -- 複数の敵に同時に当たると意図通りにならないが、厳格に制御する必要は無いので、看過する。
+
+								if (shot.LastCrashedEnemy == enemy) // ? 直前にクラッシュした -> 複数回クラッシュしない。
+									continue;
+
 								enemy.HP -= shot.AttackPoint;
 
-								if (!shot.敵を貫通する) // 自弾の攻撃力と敵のHPを相殺
+								if (shot.敵を貫通する)
+								{
+									shot.LastCrashedEnemy = enemy;
+								}
+								else // ? 敵を貫通しない -> 自弾の攻撃力と敵のHPを相殺
 								{
 									if (0 <= enemy.HP) // ? 丁度削りきった || 削りきれなかった -> 攻撃力を使い果たしたので、ショットは消滅
 										shot.Kill();
