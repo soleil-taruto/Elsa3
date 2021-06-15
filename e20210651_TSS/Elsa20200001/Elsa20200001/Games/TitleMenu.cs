@@ -245,7 +245,6 @@ namespace Charlotte.Games
 
 						case 1:
 							{
-#if true
 								this.DrawWall.TopMenuLeaved = true;
 								SaveDataSlot saveDataSlot;
 
@@ -254,11 +253,6 @@ namespace Charlotte.Games
 									saveDataSlot = SaveOrLoadMenu.I.Load(this.DrawWall.Execute);
 								}
 								this.DrawWall.TopMenuLeaved = false;
-#else // old
-								this.DrawWall.TopMenuLeaved = true;
-								SaveDataSlot saveDataSlot = this.LoadGame();
-								this.DrawWall.TopMenuLeaved = false;
-#endif
 
 								if (saveDataSlot != null)
 								{
@@ -275,19 +269,15 @@ namespace Charlotte.Games
 							break;
 
 						case 2:
-#if true
-							this.DrawWall.TopMenuLeaved = true;
-
-							using (new SettingMenu())
 							{
-								SettingMenu.I.Perform(this.DrawWall.Execute);
+								this.DrawWall.TopMenuLeaved = true;
+
+								using (new SettingMenu())
+								{
+									SettingMenu.I.Perform(this.DrawWall.Execute);
+								}
+								this.DrawWall.TopMenuLeaved = false;
 							}
-							this.DrawWall.TopMenuLeaved = false;
-#else // old
-							this.DrawWall.TopMenuLeaved = true;
-							this.Setting();
-							this.DrawWall.TopMenuLeaved = false;
-#endif
 							break;
 
 						case 3:
