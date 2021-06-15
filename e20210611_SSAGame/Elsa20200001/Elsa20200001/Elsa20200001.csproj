@@ -194,6 +194,7 @@
     <Compile Include="Games\Map.cs" />
     <Compile Include="Games\MapCell.cs" />
     <Compile Include="Games\MusicCollection.cs" />
+    <Compile Include="Games\OmakeMenu.cs" />
     <Compile Include="Games\SettingMenu.cs" />
     <Compile Include="Games\Tiles\Tests\Tile_Bボス部屋Shutter.cs" />
     <Compile Include="Games\WorldGameMaster.cs" />
