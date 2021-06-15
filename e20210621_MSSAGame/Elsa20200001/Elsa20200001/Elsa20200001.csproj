@@ -173,6 +173,7 @@
     <Compile Include="Games\Map.cs" />
     <Compile Include="Games\MapCell.cs" />
     <Compile Include="Games\MusicCollection.cs" />
+    <Compile Include="Games\OmakeMenu.cs" />
     <Compile Include="Games\SettingMenu.cs" />
     <Compile Include="Games\Shots\Shot_FireBall.cs" />
     <Compile Include="Games\Shots\Shot_Laser.cs" />

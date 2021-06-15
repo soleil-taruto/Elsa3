@@ -37,6 +37,7 @@ namespace Charlotte.Games
 			{
 				"ゲームスタート",
 				"コンテニュー",
+				"おまけ",
 				"設定",
 				"終了",
 			};
@@ -125,6 +126,16 @@ namespace Charlotte.Games
 						break;
 
 					case 2:
+						using (new OmakeMenu()
+						{
+							SimpleMenu = this.SimpleMenu,
+						})
+						{
+							OmakeMenu.I.Perform();
+						}
+						break;
+
+					case 3:
 						using (new SettingMenu()
 						{
 							SimpleMenu = this.SimpleMenu,
@@ -134,7 +145,7 @@ namespace Charlotte.Games
 						}
 						break;
 
-					case 3:
+					case 4:
 						goto endMenu;
 
 					default:
