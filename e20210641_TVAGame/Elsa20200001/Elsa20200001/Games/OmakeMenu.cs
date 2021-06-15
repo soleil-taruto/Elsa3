@@ -45,7 +45,7 @@ namespace Charlotte.Games
 					"戻る",
 				};
 
-				selectIndex = this.SimpleMenu.Perform(40, 40, 40, 18, "設定", items, selectIndex);
+				selectIndex = this.SimpleMenu.Perform(40, 40, 40, 18, "おまけ", items, selectIndex);
 
 				this.SetDeepConfigEntered(true);
 
