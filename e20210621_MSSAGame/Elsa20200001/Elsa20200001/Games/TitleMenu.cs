@@ -126,21 +126,17 @@ namespace Charlotte.Games
 						break;
 
 					case 2:
-						using (new OmakeMenu()
+						using (new OmakeMenu())
 						{
-							SimpleMenu = this.SimpleMenu,
-						})
-						{
+							OmakeMenu.I.SimpleMenu = this.SimpleMenu;
 							OmakeMenu.I.Perform();
 						}
 						break;
 
 					case 3:
-						using (new SettingMenu()
+						using (new SettingMenu())
 						{
-							SimpleMenu = this.SimpleMenu,
-						})
-						{
+							SettingMenu.I.SimpleMenu = this.SimpleMenu;
 							SettingMenu.I.Perform();
 						}
 						break;
