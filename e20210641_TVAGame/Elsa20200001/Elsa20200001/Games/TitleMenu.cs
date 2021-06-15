@@ -183,7 +183,7 @@ namespace Charlotte.Games
 
 		private class TopMenuTask : DDTask
 		{
-			public const int ITEM_NUM = 4;
+			public const int ITEM_NUM = 5;
 			public int SelectIndex = 0;
 
 			public override IEnumerable<bool> E_Task()
@@ -204,13 +204,13 @@ namespace Charlotte.Games
 
 			private IEnumerable<bool> E_DrawItem(int selfIndex)
 			{
-				DDPicture picture = Ground.I.Picture2.TitleMenuItem[0, selfIndex];
+				DDPicture picture = Ground.I.Picture.TitleMenuItems[selfIndex];
 
 				const double ITEM_UNSEL_X = 120.0;
 				const double ITEM_UNSEL_A = 0.5;
 				const double ITEM_SEL_X = 140.0;
 				const double ITEM_SEL_A = 1.0;
-				const double ITEM_Y = 195.0;
+				const double ITEM_Y = 170.0;
 				const double ITEM_Y_STEP = 50.0;
 
 				double x = ITEM_SEL_X;
@@ -317,6 +317,20 @@ namespace Charlotte.Games
 						case 2:
 							this.DrawWall.TopMenuLeaved = true;
 
+							using (new OmakeMenu()
+							{
+								SimpleMenu = this.SimpleMenu,
+								SetDeepConfigEntered = flag => this.DrawWall.DeepConfigEntered = flag,
+							})
+							{
+								OmakeMenu.I.Perform();
+							}
+							this.DrawWall.TopMenuLeaved = false;
+							break;
+
+						case 3:
+							this.DrawWall.TopMenuLeaved = true;
+
 							using (new SettingMenu()
 							{
 								SimpleMenu = this.SimpleMenu,
@@ -328,7 +342,7 @@ namespace Charlotte.Games
 							this.DrawWall.TopMenuLeaved = false;
 							break;
 
-						case 3:
+						case 4:
 							goto endMenu;
 
 						default:

@@ -18,7 +18,14 @@ namespace Charlotte
 
 		public DDPicture TitleWall = DDPictureLoaders.Standard(@"dat\Claris_Resource\k-after\BG23a_80.jpg");
 		public DDPicture Title = DDPictureLoaders.Standard(@"dat\Claris_Resource\Actor83_1.png");
-		public DDPicture TitleMenuItem = DDPictureLoaders.Standard(@"dat\Claris_Resource\TitleMenuItem.png");
+		public DDPicture[] TitleMenuItems = new DDPicture[]
+		{
+			DDPictureLoaders.Standard(@"dat\Title\ゲームスタート.png"),
+			DDPictureLoaders.Standard(@"dat\Title\コンテニュー.png"),
+			DDPictureLoaders.Standard(@"dat\Title\おまけ.png"),
+			DDPictureLoaders.Standard(@"dat\Title\設定.png"),
+			DDPictureLoaders.Standard(@"dat\Title\終了.png"),
+		};
 
 		public DDPicture Player_Alice = DDPictureLoaders.Standard(@"dat\フリー素材\点睛集積\thv8_alice2_2.png");
 		public DDPicture Player_高麗野あうん = DDPictureLoaders.Standard(@"dat\フリー素材\点睛集積\thv8_aunn.png");

@@ -12,8 +12,6 @@ namespace Charlotte
 	{
 		//public DDPicture[,] Dummy = DDDerivations.GetAnimation(Ground.I.Picture.Dummy, 0, 0, 25, 25, 2, 2);
 
-		public DDPicture[,] TitleMenuItem = DDDerivations.GetAnimation(Ground.I.Picture.TitleMenuItem, 0, 0, 180, 50);
-
 		#region Players
 
 		public const int Player_e_Length = 50; // Player_e の項目数と一致すること
