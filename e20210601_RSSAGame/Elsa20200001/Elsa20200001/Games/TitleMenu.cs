@@ -74,7 +74,7 @@ namespace Charlotte.Games
 
 		private class TopMenuTask : DDTask
 		{
-			public const int ITEM_NUM = 4;
+			public const int ITEM_NUM = 5;
 			public int SelectIndex = 0;
 
 			public override IEnumerable<bool> E_Task()
@@ -101,7 +101,7 @@ namespace Charlotte.Games
 				const double ITEM_UNSEL_A = 0.5;
 				const double ITEM_SEL_X = 180.0;
 				const double ITEM_SEL_A = 1.0;
-				const double ITEM_Y = 320.0;
+				const double ITEM_Y = 270.0;
 				const double ITEM_Y_STEP = 50.0;
 
 				double x = ITEM_SEL_X;
@@ -208,6 +208,19 @@ namespace Charlotte.Games
 							{
 								this.DrawWall.TopMenuLeaved = true;
 
+								using (new OmakeMenu())
+								{
+									OmakeMenu.I.SimpleMenu = this.SimpleMenu;
+									OmakeMenu.I.Perform();
+								}
+								this.DrawWall.TopMenuLeaved = false; // restore
+							}
+							break;
+
+						case 3:
+							{
+								this.DrawWall.TopMenuLeaved = true;
+
 								using (new SettingMenu())
 								{
 									SettingMenu.I.SimpleMenu = this.SimpleMenu;
@@ -217,7 +230,7 @@ namespace Charlotte.Games
 							}
 							break;
 
-						case 3:
+						case 4:
 							goto endMenu;
 
 						default:
@@ -267,7 +280,7 @@ namespace Charlotte.Games
 
 			for (; ; )
 			{
-				int selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "開発デバッグ用メニュー", new string[]
+				int selectIndex = this.SimpleMenu.Perform(20, 20, 30, 24, "開発デバッグ用メニュー", new string[]
 				{
 					"ノベルパートテスト",
 					"Stage1", // 左下
@@ -279,6 +292,9 @@ namespace Charlotte.Games
 					"Stage7", // 左上
 					"Stage8", // 上
 					"Stage9", // 右上
+					"Stage5-2", // 中央(2面)
+					"Stage5-3", // 中央(3面)
+					"Stage5-4", // 中央(4面)
 					"戻る",
 				},
 				0
@@ -308,8 +324,11 @@ namespace Charlotte.Games
 					case 7: a_gameStart("Stage7/t1001"); break;
 					case 8: a_gameStart("Stage8/t1001"); break;
 					case 9: a_gameStart("Stage9/t1001"); break;
+					case 10: a_gameStart("Stage5/t2001"); break;
+					case 11: a_gameStart("Stage5/t3001"); break;
+					case 12: a_gameStart("Stage5/t4001"); break;
 
-					case 10:
+					case 13:
 						goto endMenu;
 
 					default:

@@ -223,6 +223,7 @@
     <Compile Include="Games\World.cs" />
     <Compile Include="GameProgressMasters\GameProgressMaster.cs" />
     <Compile Include="Games\ぼかし効果.cs" />
+    <Compile Include="Games\OmakeMenu.cs" />
     <Compile Include="Games\マップ移動.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="LevelEditors\LevelEditor.cs" />
