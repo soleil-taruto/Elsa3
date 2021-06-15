@@ -21,6 +21,7 @@ namespace Charlotte
 		{
 			DDPictureLoaders.Standard(@"dat\Title\ゲームスタート.png"),
 			DDPictureLoaders.Standard(@"dat\Title\コンテニュー.png"),
+			DDPictureLoaders.Standard(@"dat\Title\おまけ.png"),
 			DDPictureLoaders.Standard(@"dat\Title\設定.png"),
 			DDPictureLoaders.Standard(@"dat\Title\終了.png"),
 		};

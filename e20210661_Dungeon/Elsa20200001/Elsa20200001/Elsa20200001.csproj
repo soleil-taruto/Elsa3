@@ -160,6 +160,7 @@
     <Compile Include="Games\MapLoader.cs" />
     <Compile Include="Games\MapWall.cs" />
     <Compile Include="Games\MusicCollection.cs" />
+    <Compile Include="Games\OmakeMenu.cs" />
     <Compile Include="Games\Player.cs" />
     <Compile Include="Games\Scripts\Script.cs" />
     <Compile Include="Games\Scripts\ScriptCreator.cs" />
