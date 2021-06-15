@@ -52,17 +52,11 @@ namespace Charlotte.Games.Enemies
 						frameMod == 100
 						)
 					{
-#if true
 						int xSign = Game.I.Player.X < this.X ? -1 : 1;
 
 						Game.I.Enemies.Add(new Enemy_弾(this.X, this.Y, 3.5 * xSign, -3.5));
 						Game.I.Enemies.Add(new Enemy_弾(this.X, this.Y, 5.0 * xSign, 0.0));
 						Game.I.Enemies.Add(new Enemy_弾(this.X, this.Y, 3.5 * xSign, 3.5));
-#else
-						Game.I.Enemies.Add(Enemy_弾.Create自機狙い(this.X, this.Y, 5.0, -0.3));
-						Game.I.Enemies.Add(Enemy_弾.Create自機狙い(this.X, this.Y, 5.0));
-						Game.I.Enemies.Add(Enemy_弾.Create自機狙い(this.X, this.Y, 5.0, 0.3));
-#endif
 					}
 				}
 
