@@ -222,11 +222,9 @@ namespace Charlotte.Games
 							{
 								this.DrawWall.TopMenuLeaved = true;
 
-								using (new OmakeMenu()
+								using (new OmakeMenu())
 								{
-									SimpleMenu = this.SimpleMenu,
-								})
-								{
+									OmakeMenu.I.SimpleMenu = this.SimpleMenu;
 									OmakeMenu.I.Perform();
 								}
 								this.DrawWall.TopMenuLeaved = false; // restore
@@ -237,11 +235,9 @@ namespace Charlotte.Games
 							{
 								this.DrawWall.TopMenuLeaved = true;
 
-								using (new SettingMenu()
+								using (new SettingMenu())
 								{
-									SimpleMenu = this.SimpleMenu,
-								})
-								{
+									SettingMenu.I.SimpleMenu = this.SimpleMenu;
 									SettingMenu.I.Perform();
 								}
 								this.DrawWall.TopMenuLeaved = false; // restore
