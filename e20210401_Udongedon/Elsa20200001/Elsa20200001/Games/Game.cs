@@ -118,8 +118,10 @@ namespace Charlotte.Games
 					DDUtils.ToRange(ref this.Player.Power, 0, GameConsts.PLAYER_POWER_MAX);
 				}
 
-				if (DDInput.PAUSE.GetInput() == 1 && 10 < this.Frame) // ポーズ
+				if (DDInput.PAUSE.GetInput() == 1 && 10 < this.Frame || this.Dead_Pause) // ポーズ
 				{
+					this.Dead_Pause = false; // clear
+
 					this.Pause();
 
 					if (this.Pause_RestartGame)
@@ -743,14 +745,27 @@ namespace Charlotte.Games
 			//DDInput.B.FreezeInputUntilRelease = true;
 		}
 
+		private bool Dead_Pause = false; // ? 死亡モーション中にポーズボタンを押した。
+
 		private void DeadPlayerMoment()
 		{
+			// reset
+			{
+				this.Dead_Pause = false;
+			}
+
 			DDMain.KeepMainScreen();
 
 			// memo: 喰らいボムはここでやれば良いんじゃないだろうか。
 
 			foreach (DDScene scene in DDSceneUtils.Create(30))
 			{
+				if (DDInput.PAUSE.GetInput() == 1) // ? ポーズボタンが押された。-> 戻ってポーズ押下を発生させる。
+				{
+					this.Dead_Pause = true;
+					return;
+				}
+
 				DDDraw.DrawRect(DDGround.KeptMainScreen.ToPicture(), 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
 
 				DDDraw.SetAlpha(0.2 + 0.2 * scene.Rate);

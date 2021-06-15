@@ -998,13 +998,6 @@ namespace Charlotte.Games
 
 			foreach (DDScene scene in DDSceneUtils.Create(30))
 			{
-				DDDraw.DrawSimple(DDGround.KeptMainScreen.ToPicture(), 0, 0);
-
-				DDDraw.SetAlpha(0.3);
-				DDDraw.SetBright(1.0, 0.0, 0.0);
-				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
-				DDDraw.Reset();
-
 				if (DDInput.PAUSE.GetInput() == 1) // ? ポーズボタンが押された。-> 戻ってポーズ押下を発生させる。
 				{
 					this.Dead_Pause = true;
@@ -1029,6 +1022,14 @@ namespace Charlotte.Games
 					else
 						this.リスポーンを阻止した();
 				}
+
+				DDDraw.DrawSimple(DDGround.KeptMainScreen.ToPicture(), 0, 0);
+
+				DDDraw.SetAlpha(0.3);
+				DDDraw.SetBright(1.0, 0.0, 0.0);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, 0, DDConsts.Screen_W, DDConsts.Screen_H);
+				DDDraw.Reset();
+
 				DDEngine.EachFrame();
 			}
 
