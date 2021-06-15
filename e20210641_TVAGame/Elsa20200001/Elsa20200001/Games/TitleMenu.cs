@@ -315,31 +315,31 @@ namespace Charlotte.Games
 							break;
 
 						case 2:
-							this.DrawWall.TopMenuLeaved = true;
+							{
+								this.DrawWall.TopMenuLeaved = true;
 
-							using (new OmakeMenu()
-							{
-								SimpleMenu = this.SimpleMenu,
-								SetDeepConfigEntered = flag => this.DrawWall.DeepConfigEntered = flag,
-							})
-							{
-								OmakeMenu.I.Perform();
+								using (new OmakeMenu())
+								{
+									OmakeMenu.I.SimpleMenu = this.SimpleMenu;
+									OmakeMenu.I.SetDeepConfigEntered = flag => this.DrawWall.DeepConfigEntered = flag;
+									OmakeMenu.I.Perform();
+								}
+								this.DrawWall.TopMenuLeaved = false;
 							}
-							this.DrawWall.TopMenuLeaved = false;
 							break;
 
 						case 3:
-							this.DrawWall.TopMenuLeaved = true;
+							{
+								this.DrawWall.TopMenuLeaved = true;
 
-							using (new SettingMenu()
-							{
-								SimpleMenu = this.SimpleMenu,
-								SetDeepConfigEntered = flag => this.DrawWall.DeepConfigEntered = flag,
-							})
-							{
-								SettingMenu.I.Perform();
+								using (new SettingMenu())
+								{
+									SettingMenu.I.SimpleMenu = this.SimpleMenu;
+									SettingMenu.I.SetDeepConfigEntered = flag => this.DrawWall.DeepConfigEntered = flag;
+									SettingMenu.I.Perform();
+								}
+								this.DrawWall.TopMenuLeaved = false;
 							}
-							this.DrawWall.TopMenuLeaved = false;
 							break;
 
 						case 4:
