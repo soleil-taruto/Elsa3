@@ -20,7 +20,7 @@ namespace Charlotte.Tests.Novels
 		{
 			using (new Novel())
 			{
-				Novel.I.Status.Scenario = new Scenario("テスト0001");
+				Novel.I.Status.Scenario = new Scenario("Tests/テスト0001");
 				Novel.I.Perform();
 			}
 		}

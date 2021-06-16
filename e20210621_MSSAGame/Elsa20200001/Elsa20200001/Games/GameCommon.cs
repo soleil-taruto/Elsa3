@@ -24,7 +24,7 @@ namespace Charlotte.Games
 		/// <returns>マップファイル名</returns>
 		public static string GetMapFile(string mapName)
 		{
-			return MAP_FILE_PREFIX + mapName + MAP_FILE_SUFFIX;
+			return MAP_FILE_PREFIX + mapName.Replace('/', '\\') + MAP_FILE_SUFFIX;
 		}
 
 		/// <summary>
@@ -170,7 +170,7 @@ namespace Charlotte.Games
 
 						saveDataSlot.TimeStamp = DateTime.Now.ToString("yyyy/MM/dd (ddd) HH:mm:ss");
 						saveDataSlot.Description = "＠～＠～＠";
-						saveDataSlot.MapName = GameCommon.GetMapName(Game.I.Map.MapFile, "Tests\\t0001");
+						saveDataSlot.MapName = GameCommon.GetMapName(Game.I.Map.MapFile, "Tests/t0001");
 						saveDataSlot.GameStatus = gameStatus;
 					}
 				}
