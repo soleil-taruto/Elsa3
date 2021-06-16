@@ -71,7 +71,7 @@ namespace Charlotte.Novels.Surfaces
 					for (int index = 0; index < dispLines.Length; index++)
 					{
 						double x = this.X - 240;
-						double y = this.Y - 60 + index * 30;
+						double y = this.Y - (this.Thinking ? 40 : 60) + index * 30; // 思考吹き出しの場合、1行の場合しかないので、テキストを少し下げて表示する。
 
 						x += this.X_Zure;
 						y += this.Y_Zure;
