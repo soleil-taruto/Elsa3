@@ -25,7 +25,7 @@ namespace Charlotte
 		{
 			public string TimeStamp = "0001/01/01 (月) 00:00:00";
 			public string Description = "none";
-			public string MapName = "Tests\\t0001";
+			public string MapName = "Tests/t0001";
 			public GameStatus GameStatus = null; // null == セーブデータ無し
 
 			#region Serialize / Deserialize

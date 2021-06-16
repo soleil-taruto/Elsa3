@@ -92,7 +92,7 @@ namespace Charlotte
 			//new WorldGameMasterTest().Test02();
 			//new WorldGameMasterTest().Test03(); // 開始マップ名を選択
 			//new NovelTest().Test01();
-			//new NovelTest().Test02(); // シナリオ：テスト0001
+			//new NovelTest().Test02(); // シナリオ：Tests/テスト0001
 
 			// ----
 		}
