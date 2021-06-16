@@ -302,7 +302,7 @@ namespace Charlotte.GameProgressMasters
 					Ground.I.ReachedStageIndex = reachedStageIndexNew;
 					初見 = true;
 				}
-				Ground.I.会話スキップ抑止 = 初見;
+				Ground.I.CurrNovel未読 = 初見;
 #else // old
 				DDUtils.Maxim(ref Ground.I.ReachedStageIndex, stageIndex + 1);
 #endif
@@ -327,7 +327,7 @@ namespace Charlotte.GameProgressMasters
 							DDEngine.EachFrame();
 						}
 
-						Ground.I.会話スキップ抑止 = !Ground.I.SawEnding_死亡;
+						Ground.I.CurrNovel未読 = !Ground.I.SawEnding_死亡;
 
 						new Ending_死亡().Perform();
 
@@ -342,7 +342,7 @@ namespace Charlotte.GameProgressMasters
 							DDEngine.EachFrame();
 						}
 
-						Ground.I.会話スキップ抑止 = !Ground.I.SawEnding_生還;
+						Ground.I.CurrNovel未読 = !Ground.I.SawEnding_生還;
 
 						new Ending_生還().Perform();
 
@@ -357,7 +357,7 @@ namespace Charlotte.GameProgressMasters
 							DDEngine.EachFrame();
 						}
 
-						Ground.I.会話スキップ抑止 = !Ground.I.SawEnding_復讐;
+						Ground.I.CurrNovel未読 = !Ground.I.SawEnding_復讐;
 
 						using (new Novel())
 						{
@@ -384,7 +384,7 @@ namespace Charlotte.GameProgressMasters
 				{
 					DDUtils.SetMouseDispMode(false);
 
-					Ground.I.会話スキップ抑止 = false; // restore
+					Ground.I.CurrNovel未読 = false; // restore
 				}
 			}
 		}

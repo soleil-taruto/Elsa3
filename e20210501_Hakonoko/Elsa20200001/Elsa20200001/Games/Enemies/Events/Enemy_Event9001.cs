@@ -57,7 +57,7 @@ namespace Charlotte.Games.Enemies.Events
 					DDEngine.EachFrame();
 				}
 
-				Ground.I.会話スキップ抑止 = !Ground.I.SawFinalNovel;
+				Ground.I.CurrNovel未読 = !Ground.I.SawFinalNovel;
 
 				using (new Novel())
 				{
@@ -65,7 +65,7 @@ namespace Charlotte.Games.Enemies.Events
 					Novel.I.Perform();
 				}
 
-				Ground.I.会話スキップ抑止 = false; // restore
+				Ground.I.CurrNovel未読 = false; // restore
 				Ground.I.SawFinalNovel = true;
 
 				DDCurtain.SetCurtain(0, -1.0);

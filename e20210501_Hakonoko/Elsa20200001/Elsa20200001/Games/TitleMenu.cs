@@ -408,17 +408,6 @@ namespace Charlotte.Games
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
-			string[] items = new string[]
-			{
-				"ゲームパッドのボタン設定",
-				"キーボードのキー設定",
-				"ウィンドウサイズ変更",
-				"ＢＧＭ音量",
-				"ＳＥ音量",
-				"スナップショット・ストック数",
-				"戻る",
-			};
-
 			DDSE[] seSamples = new DDSE[]
 			{
 				Ground.I.SE.Jump,
@@ -431,7 +420,21 @@ namespace Charlotte.Games
 
 			for (; ; )
 			{
-				selectIndex = this.SimpleMenu.Perform("設定", items, selectIndex, false, 282, 48, 60);
+				string[] items = new string[]
+				{
+					"ゲームパッドのボタン設定",
+					"キーボードのキー設定",
+					"ウィンドウサイズ変更",
+					"ＢＧＭ音量",
+					"ＳＥ音量",
+					"ノベルパート・エンディングのスキップ設定 [ " +
+						(Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ? "既読のみ" : "未読も含む") +
+						" ]",
+					"スナップショット・ストック数",
+					"戻る",
+				};
+
+				selectIndex = this.SimpleMenu.Perform("設定", items, selectIndex, false, 182, 50, 52);
 
 				switch (selectIndex)
 				{
@@ -475,10 +478,17 @@ namespace Charlotte.Games
 						break;
 
 					case 5:
-						this.Setting_SnapshotCountMax();
+						Ground.I.スキップ設定 =
+							Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ?
+							Ground.スキップ設定_e.未読も含む :
+							Ground.スキップ設定_e.既読のみ;
 						break;
 
 					case 6:
+						this.Setting_SnapshotCountMax();
+						break;
+
+					case 7:
 						goto endMenu;
 
 					default:
