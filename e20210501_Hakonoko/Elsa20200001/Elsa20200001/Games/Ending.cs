@@ -26,9 +26,12 @@ namespace Charlotte.Games
 					{
 						Ground.I.SE.拒否.Play();
 					}
-					else if (180 < scrfrm) // 数秒経過するまでスキップさせない。
+					else if (60 < scrfrm)
+					//else if (180 < scrfrm) // 数秒経過するまでスキップさせない。// old
 					{
 						DDEngine.EachFrame();
+
+						Ground.I.SE.スキップ実行.Play();
 
 						DDCurtain.SetCurtain(30, -1.0);
 						DDMusicUtils.Fade();

@@ -121,6 +121,7 @@ namespace Charlotte.Novels
 					}
 					else
 					{
+						Ground.I.SE.スキップ実行.Play();
 						this.会話スキップした = true;
 						break;
 					}

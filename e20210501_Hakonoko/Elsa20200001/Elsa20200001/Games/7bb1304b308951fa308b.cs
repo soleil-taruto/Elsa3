@@ -86,9 +86,14 @@ namespace Charlotte.Games
 			if (DDInput.L.GetInput() == 1)
 			{
 				if (Ground.I.会話スキップ抑止)
+				{
 					Ground.I.SE.拒否.Play();
+				}
 				else
+				{
+					Ground.I.SE.スキップ実行.Play();
 					throw new Cancelled();
+				}
 			}
 			DDEngine.EachFrame();
 		}
