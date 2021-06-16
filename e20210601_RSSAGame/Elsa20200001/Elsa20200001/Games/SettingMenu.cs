@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Charlotte.GameCommons;
+using Charlotte.Novels;
 
 namespace Charlotte.Games
 {
@@ -42,6 +43,8 @@ namespace Charlotte.Games
 					"ウィンドウサイズ変更",
 					"ＢＧＭ音量",
 					"ＳＥ音量",
+					"ノベルパートのメッセージ表示速度",
+					"未読もスキップできるようにする [ " + (Ground.I.未読もスキップ可能 ? "オン" : "オフ") + " ]",
 					"ショットのタイミング [ ショットボタンを" +
 						(Ground.I.ショットのタイミング == Ground.ショットのタイミング_e.ショットボタンを押し下げた時 ? "押し下げた" : "離した") +
 						"時 ]",
@@ -92,13 +95,30 @@ namespace Charlotte.Games
 						break;
 
 					case 5:
+						this.SimpleMenu.IntVolumeConfig(
+							"ノベルパートのメッセージ表示速度",
+							Ground.I.NovelMessageSpeed,
+							NovelConsts.MESSAGE_SPEED_MIN,
+							NovelConsts.MESSAGE_SPEED_MAX,
+							1,
+							2,
+							speed => Ground.I.NovelMessageSpeed = speed,
+							() => { }
+							);
+						break;
+
+					case 6:
+						Ground.I.未読もスキップ可能 ^= true;
+						break;
+
+					case 7:
 						Ground.I.ショットのタイミング =
 							Ground.I.ショットのタイミング == Ground.ショットのタイミング_e.ショットボタンを押し下げた時 ?
 							Ground.ショットのタイミング_e.ショットボタンを離した時 :
 							Ground.ショットのタイミング_e.ショットボタンを押し下げた時;
 						break;
 
-					case 6:
+					case 8:
 						goto endMenu;
 
 					default:

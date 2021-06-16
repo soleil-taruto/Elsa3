@@ -49,7 +49,7 @@ namespace Charlotte.Games
 					{
 						DDPrint.SetBorder(new I3Color(128, 0, 0));
 						DDPrint.SetPrint(30, 30, 0, 60);
-						DDPrint.Print("ドレミーロックマン(仮)");
+						DDPrint.Print("〇ックマン風(仮)");
 						DDPrint.Reset();
 					}
 

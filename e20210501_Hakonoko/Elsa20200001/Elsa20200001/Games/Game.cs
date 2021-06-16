@@ -181,9 +181,9 @@ namespace Charlotte.Games
 					this.ReloadEnemies();
 					this.Frame = 0;
 				}
-				if (DDConfig.LOG_ENABLED && DDKey.GetInput(DX.KEY_INPUT_Q) == 1) // 強制クリア(デバッグ用)
+				if (DDConfig.LOG_ENABLED && DDKey.GetInput(DX.KEY_INPUT_Q) == 1) // 強制ステージクリア(デバッグ用)
 				{
-					if (Ground.I.CurrStageIndex == GameProgressMaster.FINAL_STAGE_INDEX) // ? 最終ステージ -> クリアせずに最終ゾーン手前へワープする。
+					if (Ground.I.CurrStageIndex == GameProgressMaster.FINAL_STAGE_INDEX) // ? 最終ステージ -> ステージクリアせずに最終ゾーン手前へワープする。
 					{
 						if (this.Player.Y < 2900)
 						{
