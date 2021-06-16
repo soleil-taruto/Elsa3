@@ -19,7 +19,14 @@ namespace Charlotte
 		// DDSaveData.Save/Load でセーブ・ロードする情報はここに保持する。
 
 		public int NovelMessageSpeed = NovelConsts.MESSAGE_SPEED_DEF;
-		public bool 未読もスキップ可能 = false;
+
+		public enum スキップ設定_e
+		{
+			既読のみ = 1,
+			未読も含む,
+		};
+
+		public スキップ設定_e スキップ設定 = スキップ設定_e.既読のみ;
 
 		public enum ショットのタイミング_e
 		{
