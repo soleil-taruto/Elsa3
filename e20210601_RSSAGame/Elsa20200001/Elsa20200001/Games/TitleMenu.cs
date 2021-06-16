@@ -308,7 +308,7 @@ namespace Charlotte.Games
 
 							using (new Novel())
 							{
-								Novel.I.Status.Scenario = new Scenario("テスト0001");
+								Novel.I.Status.Scenario = new Scenario("Tests/テスト0001");
 								Novel.I.Perform();
 							}
 							this.ReturnTitleMenu();

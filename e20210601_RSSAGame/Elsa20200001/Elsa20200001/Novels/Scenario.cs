@@ -145,6 +145,8 @@ namespace Charlotte.Novels
 			if (string.IsNullOrEmpty(name))
 				throw new DDError();
 
+			name = name.Replace('/', '\\');
+
 			byte[] fileData;
 
 			{

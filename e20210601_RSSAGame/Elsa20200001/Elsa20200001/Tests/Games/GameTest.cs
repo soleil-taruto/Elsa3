@@ -20,7 +20,7 @@ namespace Charlotte.Tests.Games
 		{
 			using (new Game())
 			{
-				Game.I.World = new World("w0001\\t0001");
+				Game.I.World = new World("w0001/t0001");
 				Game.I.Status = new GameStatus();
 				Game.I.Perform();
 			}
@@ -32,9 +32,9 @@ namespace Charlotte.Tests.Games
 
 			// ---- choose one ----
 
-			startMapName = "w0001\\t0001";
-			//startMapName = "w0001\\t0002";
-			//startMapName = "w0001\\t0003";
+			startMapName = "w0001/t0001";
+			//startMapName = "w0001/t0002";
+			//startMapName = "w0001/t0003";
 
 			// ----
 
