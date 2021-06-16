@@ -33,7 +33,7 @@ namespace Charlotte.Novels
 
 		// ----
 
-		public const string DUMMY_SCENARIO_NAME = "ダミーシナリオ";
+		public const string DUMMY_SCENARIO_NAME = "Tests/ダミーシナリオ";
 
 		public const int MESSAGE_SPEED_MIN = 1; // 遅い
 		public const int MESSAGE_SPEED_DEF = 3;

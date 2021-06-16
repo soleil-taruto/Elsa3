@@ -32,7 +32,7 @@ namespace Charlotte.Games.Enemies.Tests
 
 					DDPrint.SetDebug((int)this.X - DDGround.ICamera.X, (int)this.Y - DDGround.ICamera.Y);
 					DDPrint.SetBorder(new I3Color(0, 0, 0));
-					DDPrint.PrintLine("Tests/イベント0001");
+					DDPrint.PrintLine("イベント0001");
 					DDPrint.Reset();
 
 					// 当たり判定無し
