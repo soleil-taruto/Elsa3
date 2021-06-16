@@ -30,23 +30,26 @@ namespace Charlotte.Games
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
 
-			string[] items = new string[]
-			{
-				"ゲームパッドのボタン設定",
-				"キーボードのキー設定",
-				"ウィンドウサイズ変更",
-				"ＢＧＭ音量",
-				"ＳＥ音量",
-				"ノベルパートのメッセージ表示速度",
-				"戻る",
-			};
-
 			DDSE[] seSamples = Ground.I.SE.テスト用s;
 
 			int selectIndex = 0;
 
 			for (; ; )
 			{
+				string[] items = new string[]
+				{
+					"ゲームパッドのボタン設定",
+					"キーボードのキー設定",
+					"ウィンドウサイズ変更",
+					"ＢＧＭ音量",
+					"ＳＥ音量",
+					"ノベルパートのメッセージ表示速度",
+					"ノベルパートのスキップ設定 [ " +
+						(Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ? "既読のみ" : "未読も含む") +
+						" ]",
+					"戻る",
+				};
+
 				selectIndex = this.SimpleMenu.Perform(40, 40, 40, 24, "設定", items, selectIndex);
 
 				switch (selectIndex)
@@ -104,6 +107,13 @@ namespace Charlotte.Games
 						break;
 
 					case 6:
+						Ground.I.スキップ設定 =
+							Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ?
+							Ground.スキップ設定_e.未読も含む :
+							Ground.スキップ設定_e.既読のみ;
+						break;
+
+					case 7:
 						goto endMenu;
 
 					default:

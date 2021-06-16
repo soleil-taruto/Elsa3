@@ -21,6 +21,14 @@ namespace Charlotte
 
 		public int NovelMessageSpeed = NovelConsts.MESSAGE_SPEED_DEF;
 
+		public enum スキップ設定_e
+		{
+			既読のみ = 1,
+			未読も含む,
+		};
+
+		public スキップ設定_e スキップ設定 = スキップ設定_e.既読のみ;
+
 		public class P_SaveDataSlot
 		{
 			public string TimeStamp = "0001/01/01 (月) 00:00:00";
