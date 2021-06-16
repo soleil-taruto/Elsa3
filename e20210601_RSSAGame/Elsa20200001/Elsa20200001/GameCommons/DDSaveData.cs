@@ -81,7 +81,6 @@ namespace Charlotte.GameCommons
 				//lines.Add("Donut3-SaveData"); // Dummy
 
 				lines.Add("" + Ground.I.NovelMessageSpeed);
-				lines.Add("" + (int)Ground.I.スキップ設定);
 				lines.Add("" + (int)Ground.I.ショットのタイミング);
 
 				// 新しい項目をここへ追加...
@@ -180,7 +179,6 @@ namespace Charlotte.GameCommons
 					//DDUtils.Noop(lines[c++]); // Dummy
 
 					Ground.I.NovelMessageSpeed = int.Parse(lines[c++]);
-					Ground.I.スキップ設定 = (Ground.スキップ設定_e)int.Parse(lines[c++]);
 					Ground.I.ショットのタイミング = (Ground.ショットのタイミング_e)int.Parse(lines[c++]);
 
 					// 新しい項目をここへ追加...

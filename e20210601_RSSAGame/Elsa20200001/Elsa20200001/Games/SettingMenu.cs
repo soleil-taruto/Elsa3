@@ -44,9 +44,6 @@ namespace Charlotte.Games
 					"ＢＧＭ音量",
 					"ＳＥ音量",
 					"ノベルパートのメッセージ表示速度",
-					"ノベルパートのスキップ設定 [ " +
-						(Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ? "既読のみ" : "未読も含む") +
-						" ]",
 					"ショットのタイミング [ ショットボタンを" +
 						(Ground.I.ショットのタイミング == Ground.ショットのタイミング_e.ショットボタンを押し下げた時 ? "押し下げた" : "離した") +
 						"時 ]",
@@ -110,20 +107,13 @@ namespace Charlotte.Games
 						break;
 
 					case 6:
-						Ground.I.スキップ設定 =
-							Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ?
-							Ground.スキップ設定_e.未読も含む :
-							Ground.スキップ設定_e.既読のみ;
-						break;
-
-					case 7:
 						Ground.I.ショットのタイミング =
 							Ground.I.ショットのタイミング == Ground.ショットのタイミング_e.ショットボタンを押し下げた時 ?
 							Ground.ショットのタイミング_e.ショットボタンを離した時 :
 							Ground.ショットのタイミング_e.ショットボタンを押し下げた時;
 						break;
 
-					case 8:
+					case 7:
 						goto endMenu;
 
 					default:
