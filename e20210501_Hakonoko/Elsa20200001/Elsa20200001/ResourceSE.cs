@@ -11,7 +11,7 @@ namespace Charlotte
 		public DDSE Dummy = new DDSE(@"dat\General\muon.wav");
 
 		public DDSE Jump = new DDSE(@"dat\小森平\jump12.mp3");
-		public DDSE 拒否 = new DDSE(@"dat\小森平\blip04.mp3");
+		public DDSE 拒否 = new DDSE(@"dat\小森平\blip04_wv_[50].mp3");
 		public DDSE スキップ実行 = new DDSE(@"dat\小森平\button01b.mp3");
 
 		public DDSE Goal = new DDSE(@"dat\効果音ラボ\ピアノの単音_wv_[300].mp3");
