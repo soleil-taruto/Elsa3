@@ -5,6 +5,7 @@ using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.GameProgressMasters;
+using Charlotte.Games.Tests;
 using Charlotte.Novels;
 
 namespace Charlotte.Games
@@ -335,6 +336,7 @@ namespace Charlotte.Games
 					"Dummy_0001",
 					"Dummy_0002",
 					"Dummy_0003",
+					"Game用テストメニュー",
 					"戻る",
 				},
 				0
@@ -343,15 +345,31 @@ namespace Charlotte.Games
 				switch (selectIndex)
 				{
 					case 0:
+						// none
 						break;
 
 					case 1:
+						// none
 						break;
 
 					case 2:
+						// none
 						break;
 
 					case 3:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu())
+							{
+								//GameTestMenu.I.SimpleMenu = this.SimpleMenu; // 不用
+								GameTestMenu.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 4:
 						goto endMenu;
 
 					default:

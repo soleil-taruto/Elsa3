@@ -168,6 +168,8 @@
     <Compile Include="Games\Scripts\Script_入口.cs" />
     <Compile Include="Games\Scripts\Script_出口.cs" />
     <Compile Include="Games\SettingMenu.cs" />
+    <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu.cs" />
     <Compile Include="Games\TitleMenu.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="LiteStatusDlg.cs">
