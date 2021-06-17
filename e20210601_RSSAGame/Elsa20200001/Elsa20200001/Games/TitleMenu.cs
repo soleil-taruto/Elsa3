@@ -6,6 +6,7 @@ using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.GameProgressMasters;
 using Charlotte.Novels;
+using Charlotte.Games.Tests;
 
 namespace Charlotte.Games
 {
@@ -295,6 +296,7 @@ namespace Charlotte.Games
 					"Stage5-2", // 中央(2面)
 					"Stage5-3", // 中央(3面)
 					"Stage5-4", // 中央(4面)
+					"Game用テストメニュー",
 					"戻る",
 				},
 				0
@@ -327,8 +329,20 @@ namespace Charlotte.Games
 					case 10: a_gameStart("Stage5/t2001"); break;
 					case 11: a_gameStart("Stage5/t3001"); break;
 					case 12: a_gameStart("Stage5/t4001"); break;
-
 					case 13:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu())
+							{
+								//GameTestMenu.I.SimpleMenu = this.SimpleMenu; // 不用
+								GameTestMenu.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 14:
 						goto endMenu;
 
 					default:

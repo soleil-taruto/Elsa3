@@ -184,12 +184,16 @@
     <Compile Include="Games\Map.cs" />
     <Compile Include="Games\MapCell.cs" />
     <Compile Include="Games\MusicCollection.cs" />
+    <Compile Include="Games\PasswordInput.cs" />
     <Compile Include="Games\RingMenu.cs" />
     <Compile Include="Games\SettingMenu.cs" />
     <Compile Include="Games\Shots\Shot_AirShooter.cs" />
     <Compile Include="Games\Shots\Shot_MagnetAir.cs" />
     <Compile Include="Games\Shots\Shot_ハンマー陰陽玉.cs" />
     <Compile Include="Games\Shots\Shot_跳ねる陰陽玉.cs" />
+    <Compile Include="Games\StageSelectMenu.cs" />
+    <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu.cs" />
     <Compile Include="Games\Tiles\Tile_Brick_Back.cs" />
     <Compile Include="Games\Tiles\Tile_Brick_Front.cs" />
     <Compile Include="Games\Tiles\Tile_Double.cs" />

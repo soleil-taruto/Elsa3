@@ -23,28 +23,38 @@ namespace Charlotte.GameProgressMasters
 
 		public void Perform()
 		{
-			// TODO
-			// TODO
-			// TODO
-
-			//using (new Novel())
-			//{
-			//    Novel.I.Status.Scenario = new Scenario("101_ゲームスタート");
-			//    Novel.I.Perform();
-			//}
-			//using (new WorldGameMaster())
-			//{
-			//    WorldGameMaster.I.World = new World("w0001\\t0001"); // 仮？
-			//    WorldGameMaster.I.Status = new GameStatus();
-			//    WorldGameMaster.I.Perform();
-			//}
+			using (new Novel())
+			{
+				Novel.I.Status.Scenario = new Scenario("Start");
+				Novel.I.Perform();
+			}
+			using (new StageSelectMenu())
+			{
+				StageSelectMenu.I.GameStatus = new GameStatus();
+				StageSelectMenu.I.Perform();
+			}
 		}
 
 		public void Perform_コンテニュー()
 		{
-			// TODO
-			// TODO
-			// TODO
+			bool[,] password;
+
+			using (new PasswordInput())
+			{
+				PasswordInput.I.Perform();
+
+				if (PasswordInput.I.Password == null)
+					return;
+
+				password = PasswordInput.I.Password;
+			}
+			GameStatus gameStatus = GameStatus.Deserialize(GameStatus.PasswordConv.GetValue(password));
+
+			using (new StageSelectMenu())
+			{
+				StageSelectMenu.I.GameStatus = gameStatus;
+				StageSelectMenu.I.Perform();
+			}
 		}
 	}
 }

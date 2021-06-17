@@ -90,5 +90,10 @@ namespace Charlotte.Games
 		// なお、この接地判定領域のおかげで梯子を登りきったとき梯子の上に立ってくれる。
 		//
 		public const int LADDER_TOP_GROUND_Y_SIZE = (int)PLAYER_FALL_SPEED_MAX + 2;
+
+		/// <summary>
+		/// パスワード(bool[,])の高さ・幅
+		/// </summary>
+		public const int PASSWORD_WH = 4;
 	}
 }

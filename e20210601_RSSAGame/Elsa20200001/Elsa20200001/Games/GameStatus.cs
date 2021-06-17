@@ -69,6 +69,8 @@ namespace Charlotte.Games
 			ハンマー陰陽玉,
 			エアーシューター,
 			マグネットエアー,
+
+			// 新しい項目をここへ追加...
 		}
 
 		/// <summary>
@@ -126,5 +128,48 @@ namespace Charlotte.Games
 		public S_InventoryFlags InventoryFlags = new S_InventoryFlags();
 
 		// <---- prm
+
+		// ====
+		// Serialize / Deserialize ここから
+		// ====
+
+		public UInt16 Serialize()
+		{
+			return 0; // TODO
+		}
+
+		public static GameStatus Deserialize(UInt16 value)
+		{
+			GameStatus gameStatus = new GameStatus();
+			gameStatus.S_Deserialize(value);
+			return gameStatus;
+		}
+
+		public class Undeserializable : Exception
+		{ }
+
+		private void S_Deserialize(UInt16 value) // throws Undeserializable
+		{
+			// TODO
+		}
+
+		// ====
+		// Serialize / Deserialize ここまで
+		// ====
+
+		public static S_PassswordConv PasswordConv = new S_PassswordConv();
+
+		public class S_PassswordConv
+		{
+			public bool[,] GetPassword(UInt16 value)
+			{
+				return new bool[GameConsts.PASSWORD_WH, GameConsts.PASSWORD_WH]; // TODO
+			}
+
+			public UInt16 GetValue(bool[,] password)
+			{
+				return 0; // TODO
+			}
+		}
 	}
 }
