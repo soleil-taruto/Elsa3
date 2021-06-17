@@ -113,6 +113,7 @@ namespace Charlotte.Games
 				if (!this.UserInputDisabled && DDInput.PAUSE.GetInput() == 1)
 				{
 					this.EquipmentMenu();
+					//this.Pause(); // old
 
 					if (this.Pause_ReturnToTitleMenu)
 					{
@@ -1142,6 +1143,8 @@ namespace Charlotte.Games
 				y < -DDConsts.Screen_H * MGN_SCREEN_NUM || this.Map.H * GameConsts.TILE_H + DDConsts.Screen_H * MGN_SCREEN_NUM < y;
 		}
 
+		#region EquipmentMenu
+
 		private static DDSubScreen EquipmentMenu_KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
 
 		private void EquipmentMenu()
@@ -1219,6 +1222,8 @@ namespace Charlotte.Games
 			DDInput.B.FreezeInputUntilRelease = true;
 		}
 
+		#endregion
+
 		private bool Pause_ReturnToTitleMenu = false;
 		private bool 当たり判定表示 = false;
 
@@ -1255,7 +1260,7 @@ namespace Charlotte.Games
 			for (; ; )
 			{
 				selectIndex = simpleMenu.Perform(
-					100,
+					250,
 					180,
 					50,
 					24,
