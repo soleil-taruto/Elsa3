@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
+using Charlotte.Games.Tests;
 
 namespace Charlotte.Games
 {
@@ -467,6 +468,7 @@ namespace Charlotte.Games
 				int selectIndex = this.SimpleMenu.Perform("開発デバッグ用メニュー", new string[]
 				{
 					"スタート",
+					"Game用テストメニュー",
 					"戻る",
 				},
 				0
@@ -488,6 +490,19 @@ namespace Charlotte.Games
 						break;
 
 					case 1:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu())
+							{
+								//GameTestMenu.I.SimpleMenu = this.SimpleMenu; // 不用
+								GameTestMenu.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 2:
 						goto endMenu;
 
 					default:

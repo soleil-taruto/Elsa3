@@ -151,6 +151,8 @@
     <Compile Include="Games\Act.cs" />
     <Compile Include="Games\Game.cs" />
     <Compile Include="Games\GameConsts.cs" />
+    <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu.cs" />
     <Compile Include="LiteStatusDlg.cs">
       <SubType>Form</SubType>
     </Compile>
