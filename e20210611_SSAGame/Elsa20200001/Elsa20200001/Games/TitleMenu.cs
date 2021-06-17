@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
+using Charlotte.Games.Tests;
 using Charlotte.Novels;
 
 namespace Charlotte.Games
@@ -343,6 +344,7 @@ namespace Charlotte.Games
 				{
 					"スタート_因幡てゐ",
 					"スタート_チルノ",
+					"Game用テストメニュー",
 					"戻る",
 				},
 				0
@@ -382,6 +384,19 @@ namespace Charlotte.Games
 						break;
 
 					case 2:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu())
+							{
+								//GameTestMenu.I.SimpleMenu = this.SimpleMenu; // 不用
+								GameTestMenu.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 3:
 						goto endMenu;
 
 					default:

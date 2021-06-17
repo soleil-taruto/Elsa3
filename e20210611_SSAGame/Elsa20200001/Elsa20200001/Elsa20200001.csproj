@@ -196,6 +196,8 @@
     <Compile Include="Games\MusicCollection.cs" />
     <Compile Include="Games\OmakeMenu.cs" />
     <Compile Include="Games\SettingMenu.cs" />
+    <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu.cs" />
     <Compile Include="Games\Tiles\Tests\Tile_Bボス部屋Shutter.cs" />
     <Compile Include="Games\WorldGameMaster.cs" />
     <Compile Include="Games\Player.cs" />

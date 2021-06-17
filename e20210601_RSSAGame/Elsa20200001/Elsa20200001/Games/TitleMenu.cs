@@ -5,8 +5,8 @@ using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.GameProgressMasters;
-using Charlotte.Novels;
 using Charlotte.Games.Tests;
+using Charlotte.Novels;
 
 namespace Charlotte.Games
 {
