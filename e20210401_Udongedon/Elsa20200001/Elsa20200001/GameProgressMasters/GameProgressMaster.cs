@@ -52,6 +52,12 @@ namespace Charlotte.GameProgressMasters
 
 			for (int stageIndex = startStageIndex; stageIndex < Stages.Length; stageIndex++)
 			{
+				// reset
+				{
+					this.RestartFlag = false;
+					this.ReturnToTitleMenu = false;
+				}
+
 				using (new Game())
 				{
 					Game.I.Script = Stages[stageIndex].CreateScript();
