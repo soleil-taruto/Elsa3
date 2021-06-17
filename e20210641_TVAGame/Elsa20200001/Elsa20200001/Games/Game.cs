@@ -1264,12 +1264,12 @@ namespace Charlotte.Games
 					180,
 					50,
 					24,
-					"ＰＡＵＳＥ",
+					"システムメニュー",
 					new string[]
 					{
 						"設定",
 						"タイトルに戻る",
-						"ゲームに戻る",
+						"戻る",
 					},
 					selectIndex,
 					true,
