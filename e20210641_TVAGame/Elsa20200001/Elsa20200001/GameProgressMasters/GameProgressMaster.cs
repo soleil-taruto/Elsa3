@@ -5,6 +5,7 @@ using System.Text;
 using System.IO;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
+using Charlotte.Novels;
 
 namespace Charlotte.GameProgressMasters
 {
