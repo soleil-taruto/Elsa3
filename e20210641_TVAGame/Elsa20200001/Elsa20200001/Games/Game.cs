@@ -112,7 +112,7 @@ namespace Charlotte.Games
 			{
 				if (!this.UserInputDisabled && DDInput.PAUSE.GetInput() == 1)
 				{
-					this.Pause();
+					this.EquipmentMenu();
 
 					if (this.Pause_ReturnToTitleMenu)
 					{
@@ -1142,18 +1142,97 @@ namespace Charlotte.Games
 				y < -DDConsts.Screen_H * MGN_SCREEN_NUM || this.Map.H * GameConsts.TILE_H + DDConsts.Screen_H * MGN_SCREEN_NUM < y;
 		}
 
+		private static DDSubScreen EquipmentMenu_KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
+
+		private void EquipmentMenu()
+		{
+			DDInput.DIR_2.FreezeInputUntilRelease = true;
+			DDInput.DIR_4.FreezeInputUntilRelease = true;
+			DDInput.DIR_6.FreezeInputUntilRelease = true;
+			DDInput.DIR_8.FreezeInputUntilRelease = true;
+			DDInput.A.FreezeInputUntilRelease = true;
+			DDInput.B.FreezeInputUntilRelease = true;
+
+			DDMain.KeepMainScreen();
+			SCommon.Swap(ref DDGround.KeptMainScreen, ref EquipmentMenu_KeptMainScreen);
+
+			DDTableMenu tableMenu = new DDTableMenu(130, 50, 24, () =>
+			{
+				DDDraw.DrawSimple(EquipmentMenu_KeptMainScreen.ToPicture(), 0, 0);
+
+				DDDraw.SetAlpha(0.7);
+				DDDraw.SetBright(0.0, 0.4, 0.0);
+				DDDraw.DrawRect(Ground.I.Picture.WhiteBox, 0, DDConsts.Screen_H / 8, DDConsts.Screen_W, DDConsts.Screen_H * 3 / 4);
+				DDDraw.Reset();
+			});
+
+			//switch (this.Status.Equipment)
+			//{
+			//    case GameStatus.Equipment_e.Normal: tableMenu.SetSelectedPosition(0, 1); break;
+			//    case GameStatus.Equipment_e.跳ねる陰陽玉: tableMenu.SetSelectedPosition(0, 2); break;
+			//    case GameStatus.Equipment_e.ハンマー陰陽玉: tableMenu.SetSelectedPosition(0, 3); break;
+			//    case GameStatus.Equipment_e.エアーシューター: tableMenu.SetSelectedPosition(0, 4); break;
+			//    case GameStatus.Equipment_e.マグネットエアー: tableMenu.SetSelectedPosition(0, 5); break;
+
+			//    default:
+			//        break;
+			//}
+
+			for (bool keepMenu = true; keepMenu; )
+			{
+				{
+					I3Color color = new I3Color(255, 255, 255);
+					I3Color borderColor = new I3Color(0, 128, 0);
+					I3Color 装備中Color = new I3Color(255, 255, 0);
+					I3Color 装備中BorderColor = new I3Color(128, 128, 0);
+					I3Color 未取得Color = new I3Color(128, 128, 200);
+					I3Color 未取得BorderColor = new I3Color(0, 64, 0);
+
+					tableMenu.AddColumn(130);
+					tableMenu.AddItem(true, "装備・アイテム", color, borderColor);
+					tableMenu.AddItem(false, "ダミー0001", color, borderColor, () => { });
+					tableMenu.AddItem(false, "ダミー0002", color, borderColor, () => { });
+					tableMenu.AddItem(false, "ダミー0003", color, borderColor, () => { });
+
+					tableMenu.AddColumn(540);
+					tableMenu.AddItem(true, "システム", color, borderColor);
+					tableMenu.AddItem(false, "システムメニュー", color, borderColor, () =>
+					{
+						this.Pause();
+
+						if (this.Pause_ReturnToTitleMenu)
+							keepMenu = false;
+					});
+					tableMenu.AddItem(false, "戻る", color, borderColor, () => keepMenu = false);
+				}
+
+				tableMenu.Perform();
+
+				//DDEngine.EachFrame(); // 不要
+			}
+
+			DDInput.DIR_2.FreezeInputUntilRelease = false;
+			DDInput.DIR_4.FreezeInputUntilRelease = false;
+			DDInput.DIR_6.FreezeInputUntilRelease = false;
+			DDInput.DIR_8.FreezeInputUntilRelease = false;
+			DDInput.A.FreezeInputUntilRelease = true;
+			DDInput.B.FreezeInputUntilRelease = true;
+		}
+
 		private bool Pause_ReturnToTitleMenu = false;
 		private bool 当たり判定表示 = false;
 
-		private static DDSubScreen Pause_KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
+		//private static DDSubScreen Pause_KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
+		private static DDSubScreen Pause_KeptMainScreen { get { return EquipmentMenu_KeptMainScreen; } }
 
 		/// <summary>
 		/// ポーズメニュー
 		/// </summary>
 		private void Pause()
 		{
-			DDMain.KeepMainScreen();
-			SCommon.Swap(ref DDGround.KeptMainScreen, ref Pause_KeptMainScreen);
+			// old
+			//DDMain.KeepMainScreen();
+			//SCommon.Swap(ref DDGround.KeptMainScreen, ref Pause_KeptMainScreen);
 
 			DDSimpleMenu simpleMenu = new DDSimpleMenu()
 			{
@@ -1231,8 +1310,9 @@ namespace Charlotte.Games
 		endLoop:
 			DDEngine.FreezeInput();
 
-			DDInput.A.FreezeInputUntilRelease = true;
-			DDInput.B.FreezeInputUntilRelease = true;
+			// old
+			//DDInput.A.FreezeInputUntilRelease = true;
+			//DDInput.B.FreezeInputUntilRelease = true;
 		}
 
 		/// <summary>

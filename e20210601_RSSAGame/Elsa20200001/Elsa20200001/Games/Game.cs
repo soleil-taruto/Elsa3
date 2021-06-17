@@ -1500,7 +1500,7 @@ namespace Charlotte.Games
 
 			DDTableMenu tableMenu = new DDTableMenu(130, 50, 24, () =>
 			{
-				DDDraw.DrawSimple(Pause_KeptMainScreen.ToPicture(), 0, 0);
+				DDDraw.DrawSimple(EquipmentMenu_KeptMainScreen.ToPicture(), 0, 0);
 
 				DDDraw.SetAlpha(0.7);
 				DDDraw.SetBright(0.0, 0.4, 0.0);
