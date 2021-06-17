@@ -91,6 +91,7 @@
     <Compile Include="Consts.cs" />
     <Compile Include="GameCommons\DDTask.cs" />
     <Compile Include="GameCommons\DDTouch.cs" />
+    <Compile Include="GameProgressMasters\GameProgressMaster.cs" />
     <Compile Include="Games\Enemies\EnemyCommon_HenyoriLaser.cs" />
     <Compile Include="Games\Enemies\EnemyCommon_Tama.cs" />
     <Compile Include="Games\Enemies\Enemy_0001B.cs" />
@@ -194,7 +195,6 @@
     <Compile Include="Games\Enemies\鍵山雛s\Enemy_鍵山雛_Tama_02.cs" />
     <Compile Include="Games\Enemies\鍵山雛s\Enemy_鍵山雛_Tama_03.cs" />
     <Compile Include="Games\Game.cs" />
-    <Compile Include="Games\GameMaster.cs" />
     <Compile Include="Games\GameStatus.cs" />
     <Compile Include="Games\Logo.cs" />
     <Compile Include="Games\Player.cs" />

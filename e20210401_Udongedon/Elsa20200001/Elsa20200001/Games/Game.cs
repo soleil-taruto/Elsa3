@@ -11,6 +11,7 @@ using Charlotte.Games.Scripts.Tests;
 using Charlotte.Games.Shots;
 using Charlotte.Games.Surfaces;
 using Charlotte.Games.Walls;
+using Charlotte.GameProgressMasters;
 
 namespace Charlotte.Games
 {
@@ -126,12 +127,12 @@ namespace Charlotte.Games
 
 					if (this.Pause_RestartGame)
 					{
-						GameMaster.RestartFlag = true;
+						GameProgressMaster.I.RestartFlag = true;
 						break;
 					}
 					if (this.Pause_ReturnToTitleMenu)
 					{
-						GameMaster.ReturnToTitleMenu = true;
+						GameProgressMaster.I.ReturnToTitleMenu = true;
 						break;
 					}
 				}
@@ -192,7 +193,7 @@ namespace Charlotte.Games
 					{
 						if (this.Zanki <= 0) // 残機不足のため終了
 						{
-							GameMaster.ReturnToTitleMenu = true;
+							GameProgressMaster.I.ReturnToTitleMenu = true;
 							break;
 						}
 						this.Zanki--;

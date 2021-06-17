@@ -5,6 +5,7 @@ using System.Text;
 using Charlotte.Commons;
 using Charlotte.GameCommons;
 using Charlotte.Games.Scripts;
+using Charlotte.GameProgressMasters;
 
 namespace Charlotte.Games
 {
@@ -188,9 +189,9 @@ namespace Charlotte.Games
 
 			for (; ; )
 			{
-				selectIndex = this.SimpleMenu.Perform("ステージ選択", GameMaster.Stages.Select(v => v.Name).Concat(new string[] { "戻る" }).ToArray(), selectIndex);
+				selectIndex = this.SimpleMenu.Perform("ステージ選択", GameProgressMaster.Stages.Select(v => v.Name).Concat(new string[] { "戻る" }).ToArray(), selectIndex);
 
-				if (GameMaster.Stages.Length <= selectIndex)
+				if (GameProgressMaster.Stages.Length <= selectIndex)
 					break;
 
 				this.SelectChara(selectIndex);
@@ -202,7 +203,11 @@ namespace Charlotte.Games
 			Action<Player.PlayerWho_e> a_gameStart = plWho =>
 			{
 				this.LeaveTitleMenu();
-				GameMaster.Start(startStageIndex, plWho);
+
+				using (new GameProgressMaster())
+				{
+					GameProgressMaster.I.Perform(startStageIndex, plWho);
+				}
 				this.ReturnTitleMenu();
 			};
 

@@ -2,12 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Charlotte.Games;
 using Charlotte.Games.Scripts;
 
-namespace Charlotte.Games
+namespace Charlotte.GameProgressMasters
 {
-	public static class GameMaster
+	public class GameProgressMaster : IDisposable
 	{
+		public static GameProgressMaster I;
+
+		public GameProgressMaster()
+		{
+			I = this;
+		}
+
+		public void Dispose()
+		{
+			I = null;
+		}
+
 		public class StageInfo
 		{
 			public string Name;
@@ -29,20 +42,16 @@ namespace Charlotte.Games
 			// 後続のステージをここへ追加..
 		};
 
-		public static bool RestartFlag = false;
-		public static bool ReturnToTitleMenu = false;
+		public bool RestartFlag = false;
+		public bool ReturnToTitleMenu = false;
 
-		public static void Start(int startStageIndex, Player.PlayerWho_e plWho)
+		public void Perform(int startStageIndex, Player.PlayerWho_e plWho)
 		{
 		restart:
 			GameStatus gameStatus = new GameStatus();
 
 			for (int stageIndex = startStageIndex; stageIndex < Stages.Length; stageIndex++)
 			{
-				// reset
-				RestartFlag = false;
-				ReturnToTitleMenu = false;
-
 				using (new Game())
 				{
 					Game.I.Script = Stages[stageIndex].CreateScript();
