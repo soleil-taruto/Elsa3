@@ -1484,6 +1484,8 @@ namespace Charlotte.Games
 				y < -DDConsts.Screen_H * MGN_SCREEN_NUM || this.Map.H * GameConsts.TILE_H + DDConsts.Screen_H * MGN_SCREEN_NUM < y;
 		}
 
+		#region EquipmentMenu
+
 		private static DDSubScreen EquipmentMenu_KeptMainScreen = new DDSubScreen(DDConsts.Screen_W, DDConsts.Screen_H);
 
 		private void EquipmentMenu()
@@ -1583,6 +1585,8 @@ namespace Charlotte.Games
 			DDInput.A.FreezeInputUntilRelease = true;
 			DDInput.B.FreezeInputUntilRelease = true;
 		}
+
+		#endregion
 
 		private bool Pause_ReturnToTitleMenu = false;
 
