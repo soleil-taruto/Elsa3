@@ -428,8 +428,8 @@ namespace Charlotte.Games
 					"ＢＧＭ音量",
 					"ＳＥ音量",
 					"スナップショット・ストック数",
-					"ノベルパート・エンディングのスキップ設定 [ " +
-						(Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ? "既読のみ" : "未読も含む") +
+					"ノベルパート・エンディングのスキップ許可 [ " +
+						(Ground.I.スキップ許可 == Ground.スキップ許可_e.既読のみ ? "既読のみ" : "未読も含む") +
 						" ]",
 					"戻る",
 				};
@@ -482,10 +482,10 @@ namespace Charlotte.Games
 						break;
 
 					case 6:
-						Ground.I.スキップ設定 =
-							Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ?
-							Ground.スキップ設定_e.未読も含む :
-							Ground.スキップ設定_e.既読のみ;
+						Ground.I.スキップ許可 =
+							Ground.I.スキップ許可 == Ground.スキップ許可_e.既読のみ ?
+							Ground.スキップ許可_e.未読も含む :
+							Ground.スキップ許可_e.既読のみ;
 						break;
 
 					case 7:

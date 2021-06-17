@@ -86,7 +86,7 @@ namespace Charlotte.GameCommons
 				lines.Add("" + (Ground.I.SawEnding_生還 ? 1 : 0));
 				lines.Add("" + (Ground.I.SawEnding_復讐 ? 1 : 0));
 				lines.Add("" + Ground.I.StartSnapshotCount);
-				lines.Add("" + (int)Ground.I.スキップ設定);
+				lines.Add("" + (int)Ground.I.スキップ許可);
 
 				// 新しい項目をここへ追加...
 
@@ -187,7 +187,7 @@ namespace Charlotte.GameCommons
 					Ground.I.SawEnding_生還 = int.Parse(lines[c++]) != 0;
 					Ground.I.SawEnding_復讐 = int.Parse(lines[c++]) != 0;
 					Ground.I.StartSnapshotCount = int.Parse(lines[c++]);
-					Ground.I.スキップ設定 = (Ground.スキップ設定_e)int.Parse(lines[c++]);
+					Ground.I.スキップ許可 = (Ground.スキップ許可_e)int.Parse(lines[c++]);
 
 					// 新しい項目をここへ追加...
 				}

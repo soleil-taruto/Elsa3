@@ -56,7 +56,7 @@ namespace Charlotte
 						波紋効果.Count,
 						Game.I == null ? "-" : "" + Game.I.SnapshotCount,
 						Game.I == null ? "-" : "" + Game.I.タイル接近_敵描画_Points.Count,
-						"ス設=" + Ground.I.スキップ設定,
+						"ス許=" + Ground.I.スキップ許可,
 						"CN未=" + (Ground.I.CurrNovel未読 ? "1" : "0"),
 						"会ス=" + (Ground.I.会話スキップ抑止 ? "1" : "0"),
 

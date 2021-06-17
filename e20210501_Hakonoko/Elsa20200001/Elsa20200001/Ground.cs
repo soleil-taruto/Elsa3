@@ -39,13 +39,13 @@ namespace Charlotte
 		/// </summary>
 		public int StartSnapshotCount = Consts.START_SNAPSHOT_COUNT_DEF;
 
-		public enum スキップ設定_e
+		public enum スキップ許可_e
 		{
 			既読のみ = 1,
 			未読も含む,
 		};
 
-		public スキップ設定_e スキップ設定 = スキップ設定_e.既読のみ;
+		public スキップ許可_e スキップ許可 = スキップ許可_e.既読のみ;
 
 		public bool CurrNovel未読 = false; // ? 現在実行中のノベルパート・エンディングは未読である。
 		public int CurrStageIndex = 1; // 値域：0～9, 特定のステージに居ない時は値域内の適当な値になっている。
@@ -54,7 +54,7 @@ namespace Charlotte
 		{
 			get
 			{
-				return this.CurrNovel未読 && this.スキップ設定 == スキップ設定_e.既読のみ;
+				return this.CurrNovel未読 && this.スキップ許可 == スキップ許可_e.既読のみ;
 			}
 		}
 	}
