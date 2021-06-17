@@ -427,10 +427,10 @@ namespace Charlotte.Games
 					"ウィンドウサイズ変更",
 					"ＢＧＭ音量",
 					"ＳＥ音量",
+					"スナップショット・ストック数",
 					"ノベルパート・エンディングのスキップ設定 [ " +
 						(Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ? "既読のみ" : "未読も含む") +
 						" ]",
-					"スナップショット・ストック数",
 					"戻る",
 				};
 
@@ -478,14 +478,14 @@ namespace Charlotte.Games
 						break;
 
 					case 5:
+						this.Setting_SnapshotCountMax();
+						break;
+
+					case 6:
 						Ground.I.スキップ設定 =
 							Ground.I.スキップ設定 == Ground.スキップ設定_e.既読のみ ?
 							Ground.スキップ設定_e.未読も含む :
 							Ground.スキップ設定_e.既読のみ;
-						break;
-
-					case 6:
-						this.Setting_SnapshotCountMax();
 						break;
 
 					case 7:
