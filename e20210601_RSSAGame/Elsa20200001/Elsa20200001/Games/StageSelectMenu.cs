@@ -11,6 +11,10 @@ namespace Charlotte.Games
 
 		// <---- prm
 
+		public int SelectedStageNo = 1; // 1～9 == 選択したステージ
+
+		// <---- ret
+
 		public static StageSelectMenu I;
 
 		public StageSelectMenu()

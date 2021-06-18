@@ -129,6 +129,12 @@ namespace Charlotte.Games
 
 		// <---- prm
 
+		// パスワードに変換する：
+		// -- GameStatus.PasswordConv.GetPassword(this.Serialize())
+		// パスワードから変換する：
+		// -- GameStatus.Deserialize(GameStatus.PasswordConv.GetValue(password))
+		// ---- 不正な password -> GameStatus.Undeserializable を投げる。
+
 		// ====
 		// Serialize / Deserialize ここから
 		// ====

@@ -7,7 +7,7 @@ namespace Charlotte.Games
 {
 	public class PasswordInput : IDisposable
 	{
-		public bool[,] Password; // null == 入力キャンセル
+		public GameStatus LoadedGameStatus = null; // null == 入力キャンセル
 
 		// <---- ret
 
@@ -25,7 +25,16 @@ namespace Charlotte.Games
 
 		public void Perform()
 		{
-			throw null; // TODO
+			// TODO
+			// TODO
+			// TODO
+
+			bool[,] password = null;
+
+			UInt16 gameStatusValue = GameStatus.PasswordConv.GetValue(password);
+			GameStatus gameStatus = GameStatus.Deserialize(gameStatusValue);
+
+			this.LoadedGameStatus = gameStatus;
 		}
 	}
 }
