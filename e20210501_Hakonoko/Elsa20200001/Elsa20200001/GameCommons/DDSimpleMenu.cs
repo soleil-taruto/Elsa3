@@ -315,8 +315,8 @@ namespace Charlotte.GameCommons
 				//new ButtonInfo(DDInput.D, ""),
 				//new ButtonInfo(DDInput.E, ""),
 				//new ButtonInfo(DDInput.F, ""),
-				new ButtonInfo(DDInput.L, "画面スライド"),
-				new ButtonInfo(DDInput.R, "リスポーン ／ 既読スキップ"),
+				new ButtonInfo(DDInput.L, "画面スライド ／ 会話スキップ"),
+				new ButtonInfo(DDInput.R, "リスポーン"),
 				new ButtonInfo(DDInput.PAUSE, "ポーズボタン"),
 				//new ButtonInfo(DDInput.START, ""),
 
