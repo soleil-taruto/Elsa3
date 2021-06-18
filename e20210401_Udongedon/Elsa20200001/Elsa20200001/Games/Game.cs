@@ -117,6 +117,11 @@ namespace Charlotte.Games
 						this.Player.Power -= GameConsts.PLAYER_POWER_PER_LEVEL;
 					}
 					DDUtils.ToRange(ref this.Player.Power, 0, GameConsts.PLAYER_POWER_MAX);
+
+					if (DDKey.IsPound(DX.KEY_INPUT_N))
+					{
+						EnemyCommon.Drawノーミス();
+					}
 				}
 
 				if (DDInput.PAUSE.GetInput() == 1 && 10 < this.Frame || this.Dead_Pause) // ポーズ

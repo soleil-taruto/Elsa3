@@ -131,23 +131,37 @@ namespace Charlotte.Games.Enemies
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.HEART:
-					Game.I.Score += 150;
-					Game.I.Zanki++;
-					Game.I.Zanki = Math.Min(Game.I.Zanki, GameConsts.ZANKI_MAX);
+					if (Game.I.Zanki < GameConsts.ZANKI_MAX)
+					{
+						Game.I.Zanki++;
+						Game.I.Score += 150;
+					}
+					else
+						Game.I.Score += 15000;
+
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.CANDY:
-					Game.I.Score += 10;
-					Game.I.Player.Power += 17;
-					//Game.I.Player.Power += 7;
-					//Game.I.Player.Power++;
-					Game.I.Player.Power = Math.Min(Game.I.Player.Power, GameConsts.PLAYER_POWER_MAX);
+					if (Game.I.Player.Power < GameConsts.PLAYER_POWER_MAX)
+					{
+						Game.I.Score += 10;
+						Game.I.Player.Power += 17;
+						Game.I.Player.Power = Math.Min(Game.I.Player.Power, GameConsts.PLAYER_POWER_MAX);
+					}
+					else
+						Game.I.Score += 110;
+
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.BOMB:
-					Game.I.Score += 150;
-					Game.I.ZanBomb++;
-					Game.I.ZanBomb = Math.Min(Game.I.ZanBomb, GameConsts.ZAN_BOMB_MAX);
+					if (Game.I.ZanBomb < GameConsts.ZAN_BOMB_MAX)
+					{
+						Game.I.Score += 125;
+						Game.I.ZanBomb++;
+					}
+					else
+						Game.I.Score += 12500;
+
 					break;
 
 				case EnemyCommon.DROP_ITEM_TYPE_e.ABSORBABLE_SHOT:

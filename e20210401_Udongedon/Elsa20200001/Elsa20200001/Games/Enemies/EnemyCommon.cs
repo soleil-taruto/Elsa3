@@ -679,9 +679,10 @@ namespace Charlotte.Games.Enemies
 
 			DDGround.EL.Add(() =>
 			{
-				DDPrint.SetPrint(DDConsts.Screen_W - 120, DDConsts.Screen_H - 30);
+				DDPrint.SetPrint(DDConsts.Screen_W - 120, DDConsts.Screen_H - 40);
 				DDPrint.SetBorder(new I3Color(0, 0, 255));
-				DDPrint.Print("ノーミス撃破");
+				DDPrint.PrintLine("ノーミス撃破");
+				DDPrint.PrintLine(" (スコアx2)");
 				DDPrint.Reset();
 
 				return DDEngine.ProcFrame < endFrame;
