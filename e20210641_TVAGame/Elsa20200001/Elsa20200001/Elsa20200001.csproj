@@ -180,7 +180,9 @@
     <Compile Include="Games\Shots\Shot_Spread.cs" />
     <Compile Include="Games\Shots\Shot_Wave.cs" />
     <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestMenu2.cs" />
     <Compile Include="Games\Tests\GameTestSubMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu2.cs" />
     <Compile Include="Games\Tiles\Tile_None.cs" />
     <Compile Include="Games\Tiles\Tile_River.cs" />
     <Compile Include="Games\Tiles\Tile_Space.cs" />
