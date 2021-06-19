@@ -229,6 +229,7 @@
     <Compile Include="Games\Scripts\Tests\Script_チルノテスト_0003.cs" />
     <Compile Include="Games\Scripts\Tests\Script_チルノテスト_0004.cs" />
     <Compile Include="Games\Scripts\Tests\Script_掛け合いテスト.cs" />
+    <Compile Include="Games\Scripts\Tests\Script_テスト3031.cs" />
     <Compile Include="Games\Shots\Shot.cs" />
     <Compile Include="Games\Shots\ShotConsts.cs" />
     <Compile Include="Games\Shots\Shot_Bomb.cs" />

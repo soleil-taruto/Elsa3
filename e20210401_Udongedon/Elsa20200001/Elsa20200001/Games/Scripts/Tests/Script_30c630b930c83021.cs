@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Charlotte.Games.Walls;
 using Charlotte.Games.Enemies;
-using Charlotte.GameCommons;
 
 namespace Charlotte.Games.Scripts.Tests
 {

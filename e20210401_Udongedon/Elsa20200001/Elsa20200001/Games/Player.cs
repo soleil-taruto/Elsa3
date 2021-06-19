@@ -559,6 +559,7 @@ namespace Charlotte.Games
 			}
 
 			//Game.I.BombUsed = true; // ボム使用しました！フラグを立てる。
+			Game.I.Status.PlayerWasBombUsed = true;
 		}
 
 		/// <summary>

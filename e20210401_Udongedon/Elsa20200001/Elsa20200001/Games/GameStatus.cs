@@ -11,5 +11,6 @@ namespace Charlotte.Games
 		public int PlayerPower = 0;
 		public int PlayerZanki = GameConsts.DEFAULT_ZANKI;
 		public int PlayerZanBomb = GameConsts.DEFAULT_ZAN_BOMB;
+		public bool PlayerWasBombUsed = false; // (ゲームスタートから)1度でもボムを使用したら true にセットされる。
 	}
 }

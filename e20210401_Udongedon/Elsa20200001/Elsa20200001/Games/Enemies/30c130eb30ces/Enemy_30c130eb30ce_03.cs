@@ -40,10 +40,17 @@ namespace Charlotte.Games.Enemies.チルノs
 
 				// タレット配置
 				{
-					const double MARGIN = 50.0;
-
-					if (frame == 90)
+					if (
+						frame == 90 ||
+						(
+							300 <= frame &&
+							frame % 300 == 0 &&
+							Game.I.Enemies.Iterate(enemy => enemy is Enemy_Turret).Count() == 0 // ? タレットが全て破壊された。(タレットはボムで破壊できる)
+						)
+						)
 					{
+						const double MARGIN = 50.0;
+
 						Game.I.Enemies.Add(new Enemy_Turret(
 							this.X,
 							this.Y,

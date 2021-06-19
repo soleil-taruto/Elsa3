@@ -182,6 +182,22 @@ namespace Charlotte.Games.Scripts
 				Game.I.Score += bonus;
 			}
 
+			if (!Game.I.Status.PlayerWasBombUsed) // ボム無使用ボーナス
+			{
+				for (int c = 0; c < 240; c++)
+					yield return true;
+
+				long bonus = 100000000;
+
+				DDGround.EL.Add(SCommon.Supplier(Effects.Message(
+					"ボ ム 無 使 用 ボ ー ナ ス +" + bonus,
+					new I3Color(128, 0, 64),
+					new I3Color(0, 255, 255)
+					)));
+
+				Game.I.Score += bonus;
+			}
+
 			for (int c = 0; c < 300; c++)
 				yield return true;
 		}

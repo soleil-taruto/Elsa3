@@ -117,5 +117,16 @@ namespace Charlotte.GameCommons
 			}
 #endif
 		}
+
+		public IEnumerable<T> Iterate(Predicate<T> match)
+		{
+			for (int index = 0; index < this.Count; index++)
+			{
+				if (match(this.Inner[index]))
+				{
+					yield return this.Inner[index];
+				}
+			}
+		}
 	}
 }

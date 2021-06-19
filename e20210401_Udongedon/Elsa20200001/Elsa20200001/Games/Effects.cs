@@ -95,7 +95,7 @@ namespace Charlotte.Games
 		{
 			Action a_draw_message = () =>
 			{
-				DDPrint.SetPrint(DDConsts.Screen_W / 2 - 4 * message.Length, DDConsts.Screen_H / 2 - 8);
+				DDPrint.SetPrint(DDConsts.Screen_W / 2 - 4 * SCommon.ENCODING_SJIS.GetByteCount(message), DDConsts.Screen_H / 2 - 8);
 				DDPrint.SetColor(color);
 				DDPrint.SetBorder(borderColor);
 				DDPrint.Print(message);
