@@ -179,7 +179,9 @@
     <Compile Include="Games\Shots\Shot_Laser.cs" />
     <Compile Include="Games\Shots\Shot_WaveBeam.cs" />
     <Compile Include="Games\Tests\GameTestMenu.cs" />
+    <Compile Include="Games\Tests\GameTestMenu2.cs" />
     <Compile Include="Games\Tests\GameTestSubMenu.cs" />
+    <Compile Include="Games\Tests\GameTestSubMenu2.cs" />
     <Compile Include="Games\Tiles\Tests\Tile_Bボス部屋Shutter.cs" />
     <Compile Include="Games\WorldGameMaster.cs" />
     <Compile Include="Games\Player.cs" />

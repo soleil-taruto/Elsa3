@@ -228,6 +228,7 @@ namespace Charlotte.Games
 				{
 					"スタート",
 					"Game用テストメニュー",
+					"Game用テストメニュー.2",
 					"戻る",
 				},
 				0
@@ -263,6 +264,18 @@ namespace Charlotte.Games
 						break;
 
 					case 2:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu2())
+							{
+								GameTestMenu2.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 3:
 						goto endMenu;
 
 					default:
