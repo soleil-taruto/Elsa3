@@ -345,6 +345,7 @@ namespace Charlotte.Games
 					"スタート_因幡てゐ",
 					"スタート_チルノ",
 					"Game用テストメニュー",
+					"Game用テストメニュー.2",
 					"戻る",
 				},
 				0
@@ -397,6 +398,18 @@ namespace Charlotte.Games
 						break;
 
 					case 3:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu2())
+							{
+								GameTestMenu2.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 4:
 						goto endMenu;
 
 					default:
