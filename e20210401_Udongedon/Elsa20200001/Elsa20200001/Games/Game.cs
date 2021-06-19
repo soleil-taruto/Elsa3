@@ -1102,6 +1102,13 @@ namespace Charlotte.Games
 
 			DDPrint.SetBorder(new I3Color(150, 150, 100));
 			DDPrint.PrintLine("  POWER");
+			DDPrint.PrintLine("");
+			DDPrint.PrintLine("");
+			DDPrint.PrintLine("");
+			DDPrint.PrintLine("");
+
+			DDPrint.SetBorder(new I3Color(128, 128, 128));
+			DDPrint.PrintLine(string.Format("  FLAGS  {0}{1}", Game.I.PlayerWasDead ? 'D' : '-', Game.I.Status.PlayerWasBombUsed ? 'B' : '-'));
 			DDPrint.Reset();
 
 			DrawStatus_Power();
