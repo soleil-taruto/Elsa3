@@ -20,6 +20,13 @@ namespace Charlotte.Games
 		public int StartHP = GameConsts.PLAYER_HP_MAX;
 
 		/// <summary>
+		/// 現在のワイリーステージのインデックス
+		/// -- 0 == 最初のワイリーステージ || 通常ステージ
+		/// -- 1～ == 2つ目以降のワイリーステージ
+		/// </summary>
+		public int WilyStageIndex = 0;
+
+		/// <summary>
 		/// スタート地点の Direction 値
 		/// 5 == 中央(デフォルト) == ゲームスタート時
 		/// 2 == 下から入場

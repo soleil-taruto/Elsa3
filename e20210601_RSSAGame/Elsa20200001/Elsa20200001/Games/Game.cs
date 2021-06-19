@@ -21,6 +21,16 @@ namespace Charlotte.Games
 
 		// <---- prm
 
+		public enum EndReason_e
+		{
+			ReturnToTitleMenu = 1,
+			StageClear,
+		}
+
+		public EndReason_e EndReason = EndReason_e.ReturnToTitleMenu;
+
+		// <---- ret
+
 		public static Game I;
 
 		public Game()

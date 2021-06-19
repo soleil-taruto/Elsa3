@@ -30,6 +30,8 @@ namespace Charlotte.Games
 		public void Perform()
 		{
 			throw null; // TODO
+
+			// ステージ選択後のモーションもここでやる予定
 		}
 	}
 }

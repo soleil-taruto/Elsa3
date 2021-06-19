@@ -207,6 +207,7 @@
     <Compile Include="Games\Walls\Wall_None.cs" />
     <Compile Include="Games\Walls\Wall_ロックマン風.cs" />
     <Compile Include="Games\Walls\Wall_東方風.cs" />
+    <Compile Include="Games\WilyStageStartMotion.cs" />
     <Compile Include="Games\WorldGameMaster.cs" />
     <Compile Include="Games\Player.cs" />
     <Compile Include="Games\Shots\Shot.cs" />
@@ -228,6 +229,7 @@
     <Compile Include="GameProgressMasters\GameProgressMaster.cs" />
     <Compile Include="Games\ぼかし効果.cs" />
     <Compile Include="Games\OmakeMenu.cs" />
+    <Compile Include="Games\PasswordDisplay.cs" />
     <Compile Include="Games\マップ移動.cs" />
     <Compile Include="Ground.cs" />
     <Compile Include="LevelEditors\LevelEditor.cs" />
