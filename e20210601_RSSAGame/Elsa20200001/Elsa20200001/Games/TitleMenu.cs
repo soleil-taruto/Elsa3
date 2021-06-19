@@ -297,6 +297,7 @@ namespace Charlotte.Games
 					"Stage5-3", // 中央(3面)
 					"Stage5-4", // 中央(4面)
 					"Game用テストメニュー",
+					"Game用テストメニュー.2",
 					"戻る",
 				},
 				0
@@ -343,6 +344,18 @@ namespace Charlotte.Games
 						break;
 
 					case 14:
+						{
+							this.LeaveTitleMenu();
+
+							using (new GameTestMenu2())
+							{
+								GameTestMenu2.I.Perform();
+							}
+							this.ReturnTitleMenu();
+						}
+						break;
+
+					case 15:
 						goto endMenu;
 
 					default:
