@@ -334,6 +334,8 @@ namespace Charlotte.Games
 		{
 			Ground.I.Music.MUS_TITLE.Play();
 
+			DDGround.EL.Clear();
+
 			GC.Collect();
 		}
 	}
