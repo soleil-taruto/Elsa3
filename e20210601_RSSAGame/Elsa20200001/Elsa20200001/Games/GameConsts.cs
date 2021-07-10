@@ -63,7 +63,8 @@ namespace Charlotte.Games
 		/// </summary>
 		public const double PLAYER_SPEED = 4.0;
 
-		public const double PLAYER_ジャンプ初速度 = -12.0;
+		//public const double PLAYER_ジャンプ初速度 = -12.0; // 4マス分の高さを登れる箇所と登れない箇所がある問題のため、廃止して -13.0 にした。@ 2021.7.10
+		public const double PLAYER_ジャンプ初速度 = -13.0;
 		//public const double PLAYER_ジャンプ初速度 = -16.0;
 
 		// 上昇が速すぎると、脳天判定より先に側面判定に引っ掛かってしまう可能性がある。
