@@ -19,15 +19,15 @@ namespace Charlotte.Games.Scripts.Tests
 
 			string[] leftCharas = new string[]
 			{
-				"メディスン",
 				"小悪魔",
+				"メディスン",
 			};
 
 			string[] rightCharas = new string[]
 			{
-				"チルノ",
-				"ルーミア",
 				"鍵山雛",
+				"ルーミア",
+				"チルノ",
 			};
 
 			foreach (string leftChara in leftCharas)
