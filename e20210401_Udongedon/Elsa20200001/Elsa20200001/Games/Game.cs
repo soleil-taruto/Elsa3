@@ -111,6 +111,9 @@ namespace Charlotte.Games
 
 						if (this.Zanki < GameConsts.ZANKI_MAX)
 							this.Zanki++;
+
+						if (this.ZanBomb < GameConsts.ZAN_BOMB_MAX)
+							this.ZanBomb++;
 					}
 					if (DDKey.IsPound(DX.KEY_INPUT_PGDN))
 					{
@@ -843,15 +846,18 @@ namespace Charlotte.Games
 					{
 						// 敵に当たっても「ボム」は消滅しない。
 
-						if (enemy.IsBoss()) // ボスの場合は回復！
+						if (enemy.IsBoss())
 						{
-							DDGround.EL.Add(SCommon.Supplier(Effects.ボス回復(GameConsts.FIELD_L + enemy.X, GameConsts.FIELD_T + enemy.Y)));
+							DDGround.EL.Add(SCommon.Supplier(Effects.ボスがボムに接触(GameConsts.FIELD_L + enemy.X, GameConsts.FIELD_T + enemy.Y)));
+							Ground.I.SE.SE_ENEMYDAMAGED.Play();
 
 #if true
+							enemy.HP--;
+#elif true // old -- ボスの場合は回復
 							enemy.HP -= enemy.InitialHP;
 							enemy.HP = (int)(enemy.HP * 0.99);
 							enemy.HP += enemy.InitialHP;
-#else // old
+#else // old -- ボスの場合は回復
 							enemy.HP++;
 							enemy.HP = Math.Min(enemy.HP, enemy.InitialHP);
 #endif

@@ -22,7 +22,7 @@ namespace Charlotte.Games.Enemies.ルーミアs
 			}
 			else if (frame < EnemyConsts_ルーミア.TRANS_FRAME)
 			{
-				Game.I.Shots.RemoveAll(v => v.Kind == Shot.Kind_e.BOMB); // ボム消し
+				//Game.I.Shots.RemoveAll(v => v.Kind == Shot.Kind_e.BOMB); // ボム消し -- 廃止 @ 2021.7.17
 				//Game.I.BombUsed = false; // 念のためリセット
 				Game.I.PlayerWasDead = false; // 念のためリセット
 			}

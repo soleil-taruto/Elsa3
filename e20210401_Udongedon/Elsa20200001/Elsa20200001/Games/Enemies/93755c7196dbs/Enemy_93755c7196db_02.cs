@@ -58,7 +58,7 @@ namespace Charlotte.Games.Enemies.鍵山雛s
 					{
 						// ボム消し
 						// このフレームにおけるボム当たり判定は既に展開しているので、ボスの当たり判定を展開する前のフレームで消す。
-						Game.I.Shots.RemoveAll(v => v.Kind == Shot.Kind_e.BOMB);
+						//Game.I.Shots.RemoveAll(v => v.Kind == Shot.Kind_e.BOMB); // 廃止 @ 2021.7.17
 
 						// 念のためリセット
 						//Game.I.BombUsed = false;

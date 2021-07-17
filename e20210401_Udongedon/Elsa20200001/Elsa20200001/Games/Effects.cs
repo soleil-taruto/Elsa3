@@ -158,7 +158,7 @@ namespace Charlotte.Games
 			}
 		}
 
-		public static IEnumerable<bool> ボス回復(double x, double y)
+		public static IEnumerable<bool> ボスがボムに接触(double x, double y)
 		{
 			foreach (DDScene scene in DDSceneUtils.Create(5))
 			{
