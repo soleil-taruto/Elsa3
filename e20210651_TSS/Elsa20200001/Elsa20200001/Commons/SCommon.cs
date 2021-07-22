@@ -134,7 +134,7 @@ namespace Charlotte.Commons
 		/// </summary>
 		/// <param name="src">バイト列の引数配列</param>
 		/// <returns>連結したバイト列</returns>
-		public static byte[] Join(byte[][] src)
+		public static byte[] Join(IList<byte[]> src)
 		{
 			int offset = 0;
 
@@ -160,7 +160,7 @@ namespace Charlotte.Commons
 		/// </summary>
 		/// <param name="src">バイト列の引数配列</param>
 		/// <returns>連結したバイト列</returns>
-		public static byte[] SplittableJoin(byte[][] src)
+		public static byte[] SplittableJoin(IList<byte[]> src)
 		{
 			int offset = 0;
 
@@ -216,7 +216,7 @@ namespace Charlotte.Commons
 			/// </summary>
 			/// <param name="plainStrings">任意の文字列のリスト</param>
 			/// <returns>シリアライズされた文字列</returns>
-			public string Join(string[] plainStrings)
+			public string Join(IList<string> plainStrings)
 			{
 				return DELIMITER + string.Join(string.Empty, plainStrings.Select(plainString => DELIMITER + Encode(plainString)));
 			}
@@ -554,9 +554,9 @@ namespace Charlotte.Commons
 		/// </summary>
 		/// <param name="lines">行リスト</param>
 		/// <returns>テキスト</returns>
-		public static string LinesToText(string[] lines)
+		public static string LinesToText(IList<string> lines)
 		{
-			return lines.Length == 0 ? "" : string.Join("\r\n", lines) + "\r\n";
+			return lines.Count == 0 ? "" : string.Join("\r\n", lines) + "\r\n";
 		}
 
 		/// <summary>
@@ -1131,20 +1131,20 @@ namespace Charlotte.Commons
 			return str.ToLower().IndexOf(char.ToLower(chr));
 		}
 
-		public static int IndexOf(string[] strs, string str)
+		public static int IndexOf(IList<string> strs, string str)
 		{
-			for (int index = 0; index < strs.Length; index++)
+			for (int index = 0; index < strs.Count; index++)
 				if (strs[index] == str)
 					return index;
 
 			return -1; // not found
 		}
 
-		public static int IndexOfIgnoreCase(string[] strs, string str)
+		public static int IndexOfIgnoreCase(IList<string> strs, string str)
 		{
 			string lStr = str.ToLower();
 
-			for (int index = 0; index < strs.Length; index++)
+			for (int index = 0; index < strs.Count; index++)
 				if (strs[index].ToLower() == lStr)
 					return index;
 
