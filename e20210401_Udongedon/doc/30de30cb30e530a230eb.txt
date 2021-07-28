@@ -132,6 +132,11 @@
 　　小森平
 　　http://taira-komori.jpn.org/
 
+　●フォント
+
+　　ケイ
+　　https://k-gothic-font.hatenablog.com/
+
 　●旧ゲーム(2013年頃に制作したテストプログラム)より引き継いだリソース
 
 　　リヒト
