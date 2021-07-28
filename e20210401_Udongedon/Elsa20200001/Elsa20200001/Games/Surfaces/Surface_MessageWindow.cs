@@ -45,48 +45,21 @@ namespace Charlotte.Games.Surfaces
 				if (!this.Ended)
 				{
 #if true
+					int[] msgYAdds;
+
 					if (this.Messages[1] == "")
-					{
-						DrawMessageString(
-							this.Messages[0],
-							(int)this.X,
-							(int)this.Y + 15,
-							new I3Color(0, 0, 0)
-							);
-					}
+						msgYAdds = new int[] { 15 };
 					else if (this.Messages[2] == "")
-					{
-						DrawMessageString(
-							this.Messages[0],
-							(int)this.X,
-							(int)this.Y,
-							new I3Color(0, 0, 0)
-							);
-						DrawMessageString(
-							this.Messages[1],
-							(int)this.X,
-							(int)this.Y + 30,
-							new I3Color(0, 0, 0)
-							);
-					}
+						msgYAdds = new int[] { 0, 30 };
 					else
+						msgYAdds = new int[] { -15, 15, 45 };
+
+					for (int index = 0; index < msgYAdds.Length; index++)
 					{
 						DrawMessageString(
-							this.Messages[0],
+							this.Messages[index],
 							(int)this.X,
-							(int)this.Y - 15,
-							new I3Color(0, 0, 0)
-							);
-						DrawMessageString(
-							this.Messages[1],
-							(int)this.X,
-							(int)this.Y + 15,
-							new I3Color(0, 0, 0)
-							);
-						DrawMessageString(
-							this.Messages[2],
-							(int)this.X,
-							(int)this.Y + 45,
+							(int)this.Y + msgYAdds[index],
 							new I3Color(0, 0, 0)
 							);
 					}
@@ -94,11 +67,12 @@ namespace Charlotte.Games.Surfaces
 					DDPrint.SetBorder(new I3Color(40, 0, 0));
 					DDPrint.SetPrint(
 						(int)this.X - 200,
-						(int)this.Y - 0
+						(int)this.Y - 0,
+						20
 						);
 					DDPrint.PrintLine(this.Messages[0]);
-					DDPrint.PrintLine("");
 					DDPrint.PrintLine(this.Messages[1]);
+					DDPrint.PrintLine(this.Messages[2]);
 					DDPrint.Reset();
 #endif
 				}
