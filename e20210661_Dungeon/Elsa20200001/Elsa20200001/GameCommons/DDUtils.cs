@@ -125,6 +125,17 @@ namespace Charlotte.GameCommons
 			x = w;
 		}
 
+		public static void Rotate(ref double x, ref double y, D2Point origin, double rot)
+		{
+			x -= origin.X;
+			y -= origin.Y;
+
+			Rotate(ref x, ref y, rot);
+
+			x += origin.X;
+			y += origin.Y;
+		}
+
 		public static double GetDistance(double x, double y)
 		{
 			return Math.Sqrt(x * x + y * y);
