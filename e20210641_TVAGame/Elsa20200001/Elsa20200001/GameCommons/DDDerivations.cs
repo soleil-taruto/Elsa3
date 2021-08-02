@@ -51,7 +51,10 @@ namespace Charlotte.GameCommons
 			if (parentPicture.Get_W() % w != 0) throw new DDError();
 			if (parentPicture.Get_H() % h != 0) throw new DDError();
 
-			return GetAnimation(parentPicture, x, y, w, h, parentPicture.Get_W() / w, parentPicture.Get_H() / h);
+			int xNum = parentPicture.Get_W() / w;
+			int yNum = parentPicture.Get_H() / h;
+
+			return GetAnimation(parentPicture, x, y, w, h, xNum, yNum);
 		}
 
 		public static DDPicture[,] GetAnimation(DDPicture parentPicture, int x, int y, int w, int h, int xNum, int yNum)
