@@ -37,7 +37,7 @@ namespace Charlotte.GameCommons
 				DDPrint.SetBorder(this.BorderColor.Value);
 		}
 
-		public int Perform(int x, int y, int yStep, int fontSize, string title, string[] items, int selectIndex, bool ポーズボタンでメニュー終了 = false)
+		public int Perform(int x, int y, int yStep, int fontSize, string title, string[] items, int selectIndex, bool ポーズボタンでメニュー終了 = false, bool noPound = false)
 		{
 			DDCurtain.SetCurtain();
 			DDEngine.FreezeInput();
@@ -86,12 +86,12 @@ namespace Charlotte.GameCommons
 					selectIndex = items.Length - 1;
 					chgsel = true;
 				}
-				if (DDInput.DIR_8.IsPound())
+				if (noPound ? DDInput.DIR_8.GetInput() == 1 : DDInput.DIR_8.IsPound())
 				{
 					selectIndex--;
 					chgsel = true;
 				}
-				if (DDInput.DIR_2.IsPound())
+				if (noPound ? DDInput.DIR_2.GetInput() == 1 : DDInput.DIR_2.IsPound())
 				{
 					selectIndex++;
 					chgsel = true;
@@ -379,7 +379,7 @@ namespace Charlotte.GameCommons
 							{
 								int keyId = btnInfos[c].Button.KeyId;
 
-								DDPrint.Print("　->　");
+								DDPrint.Print("　>>>　");
 
 								if (keyId == -1)
 									DDPrint.Print("割り当てナシ");
@@ -456,7 +456,7 @@ namespace Charlotte.GameCommons
 							{
 								int btnId = btnInfos[c].Button.BtnId;
 
-								DDPrint.Print("　->　");
+								DDPrint.Print("　>>>　");
 
 								if (btnId == -1)
 									DDPrint.Print("割り当てナシ");

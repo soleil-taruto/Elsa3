@@ -72,6 +72,9 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="Consts.cs" />
+    <Compile Include="GameCommons\DDHash.cs" />
+    <Compile Include="GameCommons\DDHashedData.cs" />
+    <Compile Include="GameCommons\DDHashedResource.cs" />
     <Compile Include="GameCommons\DDTableMenu.cs" />
     <Compile Include="GameCommons\DDTouch.cs" />
     <Compile Include="Games\Confirm.cs" />
