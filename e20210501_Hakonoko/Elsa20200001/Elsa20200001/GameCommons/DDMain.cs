@@ -305,10 +305,10 @@ namespace Charlotte.GameCommons
 		{
 			LiteStatusDlg.StartDisplay("ゲーム画面の位置とサイズを調整しています...");
 
-			bool mdm = DDUtils.GetMouseDispMode();
-
 			foreach (DDSubScreen subScreen in DDSubScreenUtils.SubScreens)
 				subScreen.WasLoaded = subScreen.IsLoaded();
+
+			bool mdm = DDUtils.GetMouseDispMode();
 
 			//DDDerivationUtils.UnloadAll(); // moved -> DDPictureUtils.UnloadAll
 			DDPictureUtils.UnloadAll();
