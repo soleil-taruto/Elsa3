@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading;
 using DxLibDLL;
 using Charlotte.Commons;
+using Charlotte.Games;
 
 namespace Charlotte.GameCommons
 {
@@ -30,6 +31,10 @@ namespace Charlotte.GameCommons
 			else
 				HzChaserTime += 16L; // 16.666 == 60Hz
 
+			//HzChaserTime += (long)(16.666 * 8); // test
+			//HzChaserTime += (long)(16.666 * 4); // test
+			//HzChaserTime += (long)(16.666 * 2); // test
+			//HzChaserTime += 16L; // 16.666 == 60Hz
 			HzChaserTime = SCommon.ToRange(HzChaserTime, currTime - 100L, currTime + 100L);
 
 			while (currTime < HzChaserTime)
