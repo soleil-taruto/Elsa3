@@ -48,8 +48,8 @@ namespace Charlotte.GameCommons
 
 		public static DDPicture[,] GetAnimation(DDPicture parentPicture, int x, int y, int w, int h)
 		{
-			if (parentPicture.Get_W() % w != 0) throw null;
-			if (parentPicture.Get_H() % h != 0) throw null;
+			if (parentPicture.Get_W() % w != 0) throw new DDError();
+			if (parentPicture.Get_H() % h != 0) throw new DDError();
 
 			int xNum = parentPicture.Get_W() / w;
 			int yNum = parentPicture.Get_H() / h;
