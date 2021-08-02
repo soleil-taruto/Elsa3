@@ -44,10 +44,45 @@ namespace Charlotte.GameCommons
 			}
 		}
 
+		private void CheckIndex(int index)
+		{
+			if (index < 0 || this.Count <= index)
+				throw new DDError("Bad index: " + index);
+		}
+
+		private void CheckRange(int offset, int count)
+		{
+			if (offset < 0 || this.Count <= offset)
+				throw new DDError("Bad offset: " + offset);
+
+			if (count < 0 || this.Count - offset < count)
+				throw new DDError("Bad count: " + count);
+		}
+
+		public void RemoveAt(int index)
+		{
+			this.CheckIndex(index);
+
+			this.Inner.RemoveAt(index);
+			this.Count--;
+		}
+
 		public void FastRemoveAt(int index)
 		{
+			this.CheckIndex(index);
+
 			this.Inner[index] = this.Inner[--this.Count];
 			this.Inner[this.Count] = default(T);
+		}
+
+		public void RemoveRange(int offset, int count)
+		{
+			this.CheckRange(offset, count);
+
+			for (int index = offset; index + count < this.Count; index++)
+				this.Inner[index] = this.Inner[index + count];
+
+			this.Count -= count;
 		}
 
 		public void RemoveAll(Predicate<T> match)

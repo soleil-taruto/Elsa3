@@ -17,12 +17,18 @@ namespace Charlotte.GameCommons
 		public void ExecuteAllTask()
 		{
 			for (int index = 0; index < this.Tasks.Count; index++)
-			{
-				if (!this.Tasks[index]()) // ? 終了
-				{
+				if (!this.Tasks[index]())
 					this.Tasks[index] = null;
-				}
-			}
+
+			this.Tasks.RemoveAll(task => task == null);
+		}
+
+		public void ExecuteAllTask_Reverse()
+		{
+			for (int index = this.Tasks.Count - 1; 0 <= index; index--)
+				if (!this.Tasks[index]())
+					this.Tasks[index] = null;
+
 			this.Tasks.RemoveAll(task => task == null);
 		}
 

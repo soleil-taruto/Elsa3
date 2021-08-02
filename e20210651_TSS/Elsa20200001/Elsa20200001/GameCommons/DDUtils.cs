@@ -135,6 +135,11 @@ namespace Charlotte.GameCommons
 			return GetDistance(pt.X, pt.Y);
 		}
 
+		public static double GetDistance(D2Point pt, D2Point origin)
+		{
+			return GetDistance(pt.X - origin.X, pt.Y - origin.Y);
+		}
+
 		/// <summary>
 		/// <para>原点から指定座標への角度を返す。</para>
 		/// <para>ラジアン角 (0.0 ～ Math.PI * 2.0)</para>
@@ -185,6 +190,27 @@ namespace Charlotte.GameCommons
 				distance * Math.Cos(angle),
 				distance * Math.Sin(angle)
 				);
+		}
+
+		/// <summary>
+		/// よく使っていた古い関数
+		/// 始点から終点へ指定速度で向かう場合の(単位時間の)移動量を返す。
+		/// </summary>
+		/// <param name="x">始点X</param>
+		/// <param name="y">始点Y</param>
+		/// <param name="targetX">終点X</param>
+		/// <param name="targetY">終点Y</param>
+		/// <param name="speed">速度</param>
+		/// <param name="xa">移動量X</param>
+		/// <param name="ya">移動量Y</param>
+		public static void MakeXYSpeed(double x, double y, double targetX, double targetY, double speed, out double xa, out double ya)
+		{
+			D2Point pt = new D2Point(targetX - x, targetY - y);
+
+			pt = AngleToPoint(GetAngle(pt), speed);
+
+			xa = pt.X;
+			ya = pt.Y;
 		}
 
 		/// <summary>
@@ -452,6 +478,13 @@ namespace Charlotte.GameCommons
 		public static double RateAToB(double a, double b, double value)
 		{
 			return (value - a) / (b - a);
+		}
+
+		public static int Sign(double value)
+		{
+			if (value < 0) return -1;
+			if (value > 0) return 1;
+			return 0;
 		}
 
 		public static Func<bool> Scripter(IEnumerable<int> script)
