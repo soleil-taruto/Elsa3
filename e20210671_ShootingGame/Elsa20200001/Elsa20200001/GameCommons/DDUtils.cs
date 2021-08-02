@@ -434,12 +434,42 @@ namespace Charlotte.GameCommons
 			return interior;
 		}
 
-		public static D4Rect AdjustRectExterior(D2Size size, D4Rect rect)
+		private static D4Rect Prv_AdjustRectExterior(D2Size size, D4Rect rect)
 		{
 			D4Rect interior;
 			D4Rect exterior;
 
 			AdjustRect(size, rect, out interior, out exterior);
+
+			return exterior;
+		}
+
+		/// <summary>
+		/// サイズを(アスペクト比を維持して)矩形領域(入力)の外側に張り付く矩形領域(出力)を生成する。
+		/// スライドレート：
+		/// -- 0.0 ～ 1.0
+		/// -- 0.0 == 矩形領域(出力)を最も左・上側に寄せる == 矩形領域(出力)の右・下側と矩形領域(入力)の右・下側が重なる
+		/// -- 0.5 == 中央
+		/// -- 1.0 == 矩形領域(出力)を最も右・下側に寄せる == 矩形領域(出力)の左・上側と矩形領域(入力)の左・上側が重なる
+		/// </summary>
+		/// <param name="size">サイズ</param>
+		/// <param name="rect">矩形領域(入力)</param>
+		/// <param name="xRate">スライドレート(X_方向)</param>
+		/// <param name="yRate">スライドレート(Y_方向)</param>
+		/// <param name="extraZoom">倍率(外側に張り付くサイズからの倍率)</param>
+		/// <returns>矩形領域(出力)</returns>
+		public static D4Rect AdjustRectExterior(D2Size size, D4Rect rect, double xRate = 0.5, double yRate = 0.5, double extraZoom = 1.0)
+		{
+			D4Rect exterior = Prv_AdjustRectExterior(size, rect);
+
+			exterior.W *= extraZoom;
+			exterior.H *= extraZoom;
+
+			double rangeX = exterior.W - rect.W;
+			double rangeY = exterior.H - rect.H;
+
+			exterior.L = rect.L + rangeX * (xRate - 1.0);
+			exterior.T = rect.T + rangeY * (yRate - 1.0);
 
 			return exterior;
 		}

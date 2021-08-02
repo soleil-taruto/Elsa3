@@ -1,6 +1,6 @@
 ﻿===============================================================================
 
-　横スクロール シューティング ゲーム(仮) / version $version$
+　ShootingGame / version $version$
 　　　　　　　　　　　　　　　　　　　　　　　　　　(C) 202x cerulean.charlotte
 
 ===============================================================================
@@ -59,10 +59,10 @@
 
 ■このゲームの製作者
 
-　cerulean.charlotte
+　cerulean.charlotte (soleil.taruto)
 
 　URL:
-　　http://ornithopter.ccsp.mydns.jp/recollections/ShootGame
+　　https://github.com/soleil-taruto
 
 　MAIL:
 　　cerulean.charlottes@gmail.com

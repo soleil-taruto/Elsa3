@@ -90,7 +90,7 @@ namespace Charlotte
 			//new GameTest().Test02();
 			//new GameTest().Test03(); // スクリプトを選択
 			//new NovelTest().Test01();
-			//new NovelTest().Test02(); // テスト0001
+			//new NovelTest().Test02(); // シナリオ：テスト0001
 
 			// ----
 		}

@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading;
 using DxLibDLL;
 using Charlotte.Commons;
+using Charlotte.Games;
 
 namespace Charlotte.GameCommons
 {
@@ -13,6 +14,7 @@ namespace Charlotte.GameCommons
 	{
 		public static long FrameStartTime;
 		public static long HzChaserTime;
+		public static int SlowdownLevel;
 		public static int FrameProcessingMillis;
 		public static int FrameProcessingMillis_Worst;
 		public static int FrameProcessingMillis_WorstFrame;
@@ -24,7 +26,15 @@ namespace Charlotte.GameCommons
 		{
 			long currTime = DDUtils.GetCurrTime();
 
-			HzChaserTime += 16L; // 16.666 == 60Hz
+			if (1 <= SlowdownLevel)
+				HzChaserTime += (long)(16.666 * SlowdownLevel); // テスト用
+			else
+				HzChaserTime += 16L; // 16.666 == 60Hz
+
+			//HzChaserTime += (long)(16.666 * 8); // test
+			//HzChaserTime += (long)(16.666 * 4); // test
+			//HzChaserTime += (long)(16.666 * 2); // test
+			//HzChaserTime += 16L; // 16.666 == 60Hz
 			HzChaserTime = SCommon.ToRange(HzChaserTime, currTime - 100L, currTime + 100L);
 
 			while (currTime < HzChaserTime)

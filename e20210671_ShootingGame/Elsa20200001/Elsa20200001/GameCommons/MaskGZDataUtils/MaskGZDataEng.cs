@@ -83,7 +83,7 @@ namespace Charlotte.GameCommons.MaskGZDataUtils
 
 		public void Transpose(byte[] data)
 		{
-			this.Transpose(data, "2021052425"); // 難読化貢献のため seed を文字列化しておく
+			this.Transpose(data, "2021052933"); // 難読化貢献のため seed を文字列化しておく
 		}
 	}
 }
